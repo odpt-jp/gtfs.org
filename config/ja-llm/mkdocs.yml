@@ -1,5 +1,6 @@
 site_name: General Transit Feed Specification (LLM翻訳)
 site_url: https://gtfs-llm-translation.odpt.org
+site_description: GTFSの公式サイト gtfs.org の内容を、ODPT（公共交通オープンデータ協議会）が、LLM（大規模言語モデル）を利用して翻訳した試験的翻訳サイトです。 
 repo_url: https://github.com/odpt-jp/gtfs.org
 repo_name: GTFS LLM翻訳
 docs_dir: ../../docs/ja-llm
@@ -46,6 +47,9 @@ copyright: |
   </div>
 
 extra:
+  analytics:
+    provider: google
+    property: G-1NWJX13330
   generator: false
 
 markdown_extensions:
