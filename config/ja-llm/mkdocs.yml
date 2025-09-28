@@ -47,6 +47,9 @@ copyright: |
   </div>
 
 extra:
+  analytics:
+    provider: google
+    property: G-1NWJX13330
   generator: false
 
 markdown_extensions:
