@@ -40,6 +40,11 @@ jobs:
           git fetch upstream ${{ env.UPSTREAM_BRANCH }} --depth=1
           git fetch origin ${{ env.TARGET_MAIN }} --depth=1
 
+      - name: Ensure local branch tracks origin/main
+        run: |
+          set -euo pipefail
+          git checkout -B ${{ env.TARGET_MAIN }} origin/${{ env.TARGET_MAIN }}
+
       - name: Fast-forward origin/main from upstream/main if possible
         run: |
           set -euo pipefail
