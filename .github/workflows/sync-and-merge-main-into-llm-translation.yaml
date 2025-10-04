@@ -37,8 +37,7 @@ jobs:
         run: |
           set -euo pipefail
           git remote add upstream https://github.com/${{ env.UPSTREAM_REPO }}.git
-          git fetch upstream ${{ env.UPSTREAM_BRANCH }} --depth=1
-          git fetch origin ${{ env.TARGET_MAIN }} --depth=1
+          git fetch upstream ${{ env.UPSTREAM_BRANCH }}
 
       - name: Ensure local branch tracks origin/main
         run: |
