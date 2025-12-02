@@ -1,16 +1,15 @@
 # フィード情報 {: #feed-information}
 
-## GTFSデータセットに関する情報の提供 {: #provide-information-about-the-gtfs-dataset}
+## GTFS データセットに関する情報の提供 {: #provide-information-about-the-gtfs-dataset}
 
-
-事業者やそのサービスに関する情報を提供するだけでなく、[feed_info.txt](../../reference/#feed_infotxt) ファイルを使用してGTFSデータセットに関する情報を提供することができます。これには以下が含まれます:
+事業者およびそのサービスに関する情報を提供することに加えて、[feed_info.txt](../../reference/#feed_infotxt) ファイルを使用して GTFS データセットに関する情報を提供することができます。これには以下が含まれます。
 
 - 発行者の詳細
 - フィードの言語
 - フィードの有効期間
 - バージョン
 
-以下はカイロ交通(Transport for Cairo)の例です:
+以下は Transport for Cairo の例です。
 
 [**feed_info.txt**](../../reference/#feed_infotxt)
 
