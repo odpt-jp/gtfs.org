@@ -5,34 +5,33 @@
 
 - :simple-slack: [__Slack__](https://share.mobilitydata.org/slack) に参加して、コミュニティに自己紹介してください。
 - :material-newspaper-variant: [__GTFS Digest__](https://gtfs.org/blog/) を購読して、GTFS に関する毎月の最新情報を受け取りましょう。
-- :fontawesome-solid-user-group: [__GTFS Changes__](https://groups.google.com/g/gtfs-changes) Google グループに参加して、開発に関する情報を入手してください。 
-- :simple-github: [__GitHub__](https://github.com/google/transit) を訪れて、課題を投稿したり、変更に関する議論に参加したり、変更を提案してください。 
+- :fontawesome-solid-user-group: [__GTFS Changes__](https://groups.google.com/g/gtfs-changes) Google グループに参加して、開発に関する最新情報を入手してください。
+- :simple-github: [__GitHub__](https://github.com/google/transit) を訪れて、課題を投稿したり、変更に関する議論に参加したり、変更を提案したりしてください。
 
 </div>
 
 ## GTFS ガバナンス {: #gtfs-governance}
 
+GTFS 仕様は固定されたものではありません。むしろ、GTFS を利用する交通事業者、開発者、その他の関係者によって開発・維持されるオープンな仕様です。GTFS データの提供者および利用者のコミュニティが、新しい機能を実現するために仕様を拡張する提案を行うことが期待されています。
 
-GTFS 仕様は固定されたものではありません。代わりに、GTFS を利用する交通事業者、開発者、その他の関係者のコミュニティによって開発・維持されるオープンな仕様です。この GTFS データの提供者と利用者のコミュニティが、新しい機能を実現するために仕様拡張の提案を行うことが期待されています。
-
-このプロセスを正式化するために、GTFS ガバナンスの枠組みを設けており、その中には仕様改訂プロセスが含まれています。
+このプロセスを正式化するために、私たちは GTFS ガバナンスの枠組みを確立しました。これには、仕様改訂プロセスが含まれます。
 
 <div class="grid cards" markdown>
 
 -   :material-file-document-edit:{ .lg .middle } __GTFS Schedule - 仕様改訂プロセス__
 
-    [:octicons-arrow-right-24: 詳細はこちら](../../community/governance/gtfs-schedule-governance/introduction)
+    [:octicons-arrow-right-24: 詳細を見る](../../community/governance/gtfs-schedule-governance/introduction)
 
 -   :material-file-document-edit:{ .lg .middle } __GTFS Realtime - 仕様改訂プロセス__
 
-    [:octicons-arrow-right-24: 詳細はこちら](../../community/governance/gtfs_realtime_amendment_process)
+    [:octicons-arrow-right-24: 詳細を見る](../../community/governance/gtfs_realtime_amendment_process)
 
 </div>
 
 ## 拡張機能 {: #extensions}
 
 
-拡張機能は、関連するファイルやフィールドの集合で構成される、仕様を変更するための提案です。追加のファイルやフィールドは、公式仕様に含まれていない場合でも、交通事業者とソフトウェアベンダー間でやり取りされるさまざまなアプリケーション固有のニーズに対応するために、GTFS データセットに拡張することができます。一度採用されると、拡張機能は公式仕様に統合され、機能のセットとして文書化されます。 
+拡張機能(Extensions)とは、仕様を変更するための提案であり、関連するファイルおよびフィールドの集合で構成されます。GTFS データセットには、公式仕様に含まれていないフィールドであっても、交通事業者とソフトウェアベンダー間でやり取りされるさまざまなアプリケーション固有のニーズに対応するために、追加のファイルやフィールドを拡張することができます。採用されると、拡張機能は一連の機能として公式仕様に統合され、文書化されます。
 
 <div class="grid cards" markdown>
 
@@ -50,10 +49,10 @@ GTFS 仕様は固定されたものではありません。代わりに、GTFS �
 
 </div>
 
-## アクティブなプロジェクト {: #active-projects}
+## 進行中のプロジェクト {: #active-projects}
 
 
-コミュニティは、オープンソースの環境で大きな目標を達成するために、議論やワーキンググループの会合を必要とする可能性のある新しい仕様追加を常に開発しています。ワーキンググループの会合は、ファシリテーターが主導し、開発者や関心のある貢献者が参加する合意形成のための議論です。   
+コミュニティでは、オープンソース環境における大きな目標を達成するために、議論やワーキンググループの会合を必要とする可能性のある新しい仕様追加を常に開発しています。ワーキンググループの会合は、ファシリテーターが主導し、開発者や関心のある貢献者が参加する合意形成のための議論です。   
 
 <div class="grid cards" markdown>
 
@@ -61,24 +60,43 @@ GTFS 仕様は固定されたものではありません。代わりに、GTFS �
 
     ---
 
-    GTFS-Fares v2 は、GTFS における運賃の表現を強化することを目的としており、チケット商品や乗客カテゴリといった機能を導入します。
+    GTFS-Fares v2 は、GTFS における運賃表現を強化することを目的としており、チケット商品や乗客カテゴリなどの機能を導入します。
 
-    [:octicons-arrow-right-24: 詳細はこちら](../../community/extensions/fares-v2)
+    [:octicons-arrow-right-24: 詳細を見る](../../community/extensions/fares-v2)
 
 -   :material-file-document-edit:{ .lg .middle } __GTFS ガバナンス__
 
     ---
 
-    現在の GTFS 仕様改訂プロセスを変更するために、ワーキンググループが設立されました。
+    現行の GTFS 仕様改訂プロセスを変更するためのワーキンググループが設立されました。
 
-    [:octicons-arrow-right-24: 詳細はこちら](https://github.com/google/transit/issues/436)
+    [:octicons-arrow-right-24: 詳細を見る](https://github.com/google/transit/issues/436)
 
 </div>
+
+## ワーキンググループ会議 {: #working-group-meetings}
+
+ワーキンググループ会議は、GTFS コミュニティが一堂に会し、仕様を改善するための機会です。
+
+### 仕組み {: #how-it-works}
+
+私たちは毎月第4火曜日の午前11時（EST）にZoomで集まります。資料は事前に共有され、要約は後で掲載されます。
+
+---
+
+### 3つの重点分野 {: #three-focus-areas}
+
+
+- **駅のモデリング(Station Modeling)** — 複雑な交通ハブの定義  
+- **運行情報(Service Alerts)** — リアルタイムの運行障害情報  
+- **運賃(Fares)** — チケットおよび料金体系
+
+### [ワーキンググループ会議の詳細はこちら →](https://community.mobilitydata.org/working-groups) {: #learn-more-about-the-working-group-meetings}
 
 ## コミュニティリソース {: #community-resources}
 
 
-ヒント、ツール、テクニックの豊富なセレクションについては、リソースセクションを必ずご確認ください。 
+ヒント、ツール、テクニックの豊富なセレクションについては、リソースセクションを必ずご確認ください。
 
 <div class="grid cards" markdown>
 
@@ -92,13 +110,12 @@ GTFS 仕様は固定されたものではありません。代わりに、GTFS �
 
 ### メーリングリスト {: #mailing-lists}
 
+公共交通データ、ソフトウェア、GTFS や GTFS-realtime のようなフォーマット、その他の問題について質問がある場合に役立つメーリングリストがいくつかあります。
 
-公共交通データ、ソフトウェア、GTFS や GTFS-realtime のようなフォーマット、その他の問題について質問がある場合に役立つメーリングリストがいくつかあります:
-
-* [GTFS Changes](https://groups.google.com/group/gtfs-changes): [GTFS Schedule Specification Amendment Process](../../community/governance/gtfs_schedule_amendment_process) に記載されているように、GTFS Schedule Format に関する投票の告知を受け取るには、このグループをフォローしてください。 
+* [GTFS Changes](https://groups.google.com/group/gtfs-changes): [GTFS Schedule Specification Amendment Process](../../community/governance/gtfs_schedule_amendment_process) に記載されているように、GTFS Schedule フォーマットに関する投票の告知を受け取るには、このグループをフォローしてください。
 * [GTFS Realtime](https://groups.google.com/group/gtfs-realtime): このグループは、GTFS Realtime に関する議論、質問、変更提案を行うための公式フォーラムです。[GTFS Realtime Specification Amendment Process](../../community/governance/gtfs_realtime_amendment_process) に記載されています。
-* [transit-developers](https://groups.google.com/group/transit-developers): 一般的な公共交通開発者向けの議論。
-  * 多くの交通事業者は、事業者固有の開発者向けメーリングリストも持っています。例えば:
+* [transit-developers](https://groups.google.com/group/transit-developers): 一般的な交通開発者向けのディスカッション。
+  * 多くの交通事業者は、事業者固有の開発者向けメーリングリストも持っています。例えば次のようなものがあります。
     * [NYC MTA](https://groups.google.com/group/mtadeveloperresources)
     * [Portland, OR](https://groups.google.com/group/transit-developers-pdx)
     * [MBTA](https://groups.google.com/group/massdotdevelopers)
@@ -107,13 +124,13 @@ GTFS 仕様は固定されたものではありません。代わりに、GTFS �
 - [OpenTripPlanner](https://github.com/opentripplanner/OpenTripPlanner) コミュニティ
     - [OpenTripPlanner User メーリングリスト](https://groups.google.com/forum/#!forum/opentripplanner-users)
 
-お住まいの地域の交通事業者に、独自のメーリングリストがあるかどうか確認してください。
+お住まいの地域の交通事業者に、独自のメーリングリストがあるかどうか確認してみてください。
 
 ### その他のコミュニティリソース {: #other-community-resources}
 
-GTFS に関連するその他のコミュニティやリソースを見つけることができます。
+GTFS に関連するその他のコミュニティやリソースを見つけてください。
 
 - [German Open Transport Meetup](https://github.com/transportkollektiv/meetup/wiki) - ドイツ語圏のオープントランスポートコミュニティによる[隔週](https://hackmd.okfn.de/opentransportmeetup#)のミートアップに参加することができます。
 - [OpenTripPlanner](https://github.com/opentripplanner/OpenTripPlanner) コミュニティ。
-- [TransitWiki](http://transitwiki.org) - 交通計画者のためのコミュニティ Wiki。
-- [Transit Techies NYC](https://transittechies.nyc/) - 技術や交通に関心のある人々のためのニューヨーク市拠点のミートアップ。
+- [TransitWiki](http://transitwiki.org) - 交通計画者のためのコミュニティウィキ。
+- [Transit Techies NYC](https://transittechies.nyc/) - 技術や交通に関心のある人々のためのニューヨーク市を拠点としたミートアップ。
