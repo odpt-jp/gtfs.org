@@ -3,11 +3,12 @@
 
 [![NuGet version](https://badge.fury.io/nu/GtfsRealtimeBindings.svg)](http://badge.fury.io/nu/GtfsRealtimeBindings)
 
-[GTFS-realtime](https://github.com/google/transit/tree/master/gtfs-realtime) Protocol Buffer 仕様から生成された .NET クラスを提供します。これらのクラスを使用することで、バイナリ形式の Protocol Buffer GTFS-realtime データフィードを C# オブジェクトに解析することができます。
+[GTFS-realtime](https://github.com/google/transit/tree/master/gtfs-realtime) Protocol Buffer 仕様から生成された .NET クラスを提供します。これらのクラスにより、バイナリの Protocol Buffer GTFS-realtime データフィードを C# オブジェクトとして解析できます。
 
-## 依存関係の追加 {: #add-the-dependency}
+## 依存関係を追加する {: #add-the-dependency}
 
-`gtfs-realtime-bindings` クラスを自身のプロジェクトで使用するには、まず [NuGet リポジトリ](https://www.nuget.org/packages/GtfsRealtimeBindings/) からモジュールをインストールする必要があります。
+
+自身のプロジェクトで `gtfs-realtime-bindings` クラスを使用するには、まず [NuGet repository](https://www.nuget.org/packages/GtfsRealtimeBindings/) からモジュールをインストールする必要があります。
 
 ```
 Install-Package GtfsRealtimeBindings
@@ -15,7 +16,8 @@ Install-Package GtfsRealtimeBindings
 
 ## コード例 {: #example-code}
 
-以下のコードスニペットは、特定のURLからGTFS-realtimeデータフィードをダウンロードし、それをGTFS-realtimeスキーマのルート型であるFeedMessageとしてパースし、結果を反復処理する方法を示しています。
+
+以下のコードスニペットは、特定の URL から GTFS-realtime データフィードをダウンロードし、それを FeedMessage（GTFS-realtime スキーマのルート型）として解析し、結果を反復処理する方法を示しています。
 
 ```csharp
 using System.Net;

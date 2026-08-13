@@ -1,18 +1,20 @@
-# 乗り換え(transfers) {: #transfers}
+# 乗換 {: #transfers}
 
-## ブロック乗り継ぎ {: #block-transfers}
+## ブロック乗換 {: #block-transfers}
 
-ブロック乗り継ぎ（in-seat transfer とも呼ばれます）は、以下の条件を満たす便(trip)の組み合わせに対して利用可能です。
 
-1. 便(trip)が連続していること。
-2. 同じ車両が両方の便(trip)を運行していること。
-3. 便(trip)が、トランジットフィード内の [trips.txt](../../reference/#tripstxt) ファイルにおいて同じ `block_id` 値で設定されていること。
+ブロック乗換は、着席したままの乗換とも呼ばれ、便(trip)の集合が以下の条件を満たす場合に利用できます。
 
-### `block_id` を使用してブロック乗り継ぎを有効にする {: #use-block_id-to-enable-block-transfers}
+1. 便(trip)が連続しています。
+2. 同じ車両が両方の便(trip)を運行します。
+3. 便(trip)には、交通フィードの [trips.txt](../../reference/#tripstxt) ファイルで同じ `block_id` 値が設定されています。
 
-ブロック乗り継ぎは、異なるルートの連続する便(trip)間、またはルートが循環線の場合は同じルート内の連続する便(trip)間で行うことができます。`block_id` フィールドを使用して、どの便(trip)が同じブロックに属するか、そして車両に乗ったままの乗り継ぎが可能な場所を指定します。
+### ブロック乗り換えを有効にするための `block_id` の使用方法 {: #use-block_id-to-enable-block-transfers}
 
-例えば、以下の [trips.txt](../../reference/#tripstxt) と [stop_times.txt](../../reference/#stop_timestxt) の値を考えてみます。
+
+ブロック乗り換えは、異なるルート・路線系統(route)上の連続する便(trip)間、またはルート・路線系統(route)が環状線である場合は同一のルート・路線系統(route)上で行うことができます。`block_id` フィールドを使用して、どの便(trip)が1つのブロックに含まれるか、および着席したままの乗り換えが利用可能な選択肢となる場所を指定します。
+
+たとえば、次の [trips.txt](../../reference/#tripstxt) および [stop_times.txt](../../reference/#stop_timestxt) の値を考えます。
 
 [**trips.txt**](../../reference/#tripstxt)
 
@@ -34,10 +36,11 @@
 
 この例では:
 
-- 停留所等(stop) A から停留所等(stop) E までのルートを検索する利用者は、12:00 に Route A の停留所等(stop) A から乗車し、`RouteATrip1` の終点である停留所等(stop) C に到着した後も車両に乗り続けるよう案内されます。これは、同じ車両が Route B の `RouteBTrip1` を運行するためです。
-- `RouteATrip1` に乗車している乗客が `RouteBTrip1` 上の停留所等(stop) まで移動したい場合、この乗り継ぎのために車両に乗り続けることができます。
-- 同じルート上の他の便(trip)に乗車している乗客は、この選択肢を利用できません。なぜなら、それぞれの便(trip)で異なる車両が使用されているためです。
+- 停留所等(stop) A から停留所等(stop) E までのルートを検索するユーザーは、Route A の 12:00 に停留所等(stop) A で乗車し、`RouteATrip1` の終了後に車両が停留所等(stop) C に到着した際も車両にとどまるよう案内されます。これは、同じ車両が Route B の `RouteBTrip1` を運行するためです。
+- `RouteATrip1` の乗客で `RouteBTrip1` 上の停留所等(stop)まで移動を続けたい場合、この乗り換えでは車両にとどまることができます。
+- これらと同じルート・路線系統(route)上を運行する他の車両の他の便(trip)の乗客には、便(trip)ごとに異なる車両を使用するため、この選択肢はありません。
 
-### ループ路線におけるブロック乗り継ぎ {: #block-transfer-in-a-loop-line}
+### 環状路線におけるブロック乗換 {: #block-transfer-in-a-loop-line}
 
-ループ路線では、便(trip)の最初の停留所等(stop)と最後の停留所等(stop)が同じであり、同じ `stop_id` を持ちます。連続するループ便が同じ `block_id` を持つ場合、ブロック乗り継ぎまたは車内乗り継ぎが有効となり、最初の便の乗客は次のループ便にそのまま乗り続けることができます。
+
+環状路線では、便(trip)の最初の停留所等(stop)と最後の停留所等(stop)は同一であり、同じ`stop_id`を持ちます。連続する環状便(trip)が同じ`block_id`を持つ場合、ブロック乗換または着席したままの乗換が有効になり、最初の便(trip)の乗客は、車両が次の周回を継続する際にそのまま乗車し続けることができます。

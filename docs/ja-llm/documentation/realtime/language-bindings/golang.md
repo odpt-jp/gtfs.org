@@ -1,23 +1,26 @@
-# Golang GTFS-realtime 言語バインディング {: #golang-gtfs-realtime-language-bindings}
+# Golang GTFS-realtime Language Bindings {: #golang-gtfs-realtime-language-bindings}
 
-[GTFS-realtime](https://github.com/google/transit/tree/master/gtfs-realtime) Protocol Buffer 仕様から生成された Golang の struct を提供します。これらの struct を使用することで、バイナリ形式の Protocol Buffer GTFS-realtime データフィードを Golang のオブジェクトに解析することができます。
 
-## 依存関係の追加 {: #add-the-dependency}
+[GTFS-realtime](https://github.com/google/transit/tree/master/gtfs-realtime) Protocol Buffer 仕様から生成された Golang structs を提供します。これらの structs により、バイナリ Protocol Buffer GTFS-realtime データフィードを Golang オブジェクトに解析することができます。
 
-ご自身のプロジェクトで `gtfs-realtime-bindings` の構造体を使用するには、まず次のコマンドでこのライブラリをインストールする必要があります:
+## 依存関係を追加する {: #add-the-dependency}
+
+
+自身のプロジェクトで `gtfs-realtime-bindings` 構造体を使用するには、まず以下を使用してこのライブラリをインストールする必要があります。 
 
 ```
 go get github.com/MobilityData/gtfs-realtime-bindings/golang/gtfs
 ```
 
-そして、golang の protobuf ライブラリの依存関係を次のコマンドでインストールしてください:
+また、以下を使用して golang protobuf ライブラリの依存関係をインストールします。
 ```
 go get google.golang.org/protobuf/proto
 ```
 
 ## コード例 {: #example-code}
 
-以下のコードスニペットは、特定の URL から GTFS-realtime データフィードをダウンロードし、それを GTFS-realtime スキーマのルート型である FeedMessage としてパースし、結果を反復処理する方法を示しています。
+
+以下のコードスニペットは、特定の URL から GTFS-realtime データフィードをダウンロードし、それを FeedMessage（GTFS-realtime スキーマのルート型）として解析し、結果を反復処理する方法を示しています。
 
 ```golang
 package main
@@ -65,4 +68,4 @@ func main() {
 }
 ```
 
-Golang の struct が [gtfs-realtime.proto](https://github.com/google/transit/blob/master/gtfs-realtime/proto/gtfs-realtime.proto) から生成される際の命名規則についての詳細は、Protocol Buffers 開発者サイトの [Golang Generated Code](https://developers.google.com/protocol-buffers/docs/reference/go-generated) セクションを参照してください。
+[gtfs-realtime.proto](https://github.com/google/transit/blob/master/gtfs-realtime/proto/gtfs-realtime.proto) から生成される Golang struct の命名規則の詳細については、Protocol Buffers 開発者サイトの [Golang Generated Code](https://developers.google.com/protocol-buffers/docs/reference/go-generated) セクションを参照してください。

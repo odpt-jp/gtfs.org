@@ -6,74 +6,74 @@
 ```python
 # ヘッダー情報
 header {
-  # speed 仕様のバージョン。現在は "2.0"。有効なバージョンは "2.0", "1.0"。
+  # 仕様のバージョン。現在は "2.0"。有効なバージョンは "2.0"、"1.0" です。
   gtfs_realtime_version: "2.0"
-  # データセットが増分か完全かを決定する
+  # データセットが差分か完全かを決定します
   incrementality: FULL_DATASET
-  # このデータセットがサーバーで生成された時刻
+  # このデータセットがサーバー上で生成された時点
   timestamp: 1284457468
 }
 
-# フィードには複数の entity を含めることができる
+# フィードには複数の entity を含めることができます
 entity {
-  # entity の一意な識別子
+  # entity の一意の識別子
   id: "simple-trip"
 
-  # entity の "type"
+  # entity の「型」
   trip_update {
     trip {
-      # どの GTFS entity (trip) が影響を受けるかを選択
+      # 影響を受ける GTFS entity (trip) を選択します
       trip_id: "trip-1"
     }
-    # 運行スケジュール情報の更新
+    # ダイヤ情報の更新
     stop_time_update {
-      # どの停留所等(stop)が影響を受けるかを選択
+      # 影響を受ける停留所等(stop)を選択します
       stop_sequence: 3
-      # 車両の到着時刻に関して
+      # 車両の到着時刻について
       arrival {
-        # 5 秒の遅延
+        # 5 秒遅延します
         delay: 5
       }
     }
-    # ...この車両の遅延は後続の停留所等(stop)に伝播されます。
+    # ...この車両の遅延は後続の停留所等(stop)に伝播します。
 
-    # 車両のスケジュールに関する次の更新情報
+    # 車両のダイヤに関する次の情報更新
     stop_time_update {
-      # stop_sequence によって選択される。更新対象は
+      # stop_sequence により選択されます。これは
       stop_sequence: 8
       # 車両の元の（予定された）到着時刻を
       arrival {
-        # 1 秒の遅延に更新
+        # 1 秒遅延で更新します。
         delay: 1
       }
     }
-    # ...同様に遅延は後続の停留所等(stop)に伝播されます。
+    # ...同様に、遅延は後続の停留所等(stop)に伝播します。
 
-    # 車両のスケジュールに関する次の更新情報
+    # 車両のダイヤに関する次の情報更新
     stop_time_update {
-      # stop_sequence によって選択される。車両の到着時刻を更新
+      # stop_sequence により選択されます。これは車両の到着時刻を更新します
       stop_sequence: 10
-      # 遅延 0（定刻通り）に更新し、この更新を
-      # 残りの停留所等(stop)に伝播します。
+      # デフォルトの遅延 0（定時）で更新し、この更新を伝播します
+      # 車両の残りの停留所等(stop)に対して。
     }
   }
 }
 
-# 別の便に関する更新情報を含む 2 つ目の entity
+# 別の便(trip)の更新情報を含む 2 番目の entity
 entity {
   id: "3"
   trip_update {
     trip {
-      # 頻度ベースの便は GTFS 内の
-      # trip_id によって定義される
+      # 頻度ベースの便(trip)は、その
+      # GTFS 内の trip_id と
       trip_id: "frequency-expanded-trip"
-      # start_time
+      # start_time によって定義されます
       start_time: "11:15:35"
     }
     stop_time_update {
       stop_sequence: 1
       arrival {
-        # 負の遅延は、車両が予定より 2 秒早いことを意味する
+        # 負の遅延は、車両が予定より 2 秒早いことを意味します
         delay: -2
       }
     }

@@ -1,6 +1,7 @@
-# GTFS フィードの例 {: #example-gtfs-feed}
+# GTFSフィードの例 {: #example-gtfs-feed}
 
-この GTFS フィードの例は、交通フィード内の各ファイルに対するカンマ区切りのデータサンプルを示しています。ここで示されているサンプルデータファイルは、すべてが相互に関連しているわけではありません。また、最終形態の [完全な GTFS フィードをダウンロード](https://github.com/google/transit/blob/master/gtfs/spec/en/examples/sample-feed-1.zip?raw=true) して利用することもできますし、同じフィードの個別ファイルをオンラインで [こちら](https://github.com/google/transit/tree/master/gtfs/spec/en/examples/sample-feed-1) から閲覧することもできます。
+
+このGTFSフィードの例では、交通フィード内の各ファイルについて、カンマ区切りのデータサンプルを示します。ここに示すサンプルデータファイルは、すべてが相互に関連しているわけではありません。作業用として、完成形の[完全なGTFSフィードをダウンロード](https://github.com/google/transit/blob/master/gtfs/spec/en/examples/sample-feed-1.zip?raw=true)することも、同じフィードの個別ファイルをオンラインで[こちら](https://github.com/google/transit/tree/master/gtfs/spec/en/examples/sample-feed-1)から閲覧することもできます。
 
 ## agency.txt {: #agencytxt}
 
@@ -38,14 +39,14 @@ F12N,,5 Av/53 St,40.760167,-73.975224,0,F12
 B2,L3,,40.760457,-73.975912,4,F12N
 B4,L3,,40.760375,-73.975729,4,F12N 
 ```
-`location_type=` 0: プラットフォーム; 1: 駅; 2: 出入口; 3: 汎用ノード; 4: 乗車エリア。
+`location_type=` 0: プラットフォーム、1: 駅、2: 出入口、3: 汎用ノード、4: 乗車エリア。
 
 ## routes.txt {: #routestxt}
 
 
 ```
 route_id,route_short_name,route_long_name,route_desc,route_type
-A,17,Mission,"""A"" ルートは、Mission 下層からダウンタウンまで運行します。",3
+A,17,Mission,"""A"" ルート・路線系統(route)は、Mission下部からDowntownまで運行します。",3
 ```
 
 ## trips.txt {: #tripstxt}
@@ -53,8 +54,8 @@ A,17,Mission,"""A"" ルートは、Mission 下層からダウンタウンまで�
 
 ```
 route_id,service_id,trip_id,trip_headsign,block_id
-A,WE,AWE1,ダウンタウン,1
-A,WE,AWE2,ダウンタウン,2
+A,WE,AWE1,Downtown,1
+A,WE,AWE2,Downtown,2
 ```
 
 ## stop_times.txt {: #stop_timestxt}
@@ -86,7 +87,8 @@ WD,1,1,1,1,1,0,0,20060701,20060731
 
 ## calendar_dates.txt {: #calendar_datestxt}
 
-この例は、2006年の独立記念日における運行例外を示しています。2006年7月3日（月）には、平日運行（`service_id=WD`）が中断されます（`exception_type=2`）。その代わりに、その日には週末運行（`service_id=WE`）が実施されます（`exception_type=1`）。同じ変更が7月4日（火）にも適用されます。
+
+この例は、2006年の独立記念日の祝日における運行例外を示しています。2006年7月3日月曜日には、通常の平日運行（`service_id=WD`）が中止されます（`exception_type=2`）。代わりに、その日には週末運行（`service_id=WE`）が実施されます（`exception_type=1`）。同じ変更は、7月4日火曜日にも適用されます。
 
 ```
 service_id,date,exception_type

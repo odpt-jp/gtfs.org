@@ -1,10 +1,11 @@
-# 連続停留所等 {: #continuous-stops}
+# 連続停車 {: #continuous-stops}
 
-## どこでも乗降可能 {: #pickup-and-drop-off-everywhere}
+## どこでも乗車・降車 {: #pickup-and-drop-off-everywhere}
 
-公共交通事業者 The Current (Rockingham, US-VT) は、ルート・路線系統(route) 2、53、55 において連続停車ポリシーを適用しています。乗客は、バスが安全に停車できる場所であれば、ルート全体の定期停留所等(stop)の間で乗車および降車することができます。  
 
-このサービスは、[routes.txt](../../reference/#routestxt) ファイルで `continuous_pickup` および `continuous_drop_off` フィールドを使用して記述されます。これらのフィールドに `0` を設定することで、連続乗降が許可されていることを示します。  
+交通事業者 The Current（Rockingham、US-VT）は、ルート・路線系統(route) 2、53、および55において連続停車ポリシーを適用しています。バスが安全に停車できる場所である限り、乗客はルート・路線系統(route)全体にわたり、予定された停留所等(stop)の間で乗車および降車することができます。 
+
+ファイル [routes.txt](../../reference/#routestxt) は、フィールド `continuous_pickup` および `continuous_drop_off` を使用してこのサービスを記述します。連続乗車および降車が許可されていることを示すため、これらのフィールドは `0` に設定されています。 
 
 [**routes.txt**](../../reference/#routestxt)
 
@@ -17,18 +18,19 @@ route_id,route_short_name,route_long_name,route_type,continuous_pickup,continuou
 
 <hr>
 
-## ルートの一部区間における乗降 {: #pickup-and-drop-off-on-a-section-of-the-route}
+## ルート・路線系統(route)の一部区間における乗車・降車 {: #pickup-and-drop-off-on-a-section-of-the-route}
 
-交通事業者 Victor Valley Transit（米国カリフォルニア州ビクタービル）は、ルート22の一部区間にのみ連続乗降ポリシーを適用しています。乗客は、County Fareゾーン内の安全な場所であればどこでも乗降することができます。Local Fareゾーン内では連続乗降はできません。
 
-Local FareゾーンとCounty Fareゾーンは、下図に示すようにAir Expresswayによって分けられています。定期停留所 National Trails Highway - Air Expressway は、この境界のやや北に位置しています。正確を期すために、交通事業者はバスルートが境界と交差する地点に停留所を追加し、そこから連続乗降を可能にすることができます。この停留所は時刻表に載せないままにしておくことも可能です。
+交通事業者であるVictor Valley Transit（Victorville、US-CA）は、route 22の一部区間にのみ連続停車ポリシーを適用しています。乗客は、County Fare zone内に限り、安全な任意の場所でバスに乗車および降車することができます。Local Fare zone内では、連続乗車および連続降車はできません。
+ 
+下図に示すように、Local Fare zoneとCounty Fare zoneはAir Expresswayによって分けられています。予定された停留所等(stop)であるNational Trails Highway - Air Expresswayは、この境界のわずかに北側に位置しています。正確にするため、交通事業者は、バスルートと境界が実際に交差する地点に停留所等(stop)を追加することができ、そこから連続乗車および連続降車を利用できます。この停留所等(stop)は、予定されないままとすることができます。 
 
 ![](../../../assets/victor-valley-transit.svg)
 
-これは [stop.txt](../../reference/#stopstxt) と [stop_times.txt](../../reference/#stop_timestxt) を用いて表現されます。
+これは、ファイル[stop.txt](../../reference/#stopstxt)および[stop_times.txt](../../reference/#stop_timestxt)を使用して記述されます。
 
-- 最初のファイルはルート上の停留所を定義します
-- 2つ目のファイルは停留所間の連続乗降ルールを定義します
+- 最初のファイルは、ルート・路線系統(route)に沿った停留所等(stop)を定義します
+- 2番目のファイルは、停留所等(stop)間の連続乗車および連続降車のルールを定義します。
 
 [**stop.txt**](../../reference/#stopstxt)
 
@@ -42,11 +44,11 @@ D,National Trails Highway - Air Expressway,34.567536,-117.319716
 E,Oro Grande Post Office,34.599292,-117.334452
 F,Silver Lakes Market,34.744662,-117.335407
 ```
+ 
+[stop_times.txt](../../reference/#stop_timestxt)では、特定の便(trip)について、以下のとおりです。
 
-[stop_times.txt](../../reference/#stop_timestxt) では、特定の便(trip)に対して以下のように定義します。
-
-- `continuous_pickup=0` のレコードは、その停留所から次の停留所まで連続乗車が許可されていることを示します
-- `continuous_pickup=1` のレコードは、その停留所から次の停留所まで連続乗車が禁止されていることを示します
+- `continuous_pickup=0`のレコードは、その停留所等(stop)から次の停留所等(stop)まで連続乗車が許可されていることを示します
+- `continuous_pickup=1`のレコードは、その停留所等(stop)から次の停留所等(stop)まで連続乗車が禁止されていることを示します
 
 [**stop_times.txt**](../../reference/#stop_timestxt)
 
@@ -61,8 +63,8 @@ trip_id,stop_id,stop_sequence,departure_time,arrival_time,continuous_pickup,cont
 22NB9AM,F,7,09:46:00,09:46:00,0,0,1
 ```
 
-同じロジックが `continuous_drop_off` フィールドにも適用され、降車の場合を表します。
+同じロジックが、降車の場合のフィールド`continuous_drop_off`にも適用されます。 
 
-上記の例では、停留所 A, B, C は `continuous_pickup` および `continuous_drop_off` が `1` に設定されており、これらの間では連続乗降が禁止されています。停留所 `X`, `D`, `E`, `F` は `continuous_pickup` および `continuous_drop_off` が `0` に設定されており、これらの間では連続乗降が許可されています。
+上記の例では、停留所等(stop)A、B、Cのcontinuous_pickupおよび`continuous_drop_off`は`1`に設定されており、それらの間での連続乗車および連続降車を禁止しています。停留所等(stop)`X`、`D`、`E`、`F`のフィールド`continuous_pickup`および`continuous_drop_off`は`0`に設定されており、それらの間での連続乗車および連続降車を許可しています。
 
 <sup>[例の出典](https://vvta.org/routes/route-22/)</sup>

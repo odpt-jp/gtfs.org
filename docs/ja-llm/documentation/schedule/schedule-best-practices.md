@@ -1,192 +1,199 @@
 # GTFS Schedule ベストプラクティス {: #gtfs-schedule-best-practices}
 
-これは、[General Transit Feed Specification (GTFS)](../reference) において公共交通サービスを記述するための推奨プラクティスです。これらのプラクティスは、[GTFS ベストプラクティス作業部会](#gtfs-best-practices-working-group) のメンバーの経験および [アプリケーション固有の GTFS プラクティス推奨事項](http://www.transitwiki.org/TransitWiki/index.php/Best_practices_for_creating_GTFS) に基づいてまとめられたものです。
 
-さらに詳しい背景については、[よくある質問 (FAQ)](#frequently-asked-questions-faq) をご覧ください。
+これらは、[General Transit Feed Specification (GTFS)](../reference) で公共交通サービスを記述するための推奨プラクティスです。これらのプラクティスは、[GTFS Best Practices ワーキンググループ](#gtfs-best-practices-working-group)のメンバーの経験および[アプリケーション固有の GTFS プラクティス推奨事項](http://www.transitwiki.org/TransitWiki/index.php/Best_practices_for_creating_GTFS)から統合されています。 
 
-## ドキュメント構成 {: #document-structure}
+詳細な背景については、[よくある質問](#frequently-asked-questions-faq)を参照してください。
 
-実践事項は、主に次の4つのセクションに整理されています。
+## 文書構造 {: #document-structure}
 
-* __[データセット公開および一般的な実践](#dataset-publishing-general-practices)：__ これらの実践は、GTFSデータセット全体の構造およびGTFSデータセットの公開方法に関するものです。
-* __[ファイル別の推奨実践](#practice-recommendations-organized-by-file)：__ 推奨事項は、公式のGTFSリファレンスとの対応を容易にするため、GTFS内のファイルおよびフィールドごとに整理されています。
-* __[ケース別の推奨実践](#practice-recommendations-organized-by-case)：__ ループ路線などの特定のケースでは、複数のファイルやフィールドにわたって実践を適用する必要がある場合があります。そのような推奨事項は、このセクションにまとめられています。
 
-## データセットの公開および一般的な運用慣行 {: #dataset-publishing-general-practices}
+実践事項は、4つの主要なセクションに整理されています。
 
-* データセットは、zipファイル名を含む公開かつ永続的なURLで公開するべきです（例: www.agency.org/gtfs/gtfs.zip）。理想的には、ファイルにアクセスするためにログインを必要とせず、直接ダウンロード可能なURLとすることで、利用するソフトウェアアプリケーションによるダウンロードを容易にするべきです。GTFSデータセットをオープンにダウンロード可能とすることが推奨され（また最も一般的な運用です）、データ提供者がライセンスやその他の理由でGTFSへのアクセスを制御する必要がある場合は、自動ダウンロードを容易にするためにAPIキーを使用してGTFSデータセットへのアクセスを制御することが推奨されます。
-* GTFSデータは反復的に公開され、安定した場所にある単一のファイルが常に交通事業者（または複数の事業者）の最新の公式運行情報を含むようにします。
-* 可能な限り、データの反復間で `stop_id`、`route_id`、および `agency_id` の永続的な識別子(idフィールド)を維持してください。
-* 1つのGTFSデータセットには、現在および今後の運行情報（「マージされたデータセット」と呼ばれることもあります）を含めるべきです。Google transitfeedツールの[merge関数](https://github.com/google/transitfeed/wiki/Merge)を使用して、2つの異なるGTFSフィードからマージされたデータセットを作成することができます。
-    * 公開されるGTFSデータセットは、常に少なくとも今後7日間は有効であるべきであり、理想的には、運行事業者がスケジュールの継続運行に自信を持てる期間まで有効であるべきです。
-    * 可能であれば、GTFSデータセットは少なくとも今後30日間の運行をカバーするべきです。
-* 古い運行情報（有効期限切れのカレンダー）はフィードから削除してください。
-* 7日以内に運行変更が発効する場合は、静的なGTFSデータセットではなく、[GTFS-realtime](../../realtime/reference)フィード（運行情報または便の更新）を通じてこの運行変更を表現してください。
-* GTFSデータをホスティングするWebサーバーは、ファイルの更新日時を正しく報告するように設定しなければなりません（[HTTP/1.1 - Request for Comments 2616](https://tools.ietf.org/html/rfc2616#section-14.29)のセクション14.29を参照）。
+* __[データセットの公開および一般的な実践事項](#dataset-publishing-general-practices):__ これらの実践事項は、GTFSデータセット全体の構造およびGTFSデータセットの公開方法に関するものです。
+* __[ファイル別に整理された実践事項の推奨](#practice-recommendations-organized-by-file):__ 公式GTFSリファレンスへの実践事項の対応付けを容易にするため、推奨事項はGTFS内のファイルおよびフィールドごとに整理されています。
+* __[ケース別に整理された実践事項の推奨](#practice-recommendations-organized-by-case):__ ループ路線などの特定のケースでは、複数のファイルおよびフィールドにわたって実践事項を適用する必要がある場合があります。そのような推奨事項は、このセクションに集約されています。
 
-## ファイル別の推奨実践事項 {: #practice-recommendations-organized-by-file}
+## データセットの公開と一般的な実践 {: #dataset-publishing-general-practices}
 
-このセクションでは、[GTFS リファレンス](../reference)に沿って、ファイルおよびフィールドごとに整理された実践事項を示します。
+
+* データセットは、zipファイル名を含む公開かつ恒久的なURLで公開するべきです（例: www.agency.org/gtfs/gtfs.zip）。利用するソフトウェアアプリケーションによるダウンロードを容易にするため、理想的には、ファイルへのアクセスにログインを要求せず、URLから直接ダウンロードできるべきです。GTFSデータセットを公開ダウンロード可能にすることが推奨され（かつ最も一般的な実践です）、データ提供者がライセンスその他の理由でGTFSへのアクセスを制御する必要がある場合は、自動ダウンロードを容易にするAPIキーを使用してGTFSデータセットへのアクセスを制御することが推奨されます。
+* GTFSデータは反復的に公開されるため、安定した場所にある単一のファイルには、常に交通事業者（または複数の事業者）の運行に関する最新の公式記述が含まれます。
+* 可能な限り、データの反復間で`stop_id`、`route_id`、および`agency_id`の永続的な識別子（idフィールド）を維持してください。
+* 1つのGTFSデータセットには、現在および今後の運行を含めるべきです（「統合」データセットと呼ばれることもあります）。Google transitfeed toolの[merge function](https://github.com/google/transitfeed/wiki/Merge)を使用して、2つの異なるGTFSフィードから統合データセットを作成できます。
+    * 公開されるGTFSデータセットは、常に少なくとも今後7日間有効であるべきであり、理想的には、運行事業者がダイヤが継続して運行されると確信している期間と同じ長さであるべきです。
+    * 可能であれば、GTFSデータセットは少なくとも今後30日間の運行を対象とするべきです。
+* フィードから古い運行（期限切れのcalendar）を削除してください。
+* 運行変更が7日以内に発効する場合は、静的GTFSデータセットではなく、[GTFS-realtime](../../realtime/reference)フィード（運行情報または便の更新(trip update)）を通じてこの運行変更を表現してください。
+* GTFSデータをホストするweb-serverは、ファイルの更新日を正しく報告するように設定するべきです（[HTTP/1.1 - Request for Comments 2616](https://tools.ietf.org/html/rfc2616#section-14.29)のSection 14.29を参照してください）。
+
+## ファイル別に整理された実践上の推奨事項 {: #practice-recommendations-organized-by-file}
+
+
+このセクションでは、[GTFS reference](../reference)に沿って、ファイルおよびフィールド別に整理された実践を示します。
 
 ### すべてのファイル {: #all-files}
 
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| Mixed Case | すべての利用者向けテキスト文字列（停留所名、路線名、行先表示などを含む）は、すべて大文字(ALL CAPS)ではなく、Mixed Case（大文字・小文字混在）を使用するべきです。これは、小文字を表示できるディスプレイにおいて、地名の大文字・小文字の使用に関する地域の慣習に従うものとします。 |
+| Mixed Case | 停留所等(stop)名、ルート・路線系統(route)名、行先表示(headsign)を含む、すべての顧客向けテキスト文字列では、英小文字を表示できる表示機器における地名の大文字化に関する地域の慣例に従い、ALL CAPS ではなく Mixed Case を使用するべきです。 |
 | | 例: |
 | | Brighton Churchill Square |
 | | Villiers-sur-Marne |
 | | Market Street |
-| 略語 | フィード全体で、名称やその他のテキストに略語（例: Street を St. とするなど）を使用することは避けるべきです。ただし、場所が略称で一般的に呼ばれている場合（例: “JFK Airport”）はこの限りではありません。略語は、スクリーンリーダーソフトウェアや音声ユーザーインターフェースによるアクセシビリティに問題を引き起こす可能性があります。利用側のソフトウェアは、完全な単語を略語に変換して表示するように設計することができますが、略語から完全な単語に変換する場合は、誤りが発生するリスクが高くなります。 |
+| Abbreviations | 場所が略称で呼ばれている場合（例: 「JFK Airport」）を除き、名称およびその他のテキストについて、フィード全体で略語（例: Street に対する St.）の使用を避けるべきです。略語は、スクリーンリーダーソフトウェアおよび音声ユーザーインターフェースによるアクセシビリティに問題を生じさせることがあります。利用ソフトウェアは、完全な単語を表示用の略語へ確実に変換できるように設計できますが、略語から完全な単語への変換は、より高い誤りのリスクを伴います。 |
 
 ### agency.txt {: #agencytxt}
 
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| `agency_phone` | 顧客サービス用の電話番号が存在しない場合を除き、含めるべきです。 |
-| `agency_email` | 顧客サービス用のメールアドレスが存在しない場合を除き、含めるべきです。 |
-| `agency_fare_url` | 事業者が完全に運賃無料でない限り、含めるべきです。 |
+| `agency_phone` | 該当するカスタマーサービス電話番号が存在しない場合を除き、含めるべきです。 |
+| `agency_email` | 該当するカスタマーサービスメールアドレスが存在しない場合を除き、含めるべきです。 |
+| `agency_fare_url` | 事業者が完全に運賃無料である場合を除き、含めるべきです。 |
 
 __例:__
 
-- バスサービスはいくつかの小規模なバス事業者によって運行されています。しかし、スケジューリングとチケット発行を担当し、利用者の視点からバスサービス全体の責任を負う大きな事業者が1つ存在します。この大きな事業者をフィード内の agency として定義するべきです。データが内部的に複数の小規模バス運行会社に分割されていたとしても、フィード内で定義される agency は1つだけであるべきです。
+- バスサービスは複数の小規模なバス事業者によって運行されています。しかし、スケジューリングと発券を担当し、利用者の観点からバスサービスの責任を負う1つの大規模な事業者があります。この1つの大規模な事業者を、フィード内の事業者として定義するべきです。データが内部的に異なる小規模なバス運行事業者ごとに分割されている場合でも、フィード内で定義する事業者は1つだけにするべきです。
   
-- フィード提供者がチケットポータルを運営していますが、実際にサービスを運行し、利用者から責任を持つと認識されている複数の事業者が存在します。この場合、実際にサービスを運行している事業者をフィード内の agency として定義するべきです。
+- フィード提供者が発券ポータルを運営していますが、実際にサービスを運行し、利用者から責任を負う事業者として認識されている異なる事業者が存在します。実際にサービスを運行している事業者を、フィード内の事業者として定義するべきです。
 
 ### stops.txt {: #stopstxt}
 
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| `stop_name` | 公開された停留所名が存在しない場合は、フィード全体で一貫した停留所命名規則に従うべきです。 | |
-| | デフォルトでは、`stop_name` に「Station」や「Stop」などの一般的または冗長な単語を含めるべきではありませんが、いくつかの例外が認められます。<ul><li>それが実際に名称の一部である場合（Union Station、Central Station など）</li><li>`stop_name` があまりに一般的である場合（都市名など）。この場合、「Station」や「Terminal」などの単語を加えることで意味が明確になります。</li></ul> |
-| `stop_lat` & `stop_lon` | 停留所の位置情報は可能な限り正確であるべきです。実際の停留所位置と比較して、誤差は4メートル以内でなければなりません。 |
-| | 停留所の位置は、乗客が乗車する歩行者通行エリアのすぐ近く（すなわち、正しい道路側）に配置するべきです。 |
-| | 停留所の位置が複数のデータフィード間で共有されている場合（例：2つの事業者がまったく同じ停留所／乗車施設を使用している場合）、両方の停留所でまったく同じ `stop_lat` および `stop_lon` を使用して、共有されていることを示すべきです。 |
-| `parent_station` & `location_type` | 多くの駅やターミナルには複数の乗車施設があります（交通モードによっては、バスベイ、プラットフォーム、桟橋、ゲートなどと呼ばれます）。このような場合、フィード作成者は駅、乗車施設（子停留所とも呼ばれます）、およびそれらの関係を記述するべきです。<ul><li>駅またはターミナルは、`stops.txt` 内で `location_type = 1` のレコードとして定義するべきです。</li><li>各乗車施設は、`location_type = 0` の停留所として定義し、`parent_station` フィールドでその乗車施設が属する駅の `stop_id` を参照するべきです。</li></ul> |
-| | 駅および子停留所の命名にあたっては、乗客に広く認識されており、駅および乗車施設（バスベイ、プラットフォーム、桟橋、ゲートなど）を識別しやすい名称を設定するべきです。<table class='example'><thead><tr><th>親駅名</th><th>子停留所名</th></tr></thead><tbody><tr><td>Chicago Union Station</td><td>Chicago Union Station Platform 19</td></tr><tr><td>San Francisco Ferry Building Terminal</td><td>San Francisco Ferry Building Terminal Gate E</td></tr><tr><td>Downtown Transit Center</td><td>Downtown Transit Center Bay B</td></tr></tbody></table> |
+| `stop_name` | 公開されている停留所等(stop)名がない場合は、フィード全体で一貫した停留所等(stop)の命名規則に従うべきです。  | |
+| | デフォルトでは、`stop_name` に「Station」や「Stop」のような一般的または冗長な語を含めるべきではありませんが、一部の例外は許容されます。<ul><li>実際に名称の一部である場合（Union Station、Central Station）<li>`stop_name` が一般的すぎる場合（都市名である場合など）。「Station」、「Terminal」、またはその他の語により意味が明確になります。</ul> |
+| `stop_lat` & `stop_lon` | 停留所等(stop)の位置は、可能な限り正確であるべきです。実際の停留所等(stop)位置と比較した場合、停留所等(stop)の位置の誤差は4メートルを__超えてはなりません__。 |
+| | 停留所等(stop)の位置は、乗客が乗車する歩行者の通行権がある場所の非常に近くに配置するべきです（すなわち、道路の正しい側）。 |
+| | 停留所等(stop)の位置が別々のデータフィード間で共有されている場合（すなわち、2つの事業者がまったく同じ停留所等(stop)／乗車施設を使用する場合）、両方の停留所等(stop)にまったく同じ`stop_lat`および`stop_lon`を使用して、停留所等(stop)が共有されていることを示すべきです。 |
+| `parent_station` & `location_type` | 多くの駅またはターミナルには複数の乗車施設があります（交通手段に応じて、バスベイ、プラットフォーム、埠頭、ゲート、または別の用語で呼ばれる場合があります）。このような場合、フィード作成者は駅、乗車施設（子停留所等(stop)とも呼ばれます）、およびそれらの関係を記述するべきです。 <ul><li>駅またはターミナルは、`location_type = 1`を持つ`stops.txt`内のレコードとして定義するべきです。</li><li>各乗車施設は、`location_type = 0`を持つ停留所等(stop)として定義するべきです。`parent_station`フィールドは、乗車施設が属する駅の`stop_id`を参照するべきです。</li></ul> |
+| | 駅および子停留所等(stop)に名前を付ける際は、乗客によく認識され、乗客が駅および乗車施設（バスベイ、プラットフォーム、埠頭、ゲートなど）を識別するのに役立つ名称を設定するべきです。<table class='example'><thead><tr><th>親駅名</th><th>子停留所等(stop)名</th></tr></thead><tbody><tr><td>Chicago Union Station</td><td>Chicago Union Station Platform 19</td></tr><tr><td>San Francisco Ferry Building Terminal</td><td>San Francisco Ferry Building Terminal Gate E</td></tr><tr><td>Downtown Transit Center</td><td>Downtown Transit Center Bay B</td></tr></tbody></table> |
 
 ### routes.txt {: #routestxt}
 
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| `route_long_name` | 仕様書の定義: <q>この名称は一般的に <code>route_short_name</code> よりも説明的であり、多くの場合、ルートの目的地または停留所(stop)を含みます。<code>route_short_name</code> または <code>route_long_name</code> の少なくとも一方を指定しなければなりません。適切であれば両方を指定することもできます。ルートに長い名称がない場合は、<code>route_short_name</code> を指定し、このフィールドの値として空文字列を使用してください。</q><br>以下に長い名称の種類の例を示します。<table class='example'><thead><tr><th colspan='3'>主要な運行経路または回廊</th></tr><tr><th>ルート名</th><th>形式</th><th>事業者</th></tr></thead><tbody><tr><td><a href='https://www.sfmta.com/getting-around/transit/routes-stops/n-judah'>“N”/“Judah”</a></td><td><code>route_short_name</code>/<br><code>route_long_name</code></td><td><a href='https://www.sfmta.com/'>Muni</a>（サンフランシスコ）</td></tr><tr><td><a href='https://trimet.org/schedules/r006.htm'>“6“/“ML King Jr Blvd“</a></td><td><code>route_short_name</code>/<br><code>route_long_name</code></td><td><a href='https://trimet.org/'>TriMet</a>（オレゴン州ポートランド）</td></tr><tr><td><a href='http://www.ratp.fr/informer/pdf/orienter/f_plan.php?nompdf=m6'>“6”/“Nation - Étoile”</a></td><td><code>route_short_name</code>/<br><code>route_long_name</code></td><td><a href='http://www.ratp.fr/'>RATP</a>（フランス・パリ）</td></tr><tr><td><a href='http://www.bvg.de/images/content/linienverlaeufe/LinienverlaufU2.pdf'>“U2”-“Pankow – Ruhleben”</a></td><td><code>route_short_name</code>-<br><code>route_long_name</code></td><td><a href='http://www.bvg.de/'>BVG</a>（ドイツ・ベルリン）</td></tr></tbody></table><table class='example'><thead><tr><th>サービスの説明</th></tr></thead><tbody><tr><td><a href='https://128bc.org/schedules/rev-bus-hartwell-area/'>“Hartwell Area Shuttle“</a></td></tr></tbody></table>        
-| | `route_long_name` には `route_short_name` を含めるべきではありません。 |
-| | `route_long_name` を入力する際には、サービスのブランド名を含む完全な名称を記載してください。例:<table class='example'><thead><tr><th>サービスブランド</th><th>推奨事項</th><th>例</th></tr></thead><tbody><tr><td>"MAX Light Rail"<br>TriMet（オレゴン州ポートランド）</td><td><code>route_long_name</code> にはブランド名（MAX）と特定のルート名を含めるべきです。</td><td>"MAX Red Line" "MAX Blue Line"</td></tr><tr><td>"Rapid Ride"<br>ABQ Ride（ニューメキシコ州アルバカーキ）</td><td><code>route_long_name</code> にはブランド名（Rapid Ride）と特定のルート名を含めるべきです。</td><td>"Rapid Ride Red Line"<br>"Rapid Ride Blue Line"</td></tr></tbody></table>
-| `route_id` | 同一の名称を持つルート上のすべての便(trip)は、同じ `route_id` を参照するべきです。<li>ルートの異なる方向を別々の `route_id` に分けてはいけません。</li><li>ルートの異なる運行時間帯を別々の `route_id` に分けてはいけません。すなわち、「Downtown AM」および「Downtown PM」サービスのために `routes.txt` に異なるレコードを作成してはいけません。</li> |
-| | ルートグループに明確に名前の異なる枝（例: 1A および 1B）が含まれる場合は、`route_short_name` および `route_long_name` を決定するために [branches](#branches) の推奨事項に従ってください。 |
-| `route_color` および `route_text_color` | 標識、印刷物、オンラインの利用者向け情報と一貫しているべきです（他の場所に存在しない場合は含めるべきではありません）。 |
+| `route_long_name` | Specification reference における定義: <q>この名称は一般に <code>route_short_name</code> よりも説明的であり、多くの場合、ルート・路線系統(route)の目的地または停留所等(stop)を含みます。<code>route_short_name</code> または <code>route_long_name</code> の少なくとも一方を指定しなければならず、適切な場合は両方を指定することもできます。ルート・路線系統(route)に長い名称がない場合は、<code>route_short_name</code> を指定し、このフィールドの値として空文字列を使用してください。</q><br>長い名称の種類の例を以下に示します:<table class='example'><thead><tr><th colspan='3'>主要な移動経路または回廊</th></tr><tr><th>ルート・路線系統(route)名</th><th>形式</th><th>事業者</th></tr></thead><tbody><tr><td><a href='https://www.sfmta.com/getting-around/transit/routes-stops/n-judah'>“N”/“Judah”</a></td><td><code>route_short_name</code>/<br><code>route_long_name</code></td><td><a href='https://www.sfmta.com/'>Muni</a>、サンフランシスコ</td></tr><tr><td><a href='https://trimet.org/schedules/r006.htm'>“6“/“ML King Jr Blvd“</a></td><td><code>route_short_name</code>/<br><code>route_long_name</code></td><td><a href='https://trimet.org/'>TriMet</a>、オレゴン州ポートランド</td></tr><tr><td><a href='http://www.ratp.fr/informer/pdf/orienter/f_plan.php?nompdf=m6'>“6”/“Nation - Étoile”</a></td><td><code>route_short_name</code>/<br><code>route_long_name</code></td><td><a href='http://www.ratp.fr/'>RATP</a>、フランス・パリ</td></tr><tr><td><a href='http://www.bvg.de/images/content/linienverlaeufe/LinienverlaufU2.pdf'>“U2”-“Pankow – Ruhleben”</a></td><td><code>route_short_name</code>-<br><code>route_long_name</code></td><td><a href='http://www.bvg.de/'>BVG</a>、ドイツ・ベルリン</td></tr></tbody></table><table class='example'><thead><tr><th>サービスの説明</th></tr></thead><tbody><tr><td><a href='https://128bc.org/schedules/rev-bus-hartwell-area/'>“Hartwell Area Shuttle“</a></td></tr></tbody></table>        
+| | `route_long_name` に `route_short_name` を含めるべきではありません。 |
+| | `route_long_name` を設定する際は、サービス識別子を含む完全な名称を含めてください。例:<table class='example'><thead><tr><th>サービス識別子</th><th>推奨事項</th><th>例</th></tr></thead><tbody><tr><td>"MAX Light Rail"<br>オレゴン州ポートランドのTriMet</td><td><code>route_long_name</code> には、ブランド（MAX）および特定のルート・路線系統(route)指定を含めるべきです</td><td>"MAX Red Line" "MAX Blue Line"</td></tr><tr><td>"Rapid Ride"<br>ニューメキシコ州アルバカーキのABQ Ride</td><td><code>route_long_name</code> には、ブランド（Rapid Ride）および特定のルート・路線系統(route)指定を含めるべきです</td><td>"Rapid Ride Red Line"<br>"Rapid Ride Blue Line"</td></tr></tbody></table>
+| `route_id` | 特定の名称付きルート・路線系統(route)上のすべての便(trip)は、同じ `route_id` を参照するべきです。<li>ルート・路線系統(route)の異なる方向を、異なる `route_id` 値に分けるべきではありません。</li><li>ルート・路線系統(route)の異なる運行時間帯を、異なる `route_id` 値に分けるべきではありません。すなわち、「Downtown AM」サービスと「Downtown PM」サービスについて、`routes.txt` に異なるレコードを作成しないでください。</li> |
+| | ルート・路線系統(route)グループに明確に名称が異なる分岐（例: 1Aおよび1B）が含まれる場合、`route_short_name` および `route_long_name` を決定するために、ルート・路線系統(route)の[分岐](#branches)ケースにおける推奨事項に従ってください。 |
+| `route_color` & `route_text_color` | 標識、印刷物、およびオンラインの利用者向け情報と一貫しているべきです（したがって、他の場所に存在しない場合は含めるべきではありません）。 |
 
 ### trips.txt {: #tripstxt}
 
 
-* __ループ系統の特別なケースを参照してください:__ ループ系統とは、便(trip)が同じ停留所(stop)で始まり、同じ停留所(stop)で終わるケースを指します。これに対し、線形系統は2つの異なる終点を持ちます。ループ系統は、特定の手順に従って記述しなければなりません。[ループ系統のケースを参照してください。](#loop-routes)
-* __ラッソ系統の特別なケースを参照してください:__ ラッソ系統とは、線形とループの形状を組み合わせたもので、ルートの一部のみで車両がループを走行するものです。ラッソ系統は、特定の手順に従って記述しなければなりません。[ラッソ系統のケースを参照してください。](#lasso-routes)
+* __ループ路線の特別なケースを参照してください:__ ループ路線は、2つの異なる終点を持つ線形路線とは対照的に、便が同じ停留所等(stop)で開始・終了するケースです。ループ路線は、特定の慣行に従って記述しなければなりません。[ループ路線のケースを参照してください。](#loop-routes)
+* __投げ縄型路線の特別なケースを参照してください:__ 投げ縄型路線は、車両がルート・路線系統(route)の一部でのみループを走行する、線形とループの形状を組み合わせたものです。投げ縄型路線は、特定の慣行に従って記述しなければなりません。[投げ縄型路線のケースを参照してください。](#lasso-routes)
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| `trip_headsign` | `trip_headsign` または `stop_headsign` フィールドに、`route_short_name` や `route_long_name` に一致するルート名を記載してはいけません。 |
-| | 行先、方向、または便(trip)を区別するために使用されるその他の表示テキストを、車両の行先表示(headsign)に示される内容として含めるべきです。GTFS データセットで提供される行先表示(headsign)を決定する際の主な目的は、車両に表示される方向情報との一貫性を保つことです。この主目的を損なわない限りにおいて、その他の情報を含めることができます。便(trip)の途中で行先表示(headsign)が変わる場合は、`trip_headsign` を `stop_times.stop_headsign` で上書きしてください。以下にいくつかのケースにおける推奨事項を示します。 |
-| | <table class="example"><thead><tr><th>ルートの説明</th><th>推奨事項</th></tr></thead><tbody><tr><td>2A. 行先のみ</td><td>終点の行先を記載します。例: "Transit Center"、"Portland City Center"、または "Jantzen Beach"。</td></tr><tr><td>2B. 経由地を含む行先</td><td>&lt;行先&gt; via &lt;経由地&gt; 例: “Highgate via Charing Cross”。車両が経由地を通過した後、乗客に表示される行先表示(headsign)から経由地が削除される場合は、<code>stop_times.stop_headsign</code> を使用して更新後の行先表示を設定してください。</td></tr><tr><td>2C. 地域名とその地域内の停留所</td><td>目的地の都市または地区内に複数の停留所(stop)がある場合は、目的地の都市に到達した時点で <code>stop_times.stop_headsign</code> を使用してください。</td></tr><tr><td>2D. 方向のみ</td><td>“Northbound”（北行き）、“Inbound”（内回り）、“Clockwise”（時計回り）などの方向を示す語を使用してください。</td></tr><tr><td>2E. 方向と行先</td><td>&lt;方向&gt; to &lt;終点名&gt; 例: “Southbound to San Jose”。</td></tr><tr><td>2F. 方向、経由地、行先</td><td>&lt;方向&gt; via &lt;経由地&gt; to &lt;行先&gt; 例: “Northbound via Charing Cross to Highgate”。</td></tr></tbody></table> |
-| | 行先表示(headsign)を “To” または “Towards” という語で始めてはいけません。 |
-| `direction_id` | データセット全体で値 0 および 1 を一貫して使用してください。すなわち、<ul><li>1 = Red ルートの外回りの場合、1 = Green ルートの外回りとする</li><li>1 = Route X の北行きの場合、1 = Route Y の北行きとする</li><li>1 = Route X の時計回りの場合、1 = Route Y の時計回りとする</li></ul> |
-| `bikes_allowed` | フェリー便(trip)については、自転車の持ち込みが可能かどうかを明示的に指定してください。データが欠落しているためにフェリー便を避けると、大きな迂回が発生することが多いためです。 |
+| `trip_headsign` | `trip_headsign` または `stop_headsign` フィールドに、ルート名（`route_short_name` および `route_long_name` と一致するもの）を指定しないでください。 |
+| | ルート・路線系統(route)内の便(trip)を区別するために使用できる、車両の行先表示(headsign)に表示される目的地、方向、および／またはその他の便の識別テキストを含めるべきです。GTFS データセットで提供される行先表示(headsign)を決定する際の、第一かつ最優先の目標は、車両に表示される方向情報との一貫性です。この第一の目標を損なわない場合にのみ、その他の情報を含めるべきです。便(trip)の途中で行先表示(headsign)が変わる場合は、`trip_headsign` を `stop_times.stop_headsign` で上書きしてください。以下に、いくつかの想定されるケースに対する推奨事項を示します。 |
+| | <table class="example"><thead><tr><th>ルート・路線系統(route)の説明</th><th>推奨事項</th></tr></thead><tbody><tr><td>2A. 目的地のみ</td><td>終点の目的地を指定してください。例: "Transit Center"、 “Portland City Center”、または “Jantzen Beach”> </td></tr><tr><td>2B. 経由地を含む目的地</td><td>&lt;destination&gt; via &lt;waypoint&gt; “Highgate via Charing Cross”。車両がそれらの経由地を通過した後に乗客に表示される行先表示(headsign)から経由地を削除する場合は、<code>stop_times.stop_headsign</code> を使用して更新後の行先表示(headsign)を設定してください。> </td></tr><tr><td>2C. 地域名と地域内の停留所等(stop)</td><td>目的地の市または区内に複数の停留所等(stop)がある場合は、目的地の市に到着した時点で <code>stop_times.stop_headsign</code> を使用してください。> </td></tr><tr><td>2D. 方向のみ</td><td>“Northbound”、“Inbound”、“Clockwise” などの方向を示す用語を使用して示してください。></td></tr><tr><td>2E. 目的地を伴う方向</td><td>&lt;direction&gt; to &lt;terminus name&gt; 例: “Southbound to San Jose”></td></tr><tr><td>2F. 目的地および経由地を伴う方向</td><td>&lt;direction&gt; via &lt;waypoint&gt; to &lt;destination&gt;（“Northbound via Charing Cross to Highgate”）。></td></tr></tbody></table> |
+| | 行先表示(headsign)を “To” または “Towards” という語で始めないでください。 |
+| `direction_id` | データセット全体で値 0 および 1 を一貫して使用してください。すなわち、<ul><li>Red ルート・路線系統(route)で 1 = Outbound の場合、Green ルート・路線系統(route)でも 1 = Outbound</li><li>Route X で 1 = Northbound の場合、Route Y でも 1 = Northbound</li><li>Route X で 1 = clockwise の場合、Route Y でも 1 = clockwise</li></ul> |
+| `bikes_allowed` | フェリー便(trip)については、自転車の持ち込みが許可されているか（または許可されていないか）を明示してください。データ欠落によりフェリー便(trip)を回避すると、通常は大幅な迂回につながるためです。 |
 
 ### stop_times.txt {: #stop_timestxt}
 
 
-ループ系統(Loop routes): ループ系統は特別な `stop_times` の考慮が必要です。（参照: [ループ系統のケース](#loop-routes)）
+環状ルート: 環状ルートには、特別な `stop_times` の考慮事項が必要です。（参照: [環状ルートのケース](#loop-routes)）
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| `pickup_type` & `drop_off_type` | 乗客サービスを提供しない回送便（non-revenue / deadhead trips）は、すべての `stop_times` 行で `pickup_type` および `drop_off_type` の値を `1` に設定する必要があります。 |
-| | 収益便（revenue trips）において、運行実績の監視などのための内部的な「時刻管理点（timing points）」や、乗客が乗車できない車庫などの場所は、`pickup_type = 1`（乗車不可）および `drop_off_type = 1`（降車不可）としてマークするべきです。 |
-| `arrival_time` & `departure_time` | `arrival_time` および `departure_time` フィールドは、可能な限り時刻値を指定するべきです。これには、拘束力のない推定時刻や時刻管理点間の補間時刻も含まれます。 |
-| `stop_headsign` | 一般的に、行先表示(headsign)の値は駅の案内表示と一致しているべきです。<br><br>以下のケースでは、「Southbound」という表記は駅の案内表示で使用されていないため、利用者を誤解させるおそれがあります。 |
-| | <table class="example"><thead><tr><th colspan="2">ニューヨーク市（NYC）において、2系統が南行きの場合:</th></tr><tr><th><code>stop_times.txt</code> の行:</th><th>使用する <code>stop_headsign</code> の値:</th></tr></thead><tbody><tr><td>マンハッタンに到達するまで</td><td><code>Manhattan & Brooklyn</code></td></tr><tr><td>ダウンタウンに到達するまで</td><td><code>Downtown & Brooklyn</code></td></tr><tr><td>ブルックリンに到達するまで</td><td><code>Brooklyn</code></td></tr><tr><td>ブルックリンに到達した後</td><td><code>Brooklyn (New Lots Av)</code></td></tr></tbody></table> |
-| | <table class="example"><thead><tr><th colspan="2">ボストンにおいて、レッドライン南行き（Braintree支線）の場合:</th></tr><tr><th><code>stop_times.txt</code> の行:</th><th>使用する <code>stop_headsign</code> の値:</th></tr></thead><tbody><tr><td>ダウンタウンに到達するまで</td><td><code>Inbound to Braintree</code></td></tr><tr><td>ダウンタウンに到達した後</td><td><code>Braintree</code></td></tr><tr><td>ダウンタウン通過後</td><td><code>Outbound to Braintree</code></td></tr></tbody></table> |
+| `pickup_type` & `drop_off_type` | 乗客サービスを提供しない営業外（回送）便(trip)は、すべての `stop_times` 行について `pickup_type` および `drop_off_type` の値を `1` としてマークするべきです。
+| | 営業便では、運行パフォーマンスの監視のための内部「時刻管理地点」や、乗客が乗車できない車庫などのその他の場所を、`pickup_type = 1`（乗車不可）および `drop_off_type = 1`（降車不可）としてマークするべきです。  |
+| `arrival_time` & `departure_time` | `arrival_time` および `departure_time` フィールドは、時刻管理地点間の拘束力のない推定時刻または補間時刻を含め、可能な限り時刻値を指定するべきです。  |
+| `stop_headsign` | 一般に、行先表示(headsign)の値は、駅の案内表示にも対応するべきです。<br><br>以下のケースでは、「Southbound」は駅の案内表示で使用されていないため、乗客を誤解させることになります。
+| | <table class="example"><thead><tr><th colspan="2">NYCにおいて、南行きの2の場合:</th></tr><tr><th><code>stop_times.txt</code> 行:</th><th>使用する <code>stop_headsign</code> 値:</th></tr></thead><tbody><tr><td>Manhattanに到達するまで</td><td><code>Manhattan & Brooklyn</code></td></tr><tr><td>Downtownに到達するまで</td><td><code>Downtown & Brooklyn</code></td></tr><tr><td>Brooklynに到達するまで</td><td><code>Brooklyn</code></td></tr><tr><td>Brooklynに到達した後</td><td><code>Brooklyn (New Lots Av)</code></td></tr></tbody></table> |
+| | <table class="example"><thead><tr><th colspan="2">Bostonにおいて、南行きのRed LineのBraintree支線の場合:</th></tr><tr><th><code>stop_times.txt</code> 行:</th><th>使用する <code>stop_headsign</code> 値:</th></tr></thead><tbody><tr><td>Downtownに到達するまで</td><td><code>Inbound to Braintree</code></td></tr><tr><td>Downtownに到達した後</td><td><code>Braintree</code></td></tr><tr><td>Downtownの後</td><td><code>Outbound to Braintree</code></td>  </tr></tbody></table> |
 
 ### calendar.txt {: #calendartxt}
 
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| すべてのフィールド | 仕様には採用されていませんが、`calendar.service_name` フィールドを含めることで、GTFS の可読性を高めることができます。 |
+| すべてのフィールド | `calendar.service_name` フィールドを含めることも、GTFS の人間による可読性を向上させることができますが、これは仕様には採用されていません。 |
 
 ### calendar_dates.txt {: #calendar_datestxt}
 
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| すべてのフィールド | `calendar.service_name` フィールドを含めることで、仕様には採用されていないものの、GTFS の可読性を高めることができます。|
+| すべてのフィールド | `calendar.service_name` フィールドを含めることで、仕様には採用されていませんが、GTFSの人間による可読性も向上させることができます。|
 
 ### fare_attributes.txt {: #fare_attributestxt}
 
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| | 運賃システムを正確にモデル化できない場合は、さらなる混乱を避けるために空欄のままにしてください。 |
-| | 運賃（`fare_attributes.txt` および `fare_rules.txt`）を含め、可能な限り正確にモデル化してください。運賃を正確にモデル化できない特殊なケースでは、乗客が運賃不足で乗車しようとしないように、実際よりも高い運賃として表現するべきです。大部分の運賃を正しくモデル化できない場合は、フィードに運賃情報を含めないでください。 |
+| | 運賃システムを正確にモデル化できない場合は、さらなる混乱を避けるため、空欄のままにしてください。 |
+| | 運賃（`fare_attributes.txt` および `fare_rules.txt`）を含め、可能な限り正確にモデル化してください。運賃を正確にモデル化できないエッジケースでは、乗客が不足した運賃で乗車しようとしないよう、運賃はより安価ではなく、より高額に表現するべきです。運賃の大部分を正しくモデル化できない場合は、フィードに運賃情報を含めないでください。 |
 
 ### fare_rules.txt {: #fare_rulestxt}
 
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| すべてのフィールド | 運賃システムを正確にモデル化できない場合は、さらなる混乱を避けるために空欄のままにしてください。 |
-| | 運賃（`fare_attributes.txt` および `fare_rules.txt`）を含め、可能な限り正確にモデル化してください。運賃を正確にモデル化できない特殊なケースでは、乗客が運賃不足で乗車しようとしないように、実際よりも高い運賃として表現するべきです。大部分の運賃を正しくモデル化できない場合は、フィードに運賃情報を含めないでください。 |
+| すべてのフィールド | 運賃体系を正確にモデル化できない場合は、さらなる混乱を避けるため、空欄のままにするべきです。 |
+| | 運賃（`fare_attributes.txt` および `fare_rules.txt`）を含め、可能な限り正確にモデル化するべきです。運賃を正確にモデル化できないエッジケースでは、乗客が不足した運賃で乗車しようとしないよう、運賃はより安価ではなく、より高価に表現するべきです。大多数の運賃を正しくモデル化できない場合は、フィードに運賃情報を含めるべきではありません。 |
 
 ### shapes.txt {: #shapestxt}
 
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| すべてのフィールド | 共有される経路（例：Route 1 と Route 2 が同じ道路または線路の区間を走行する場合）については、共有部分の経路が完全に一致することが理想的です。これは、高品質な交通地図作成を促進するのに役立ちます。 <!-- (77) -->
-| | 経路は、車両が走行する道路の中心線に沿うべきです。これは、専用レーンがない場合は道路の中心線、または車両の進行方向側の車線の中心線のいずれかになります。<br><br>経路は、縁石停留所、プラットフォーム、または乗車位置に「ジグザグ」してはいけません。 |
-| `shape_dist_traveled` | `shape_dist_traveled` フィールドは、事業者が `stop_times.txt` ファイル内の停留所がそれぞれの shape にどのように対応するかを正確に指定することを可能にします。`shape_dist_traveled` フィールドに一般的に使用される値は、車両が走行した shape の始点からの距離（いわば走行距離計の値のようなもの）です。<li>`shapes.txt` 内のルート経路は、便が停車する停留所位置から 100 メートル以内であるべきです。</li><li>`shapes.txt` に不要な点が含まれないように経路を簡略化してください（すなわち、直線区間上の余分な点を削除します。線の簡略化問題に関する議論を参照してください）。</li>
+| すべてのフィールド | 理想的には、共有される経路（すなわち、ルート・路線系統(route) 1および2が道路または線路の同じ区間を運行する場合）については、共有される経路部分が完全に一致するべきです。これにより、高品質な公共交通地図作成を促進できます。<!-- (77) --> |
+| | 経路は、車両が走行する通行権の中心線に従うべきです。これは、指定車線がない場合は道路の中心線、または車両の進行方向に走行する道路側の中心線のいずれかになります。<br><br>経路は、縁石の停留所等(stop)、プラットフォーム、または乗車場所へ「ギザギザ」にしてはいけません。 |
+| `shape_dist_traveled` | `shape_dist_traveled` フィールドにより、事業者は `stop_times.txt` ファイル内の停留所等(stop)がそれぞれのルート形状(shape)にどのように正確に適合するかを指定できます。`shape_dist_traveled` フィールドに使用する一般的な値は、車両が走行したルート形状(shape)の始点からの距離です（走行距離計の読み取り値のようなものと考えてください）。<li>ルート・路線系統(route)の経路（`shapes.txt` 内）は、便(trip)が運行する停留所等(stop)の位置から100メートル以内にあるべきです。</li><li>`shapes.txt` に余分なポイントが含まれないように経路を簡略化するべきです（すなわち、直線区間上の余分なポイントを削除します。線の簡略化問題に関する議論を参照してください）。</li> |
 
 ### frequencies.txt {: #frequenciestxt}
 
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| すべてのフィールド | `frequencies.txt` で参照される便(trip)については、実際の停車時刻(stop time)は無視され、停留所間の走行時間間隔のみが重要となります。明確さおよび人間の可読性のために、`frequencies.txt` で参照される便の最初の停車時刻(stop time)は 00:00:00（最初の `arrival_time` の値が 00:00:00）から始まることが推奨されます。 |
-| `block_id` | 頻度ベースの便に対して指定することができます。 |
+| すべてのフィールド | `frequencies.txt` で参照される便(trip)では、実際の停車時刻(stop_time)は無視されます。頻度ベースの便(trip)では、停留所等(stop)間の移動時間間隔のみが重要です。明確性および人間による可読性のため、`frequencies.txt` で参照される便(trip)の最初の停車時刻(stop_time)は00:00:00（最初の `arrival_time` 値を00:00:00）で開始することが推奨されます。 |
+| `block_id` | 頻度ベースの便(trip)に提供することができます。 |
 
 ### transfers.txt {: #transferstxt}
 
-`transfers.transfer_type` は、[GTFS で定義されている](../reference/#transferstxt)4つの値のいずれかを取ることができます。これらの `transfer_type` の定義は、以下に _イタリック体_ で示す GTFS 仕様書からの引用であり、実務上の推奨事項を付記しています。
+
+`transfers.transfer_type` は、[GTFS で定義されている](../reference/#transferstxt)4つの値のいずれかにすることができます。以下に、GTFS Specification から引用したこれらの `transfer_type` の定義を、_イタリック体_ で示し、追加の実務上の推奨事項を記載します。
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| `transfer_type` | <q>0 または (空): これはルート間の推奨される乗り換え地点です。</q><br>複数の乗り換え機会があり、その中により優れた選択肢（例: 追加の設備を備えた交通センターや、隣接または接続された乗車施設／プラットフォームを持つ駅）が含まれる場合は、推奨される乗り換え地点を指定してください。 |
-| | <q>1: これは2つのルート間の時刻調整された乗り換え地点です。出発する車両は到着する車両を待つことが期待され、乗客がルート間を乗り換えるのに十分な時間が確保されています。</q><br>この乗り換えタイプは、確実に乗り換えを行うために必要な間隔を上書きします。例えば、Google Maps では、乗客が安全に乗り換えを行うために3分が必要であると仮定しています。他のアプリケーションでは、異なるデフォルト値を仮定している場合があります。 |
-| | <q>2: この乗り換えには、接続を確実に行うために到着と出発の間に最小限の時間が必要です。乗り換えに必要な時間は <code>min_transfer_time</code> で指定されます。</q><br>停留所間の移動時間を増加させる障害物やその他の要因がある場合は、最小乗り換え時間を指定してください。 |
-| | <q>3: この場所ではルート間の乗り換えはできません。</q><br>物理的な障害がある場合、または困難な道路横断や歩行ネットワークの欠如により乗り換えが安全でない、または複雑になる場合は、この値を指定してください。 |
-| | 座席に座ったままの（ブロック）乗り換えが便間で許可されている場合、到着便の最終停留所は出発便の最初の停留所と同一でなければなりません。 |
+| `transfer_type` | <q>0 または（空）：これはルート・路線系統(route)間の推奨乗換地点です。</q><br>より優れた選択肢（すなわち、追加の設備を備えた交通センター、または隣接もしくは接続された乗車施設／プラットフォームを持つ駅）を含む複数の乗換機会がある場合は、推奨乗換地点を指定するべきです。 |
+| | <q>1：これは2つのルート・路線系統(route)間の時刻調整された乗換地点です。出発車両は到着車両を待機することが期待され、乗客がルート・路線系統(route)間を乗り換えるための十分な時間が確保されます。</q><br>この乗換タイプは、確実に乗り換えるために必要な時間間隔を上書きします。例として、Google Maps は乗客が安全に乗り換えるために3分を必要とすると想定しています。他のアプリケーションでは、異なるデフォルト値を想定する場合があります。 |
+| | <q>2：この乗換には、接続を確保するために到着と出発の間に最低限の時間が必要です。乗換に必要な時間は <code>min_transfer_time</code> で指定されます。</q><br>障害物または停留所等(stop)間の移動時間を増加させるその他の要因がある場合は、最小乗換時間を指定するべきです。 |
+| | <q>3：この場所ではルート・路線系統(route)間の乗換はできません。</q><br>物理的な障壁により乗換が不可能な場合、または困難な道路横断や歩行者ネットワークの欠落により乗換が危険または複雑になる場合は、この値を指定するべきです。 |
+| | 便(trip)間で座席に座ったままの（block）乗換が許可される場合、到着便(trip)の最後の停留所等(stop)は出発便(trip)の最初の停留所等(stop)と同じでなければなりません。 |
 
-## ケース別の実践推奨事項 {: #practice-recommendations-organized-by-case}
+## ケース別に整理された実践上の推奨事項 {: #practice-recommendations-organized-by-case}
 
-このセクションでは、複数のファイルやフィールドに影響を及ぼす特定のケースについて説明します。
 
-### ループ系統 {: #loop-routes}
+このセクションでは、ファイルおよびフィールド全体に影響を及ぼす特定のケースを扱います。
 
-ループ系統では、車両の便(trip)は同じ場所（しばしば交通センターや乗換センター）で開始し、終了します。車両は通常、連続的に運行し、乗客は車両がループを続ける間、車内に留まることができます。
+### ループ・路線系統(route) {: #loop-routes}
+
+
+ループ・路線系統(route)では、車両の便(trip)は同じ場所（場合によっては交通センターまたは乗換センター）で開始・終了します。車両は通常、継続的に運行し、車両がループを継続する間、乗客は車内にとどまることができます。
 
 <img src="https://raw.githubusercontent.com/MobilityData/GTFS_Schedule_Best-Practices/master/en/loop-route.svg" width=200px style="display: block; margin-left: auto; margin-right: auto;">
 
-そのため、乗客に車両の進行方向を示すために、行先表示(headsign)の推奨事項を適用するべきです。
+したがって、車両が向かう方向を乗客に示すために、行先表示(headsign)に関する推奨事項を適用するべきです。
 
-進行方向の変化を示すために、`stop_times.txt` ファイル内で `stop_headsigns` を指定してください。`stop_headsign` は、その停留所(stop)から出発する便の進行方向を表します。便の各停留所に `stop_headsigns` を追加することで、便の途中で行先表示(headsign)の情報を変更することができます。
+進行方向の変化を示すには、`stop_times.txt` ファイルで `stop_headsigns` を指定します。`stop_headsign` は、それが定義されている停留所等(stop)から出発する便(trip)の方向を説明します。便(trip)の各停留所等(stop)に `stop_headsigns` を追加すると、便(trip)の途中で行先表示(headsign)情報を変更できます。
 
-2つの終点間を往復運行する系統（同じバスが行き来する場合など）については、`stop_times.txt` ファイル内で1つの循環便を定義してはいけません。その代わりに、便を2つの異なる方向の便に分割してください。
+2つの終点間を運行するルート・路線系統(route)（同じバスが往復する場合など）について、stop_times.txt ファイル内で単一の循環便(trip)を定義してはいけません。代わりに、便(trip)を2つの別々の運行方向に分割してください。
   
-__循環便のモデリング例:__
+__循環便(trip)のモデリング例:__
 
-- 各停留所で行先表示(headsign)が変化する循環便
+- 各停留所等(stop)で行先表示(headsign)が変わる循環便(trip)
 
 | trip_id | arrival_time | departure_time | stop_id | stop_sequence | stop_headsign |
 |---------|--------------|----------------|---------|---------------|---------------|
@@ -197,7 +204,7 @@ __循環便のモデリング例:__
 | trip_1  | 06:30:00     | 06:30:00       | stop_E  | 5             | "A"           |
 | trip_1  | 06:35:00     | 06:35:00       | stop_A  | 6             | ""            |
  
-- 2種類の行先表示(headsign)を持つ循環便
+- 2つの行先表示(headsign)を持つ循環便(trip)
 
 | trip_id | arrival_time | departure_time | stop_id | stop_sequence | stop_headsign |
 |---------|--------------|----------------|---------|---------------|---------------|
@@ -211,107 +218,118 @@ __循環便のモデリング例:__
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| `trips.trip_id` | ループ全体の往復を1つの便(trip)としてモデリングしてください。 |
-| `stop_times.stop_id` | ループ便の場合、`stop_times.txt` に最初と最後の停留所(stop)を2回含めてください。以下の例を参照してください。多くの場合、ループ系統にはループ全体を走行しない始発便や最終便が含まれることがあります。これらの便も含めてください。 <table class="example"><thead><tr><th><code>trip_id</code></th><th><code>stop_id</code></th><th><code>stop_sequence</code></th></tr></thead><tbody><tr><td>9000</td><td>101</td><td>1</td></tr><tr><td>9000</td><td>102</td><td>2</td></tr><tr><td>9000</td><td>103</td><td>3</td></tr><tr><td>9000</td><td>101</td><td>4</td></tr></tbody></table> |
-| `trips.direction_id` | ループが反対方向（例：時計回りと反時計回り）に運行する場合は、`direction_id` を `0` または `1` として指定してください。 |
-| `trips.block_id` | 同一の `block_id` を使用して、連続するループ便を示してください。 |
+| `trips.trip_id `| ループの完全な往復便(trip)を、単一の便(trip)としてモデル化します。 |
+| `stop_times.stop_id` | ループである便(trip)について、`stop_times.txt` に最初／最後の停留所等(stop)を2回含めます。以下の例を参照してください。多くの場合、ループ・路線系統(route)には、ループ全体を走行しない最初と最後の便(trip)が含まれることがあります。これらの便(trip)も含めてください。<table class="example"><thead><tr><th><code>trip_id</code></th><th><code>stop_id</code></th><th><code>stop_sequence</code></th></tr></thead><tbody><tr><td>9000</td><td>101</td><td>1</td></tr><tr><td>9000</td><td>102</td><td>2</td></tr><tr><td>9000</td><td>103</td><td>3</td></tr><tr><td>9000</td><td>101</td><td>4</td></tr></tbody></table> |
+| `trips.direction_id` | ループが反対方向（すなわち時計回りと反時計回り）に運行する場合、`direction_id` を `0` または `1` として指定します。 |
+| `trips.block_id` | 継続するループ便(trip)を同じ `block_id` で示します。 |
 
-### ラッソ型ルート {: #lasso-routes}
+### 投げ縄型ルート {: #lasso-routes}
 
-ラッソ型ルートは、循環ルートと方向性のあるルートの両方の特徴を組み合わせたものです。
+
+投げ縄型ルートは、環状ルートと方向別ルートの特徴を組み合わせたものです。
 
 <img src="https://raw.githubusercontent.com/MobilityData/GTFS_Schedule_Best-Practices/master/en/lasso-route.svg" width=140px style="display: block; margin-left: auto; margin-right: auto;">
 
 | 例: |
 | -------- |
-| 地下鉄ルート（[シカゴ](https://www.transitchicago.com/assets/1/6/ctamap_Lsystem.pdf)） |
-| 郊外から都心へのバスルート（[セント・アルバート](https://stalbert.ca/uploads/PDF-infosheets/RideGuide-201-207_Revised_Oct_2017.pdf) または [エドモントン](http://webdocs.edmonton.ca/transit/route_schedules_and_maps/future/RT039.pdf)） |
-| CTA ブラウンライン（[CTA公式サイト](http://www.transitchicago.com/brownline/) および [TransitFeeds](https://transitfeeds.com/p/chicago-transit-authority/165/latest/route/Brn)） |
+| 地下鉄ルート・路線系統(route)（[Chicago](https://www.transitchicago.com/assets/1/6/ctamap_Lsystem.pdf)） |
+| 郊外から都心へのバスルート・路線系統(route)（[St. Albert](https://stalbert.ca/uploads/PDF-infosheets/RideGuide-201-207_Revised_Oct_2017.pdf) または [Edmonton](http://webdocs.edmonton.ca/transit/route_schedules_and_maps/future/RT039.pdf)） |
+| CTA Brown Line（[CTA Website](http://www.transitchicago.com/brownline/) および [TransitFeeds](https://transitfeeds.com/p/chicago-transit-authority/165/latest/route/Brn)） |
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| `trips.trip_id` | 「車両の往復運行」（上記の図を参照）全体は、A から B、B から再び A への移動で構成されます。車両の往復運行全体は、次のいずれかの方法で表現することができます。<li>__1つの__ `trip_id` 値／`trips.txt` 内のレコード</li><li>`block_id` によって連続運行を示す、__複数の__ `trip_id` 値／`trips.txt` 内のレコード</li> |
-| `stop_times.stop_headsign` | A-B 区間の停留所等(stop)は、両方向で通過します。`stop_headsign` は運行方向を区別するのに役立ちます。そのため、これらの便(trip)については `stop_headsign` を提供することが推奨されます。example_table: <table class="example"><thead>  <tr><th>例:</th></tr></thead><tbody><tr><td>"A via B"</td></tr><tr><td>"A"</td></tr></tbody></table><table class="example"><thead><tr><th>シカゴ交通局（Chicago Transit Authority）の <a href="http://www.transitchicago.com/purpleline/">パープルライン</a></th></tr></thead><tbody><tr><td>"Southbound to Loop"</td></tr><tr><td>"Northbound via Loop"</td></tr><tr><td>"Northbound to Linden"</td></tr></tbody></table><table class="example"><thead><tr><th>エドモントン交通局（Edmonton Transit Service）のバス路線、例として <a href="http://webdocs.edmonton.ca/transit/route_schedules_and_maps/future/RT039.pdf">39番</a></th></tr></thead><tbody><tr><td>"Rutherford"</td></tr><tr><td>"Century Park"</td></tr></tbody></table> |
-| `trip.trip_headsign` | trip headsign は、時刻表に表示されるような便(trip)全体の概要を示すものであるべきです。例として、「Linden to Linden via Loop」（シカゴの例）や「A to A via B」（一般的な例）などが考えられます。 |
+| `trips.trip_id` | 「車両往復運行」の全範囲（[上記](#lasso-routes)の図を参照）は、AからB、Bを経由してAへ戻る移動で構成されます。車両往復運行全体は、以下によって表現することができます。<li>`trips.txt` 内の __単一の__ `trip_id` 値/レコード</li><li>`trips.txt` 内の __複数の__ `trip_id` 値/レコード。連続した移動は `block_id` によって示されます。</li> |
+| `stop_times.stop_headsign` | A-B区間に沿った停留所等(stop)は、両方向で通過します。`stop_headsign` は移動方向の区別を容易にします。したがって、これらの便(trip)には `stop_headsign` を提供することが推奨されます。example_table: <table class="example"><thead>  <tr><th>例:</th></tr></thead><tbody><tr><td>"A via B"</td></tr><tr><td>"A"</td></tr></tbody></table><table class="example"><thead><tr><th>Chicago Transit Authority の <a href="http://www.transitchicago.com/purpleline/">Purple Line</a></th></tr></thead><tbody><tr><td>"Southbound to Loop"</td></tr><tr><td>"Northbound via Loop"</td></tr><tr><td>"Northbound to Linden"</td></tr></tbody></table><table class="example"><thead><tr><th>Edmonton Transit Service Bus Lines、ここでは <a href="http://webdocs.edmonton.ca/transit/route_schedules_and_maps/future/RT039.pdf">39</a></th></tr></thead><tbody><tr><td>"Rutherford"</td></tr><tr><td>"Century Park"</td></tr></tbody></table>
+| `trip.trip_headsign` | 便(trip)の行先表示(headsign)は、時刻表に表示されるような便(trip)の全体的な説明であるべきです。これは「Linden to Linden via Loop」（Chicagoの例）または「A to A via B」（一般的な例）とすることができます。 |
 
 ### 分岐 {: #branches}
 
-一部のルート・路線系統(route)には分岐が含まれる場合があります。これらの分岐はルート形状(shape)や停留所等(stop)を共有しますが、それぞれが独自の停留所やルート形状区間を持ちます。分岐間の関係は、以下の追加ガイドラインに従って、ルート名、行先表示(headsign)、および便の短縮名(trip short name)によって示すことができます。
+
+一部のルート・路線系統(route)には分岐が含まれる場合があります。これらの分岐間では経路と停留所等(stop)が共有されますが、それぞれが固有の停留所等(stop)および経路区間にも運行します。分岐間の関係は、以下の追加ガイドラインを用いて、ルート・路線系統(route)名、行先表示(headsign)、および便(trip)の短縮名で示すことができます。
 
 <img src="https://raw.githubusercontent.com/MobilityData/GTFS_Schedule_Best-Practices/master/en/branching.svg" width=250px style="display: block; margin-left: auto; margin-right: auto;">
 
 | フィールド名 | 推奨事項 |
 | --- | --- |
-| すべてのフィールド | 分岐ルートの命名においては、他の乗客向け情報資料に従うことが推奨されます。以下に2つのケースの説明と例を示します。 |
-| | 時刻表や街頭の案内表示が、明確に異なる名前のルート（例: 1A と 1B）として表現している場合は、GTFS においても同様に `route_short_name` および/または `route_long_name` フィールドを使用して表現してください。例: GoDurham Transit の [routes 2, 2A, and 2B](https://gotriangle.org/sites/default/files/brochure/godurham-route2-2a-2b_1.pdf) は、ルートの大部分で共通のルート形状を共有していますが、いくつかの点で異なります。<ul><li>Route 2 は主要なサービスであり、ほとんどの時間帯に運行します。</li><li>Route 2 は夜間、日曜日、祝日に Main Street 上で経路変更を行います。</li><li>Routes 2A および 2B は月曜日から土曜日の日中に運行します。</li><li>Route 2B は、共有ルート形状の経路から分岐した区間に追加の停留所等(stop)を設けています。</li></ul> |
-| | 事業者が提供する情報で、分岐が同一名称のルートとして説明されている場合は、`trips.trip_headsign`、`stop_times.stop_headsign`、および/または `trips.trip_short_name` フィールドを使用してください。例: GoTriangle の [route 300](https://gotriangle.org/sites/default/files/route_300_v.1.19.pdf) は、時間帯によって異なる場所へ運行します。通勤ピーク時には、標準ルートに追加の乗車区間(leg)が加えられ、市内に出入りする労働者に対応しています。 |
+| すべてのフィールド | 分岐するルート・路線系統(route)の命名では、他の乗客向け情報資料に従うことが推奨されます。以下に、2つのケースの説明と例を示します。 |
+| | 時刻表および路上の案内表示が、明確に異なる名称の2つのルート・路線系統(route)（例: 1Aおよび1B）を示している場合、`route_short_name` フィールドおよび/または `route_long_name` フィールドを使用して、GTFSでもそのように示します。例: GoDurham Transitの[ルート・路線系統(route) 2、2A、および2B](https://gotriangle.org/sites/default/files/brochure/godurham-route2-2a-2b_1.pdf)は、ルート・路線系統(route)の大部分にわたって共通の経路を共有していますが、いくつかの異なる点があります。<ul><li>ルート・路線系統(route)2は、ほとんどの時間帯に運行する基幹サービスです。</li><li>ルート・路線系統(route)2には、夜間、日曜日、および休日にMain Streetへの迂回が含まれます。</li><li>ルート・路線系統(route)2Aおよび2Bは、月曜日から土曜日の日中時間帯に運行します。</li><li>ルート・路線系統(route)2Bは、共有経路の迂回区間にある追加の停留所等(stop)に運行します。</li></ul> |
+| | 事業者が提供する情報で分岐が同じ名称のルート・路線系統(route)として説明されている場合、`trips.trip_headsign`、`stop_times.stop_headsign`、および/または `trips.trip_short_name` フィールドを使用します。例: GoTriangleの[ルート・路線系統(route) 300](https://gotriangle.org/sites/default/files/route_300_v.1.19.pdf)は、時間帯に応じて異なる場所へ運行します。通勤ピーク時間帯には、市内に入る、または市外へ出る通勤者に対応するため、標準ルート・路線系統(route)に追加の乗車区間(leg)が加えられます。 |
 
-## よくある質問 (FAQ) {: #frequently-asked-questions-faq}
+## よくある質問（FAQ） {: #frequently-asked-questions-faq}
 
-### これらの GTFS ベストプラクティスが重要である理由 {: #why-are-these-gtfs-best-practices-important}
-
-GTFS ベストプラクティスの目的は以下の通りです。
-
-* 公共交通アプリにおけるエンドユーザーの利用体験を向上させること  
-* ソフトウェア開発者がアプリケーション、製品、サービスを容易に展開・拡張できるよう、幅広いデータの相互運用性を支援すること  
-* GTFS を（当初の旅程計画への焦点を超えて）さまざまなアプリケーションカテゴリで活用できるようにすること  
-
-GTFS ベストプラクティスが調整されていない場合、GTFS を利用するさまざまなアプリケーションが、統一されていない形で要件や期待値を設定してしまい、結果として要件の分岐やアプリケーション固有のデータセットが生じ、相互運用性が低下します。ベストプラクティスが公開される以前は、正しく構成された GTFS データとは何かについて、より多くの曖昧さや意見の相違が存在していました。
-
-### どのように策定されたのか？誰が策定したのか？ {: #how-were-they-developed-who-developed-them}
+### これらの GTFS Best Practices が重要である理由 {: #why-are-these-gtfs-best-practices-important}
 
 
-これらのベストプラクティスは、GTFS に関わる 17 の組織からなるワーキンググループによって策定されました。このグループには、アプリ提供者やデータ利用者、交通事業者、そして GTFS に深く関与しているコンサルタントが含まれています。ワーキンググループは [Rocky Mountain Institute](http://www.rmi.org/mobility) によって招集・運営されました。
+GTFS Best Practices の目的は以下のとおりです。
 
-ワーキンググループのメンバーは、それぞれのベストプラクティスについて投票を行いました。ほとんどのベストプラクティスは全会一致で承認されましたが、一部のケースでは大多数の組織による賛成で承認されました。
+* 公共交通アプリにおけるエンドユーザーの顧客体験を向上させること
+* ソフトウェア開発者がアプリケーション、製品、サービスを容易に導入および拡張できるよう、幅広いデータ相互運用性を支援すること
+* さまざまなアプリケーションカテゴリにおける GTFS の利用を促進すること（本来の焦点である経路探索を超えて）
 
-### なぜ単に GTFS リファレンスを変更しないのですか？ {: #why-not-just-change-the-gtfs-reference}
+協調された GTFS Best Practices がなければ、さまざまな GTFS を利用するアプリケーションが、要件および期待を協調されていない方法で定める可能性があり、その結果、要件の乖離、アプリケーション固有のデータセット、および相互運用性の低下につながります。Best Practices の公開以前は、正しく構成された GTFS データを構成するものについて、より大きな曖昧さと意見の不一致がありました。
 
-良い質問です！仕様、データの利用状況およびニーズを検討する過程で、実際に仕様にいくつかの変更が加えられました（[GitHub のクローズ済みプルリクエスト](https://github.com/google/transit/pulls?q=is%3Apr+is%3Aclosed)を参照してください）。  
-仕様リファレンスの修正は、ベストプラクティスよりも厳格な精査とコメントの対象となります。特定のベストプラクティスは、その採用状況やコミュニティの合意に基づいて仕様に統合されています。最終的には、すべての GTFS ベストプラクティスがコアの GTFS リファレンスの一部となる可能性があります。
+### これらはどのように策定されましたか？誰が策定しましたか？ {: #how-were-they-developed-who-developed-them}
 
-### これらのベストプラクティスへの準拠を確認する方法 {: #how-to-check-for-conformance-with-these-best-practices}
 
-Canonical GTFS Schedule Validator は、これらのベストプラクティスへの準拠を確認します。この検証ツールの詳細については、[validate ページ](../../../getting-started/validate)をご覧ください。
+これらのベストプラクティスは、アプリ提供者およびデータ利用者、交通事業者、ならびにGTFSに幅広く関与しているコンサルタントを含む、GTFSに関わる17の組織からなるワーキンググループによって策定されました。ワーキンググループは、[Rocky Mountain Institute](http://www.rmi.org/mobility)によって招集および進行されました。
 
-### 私は交通事業者を代表しています。ソフトウェアサービス提供者やベンダーがこれらのベストプラクティスに従うようにするには、どのような手順を踏めばよいですか？ {: #i-represent-a-transit-agency-what-steps-can-i-take-so-that-our-software-service-providers-and-vendors-follow-these-best-practices}
+ワーキンググループのメンバーは、各ベストプラクティスについて投票しました。ほとんどのベストプラクティスは、全会一致の投票により承認されました。少数のケースでは、ベストプラクティスは組織の大多数によって承認されました。
 
-ベンダーまたはソフトウェアサービス提供者に、これらのベストプラクティスを参照するよう案内してください。GTFS データを生成するソフトウェアの調達においては、GTFS ベストプラクティスの URL およびコア仕様リファレンスを参照することを推奨します。
+### GTFS Reference を単に変更しないのはなぜですか？ {: #why-not-just-change-the-gtfs-reference}
 
-### GTFS データフィードがこれらのベストプラクティスに準拠していないことに気づいた場合、どうすればよいですか？ {: #what-should-i-do-if-i-notice-a-gtfs-data-feed-does-not-conform-to-these-best-practices}
 
-*feed_info.txt* 内に存在する場合は、[提案されている feed_contact_email または feed_contact_url](https://github.com/google/transit/pull/31/files) フィールドを使用してフィードの連絡先を特定するか、交通事業者またはフィード作成者のウェブサイトで連絡先情報を調べてください。フィード作成者に問題を伝える際には、議論している特定の GTFS ベストプラクティスへのリンクを提示してください。（「[このドキュメントへのリンク](#linking-to-this-document)」を参照してください。）
+良い質問です！Specification、データの利用状況およびニーズを検討するプロセスは、実際にSpecificationへのいくつかの変更を促しました（[GitHub のクローズ済み pull request](https://github.com/google/transit/pulls?q=is%3Apr+is%3Aclosed)を参照してください）。
+Specification reference の改訂には、Best Practices よりも高い水準の精査とコメントが求められます。一部の Best Practices は、その採用度およびコミュニティの合意に基づいて spec に統合されています。最終的には、すべての GTFS Best Practices が中核となる GTFS Reference の一部になる可能性があります。
+
+### これらのベストプラクティスへの適合性を確認する方法 {: #how-to-check-for-conformance-with-these-best-practices}
+
+
+Canonical GTFS Schedule Validator は、これらのベストプラクティスへの準拠を確認します。この検証ツールの詳細は、[validate page](../../../getting-started/validate) で確認できます。
+
+### 私は交通事業者を代表しています。ソフトウェアサービスプロバイダーおよびベンダーがこれらのベストプラクティスに従うようにするために、どのような手順を取ることができますか？ {: #i-represent-a-transit-agency-what-steps-can-i-take-so-that-our-software-service-providers-and-vendors-follow-these-best-practices}
+
+
+ベンダーまたはソフトウェアサービスプロバイダーに、これらのベストプラクティスを参照するよう案内してください。GTFS を生成するソフトウェアの調達においては、GTFS Best Practices URL および中核となる Spec Reference を参照することを推奨します。
+
+### GTFS データフィードがこれらのベストプラクティスに準拠していないことに気付いた場合、どうすればよいですか？ {: #what-should-i-do-if-i-notice-a-gtfs-data-feed-does-not-conform-to-these-best-practices}
+
+
+存在する場合は *feed_info.txt* の[提案されている feed_contact_email または feed_contact_url](https://github.com/google/transit/pull/31/files) フィールドを使用するか、交通事業者またはフィード作成者のウェブサイトで連絡先情報を調べて、フィードの連絡先を特定してください。フィード作成者に問題を伝える際は、議論対象となっている特定の GTFS Best Practice へのリンクを含めてください。（[「このドキュメントへのリンク」](#linking-to-this-document)を参照してください）。
 
 ### どのように参加できますか？ {: #how-do-i-get-involved}
 
 
-[specifications@mobilitydata.org](mailto:specifications@mobilitydata.org) にメールをお送りください。
+[specifications@mobilitydata.org](mailto:specifications@mobilitydata.org) にメールしてください。
 
-## このドキュメントについて {: #about-this-document}
+## この文書について {: #about-this-document}
 
 ### 目的 {: #objectives}
 
-GTFS ベストプラクティスを維持する目的は次の通りです。
 
-* 交通データの相互運用性を高めることを支援する  
-* 公共交通アプリにおけるエンドユーザーの利用体験を向上させる  
-* ソフトウェア開発者がアプリケーション、製品、サービスを展開・拡張しやすくする  
-* GTFS を（当初の旅程計画への焦点を超えて）さまざまなアプリケーション分野で活用しやすくする
+GTFS Best Practices を維持する目的は、以下のとおりです。
 
-### 公開されている GTFS ベストプラクティスを提案または修正する方法 {: #how-to-propose-or-amend-published-gtfs-best-practices}
+* 交通データの相互運用性をより高めること
+* 公共交通アプリにおけるエンドユーザーの顧客体験を改善すること
+* ソフトウェア開発者がアプリケーション、製品、およびサービスを導入・拡張しやすくすること
+* さまざまなアプリケーションカテゴリ（本来の主眼である経路検索を超えるもの）での GTFS の利用を促進すること
 
-ベストプラクティスは現在、仕様への統合が進行中です。新しいベストプラクティスを提案したい場合は、[GTFS Reference GitHub リポジトリ](https://github.com/google/transit/) にアクセスして issue を作成するか、PR を作成するか、または [specifications@mobilitydata.org](mailto:specifications@mobilitydata.org) までご連絡ください。
+### 公開済みの GTFS Best Practices を提案または改訂する方法 {: #how-to-propose-or-amend-published-gtfs-best-practices}
 
-### 本ドキュメントへのリンク {: #linking-to-this-document}
 
-GTFS データを正しく作成するためのガイダンスをフィード作成者に提供する目的で、本ドキュメントへのリンクを設定してください。各推奨事項にはアンカーリンクが付与されています。推奨事項をクリックすると、ページ内アンカーリンクの URL を取得できます。
+Best Practices は仕様への統合が進められています。新しいベストプラクティスを提案したい場合は、[GTFS Reference GitHub repository](https://github.com/google/transit/) にアクセスして issue を開くか PR を作成するか、[specifications@mobilitydata.org](mailto:specifications@mobilitydata.org) までお問い合わせください。
 
-GTFS を利用するアプリケーションが、ここで説明されていない GTFS データの運用に関する要件や推奨事項を設ける場合は、これらの共通ベストプラクティスを補足する形で、その要件や推奨事項を記載したドキュメントを公開することが推奨されます。
+### このドキュメントへのリンク {: #linking-to-this-document}
 
-### GTFS ベストプラクティス ワーキンググループ {: #gtfs-best-practices-working-group}
 
-GTFS ベストプラクティス ワーキンググループは、GTFS データに関する共通の実践と期待を定義するために、2016〜2017 年に [Rocky Mountain Institute](http://rmi.org/) によって招集されました。このグループは、公共交通事業者、GTFS を利用するアプリケーションの開発者、コンサルタント、および学術機関で構成されていました。  
-このワーキンググループのメンバーには以下が含まれます。
+GTFS データを正しく作成するためのガイダンスをフィード提供者に提供するには、ここにリンクしてください。個々の推奨事項にはアンカーリンクがあります。推奨事項をクリックすると、ページ内アンカーリンクの URL を取得できます。
+
+GTFS を利用するアプリケーションが、ここで説明されていない GTFS データの実践に関する要件または推奨事項を設ける場合、これらの共通ベストプラクティスを補完するために、それらの要件または推奨事項を記載したドキュメントを公開することが推奨されます。
+
+### GTFS ベストプラクティス作業部会 {: #gtfs-best-practices-working-group}
+
+
+GTFS ベストプラクティス作業部会は、GTFS データに関する共通の慣行および期待事項を定義するために、公共交通事業者、GTFS を利用するアプリケーションの開発者、コンサルタント、および学術組織で構成され、2016～17年に [Rocky Mountain Institute](http://rmi.org/) によって招集されました。 
+この作業部会のメンバーには、以下が含まれていました。
 
 * [Cambridge Systematics](https://www.camsys.com/)
 * [Capital Metro](https://www.capmetro.org/)

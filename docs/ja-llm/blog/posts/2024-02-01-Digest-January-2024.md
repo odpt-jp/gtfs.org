@@ -10,128 +10,128 @@ authors:
 categories:
   - GTFS Digest
 ---
-# [GTFS Digest] 2024年1月 - 年初から最新情報を把握しましょう {: #gtfs-digest-january-2024-start-the-year-in-the-know}
+# [GTFS Digest] 2024年1月 - 年初から最新情報を把握しましょう。 {: #gtfs-digest-january-2024-start-the-year-in-the-know}
 
-保留中のベストプラクティスを GTFS 仕様に移行し、可視性を高め、価値ある改善についてコミュニティで議論できるようにします。GTFS ガバナンスの改善、短期的な運行変更、GTFS-realtime の活用、エンティティ・リレーションシップ・モデル(ERD)の採用についての議論にぜひご参加ください。 
+可視性の向上と価値ある改善に関するコミュニティでの議論のため、保留中のベストプラクティスをGTFS仕様へ移行します。GTFS Governanceの改善、短期的なサービス変更、GTFS-realtimeの利用、およびEntity-Relationship Model（ERD）の採用に関する議論に参加してください。 
 
 
 <!-- more -->
 
-GTFS Digest は [MobilityData](https://mobilitydata.org/) によって毎月発行されるリソースで、GTFS に関する最新の動向をまとめています。  
+GTFS Digestは、GTFSに関する動向の概要を提供するために[MobilityData](https://mobilitydata.org/)が毎月作成するリソースです。 
 
-皆さまからのフィードバックを大切にしています。私たちの取り組みについてぜひご意見をお聞かせください。[こちらのフォーム](https://forms.gle/GGefktvemnJD5Q9g8)にご記入いただき、このツールの可能性を最大限に引き出すためにご協力をお願いいたします。
+皆様からのフィードバックを大切にしており、私たちの取り組みについてお聞かせいただきたいと考えています。[このフォーム](https://forms.gle/GGefktvemnJD5Q9g8)にご記入いただき、このツールの可能性を最大限に引き出すためにご協力ください。
 
-## 🏅 コントリビューターへの感謝 {: #contributor-shoutouts}
+## 🏅 コントリビューターへの称賛 {: #contributor-shoutouts}
 
 
 **Martijn Vanallemeersch**
 
-Slack に参加し、初日に[列車の分割運行に関する活発な議論](https://mobilitydata-io.slack.com/archives/C3FFFKX9C/p1704902620455499)を持ちかけてくださいました。 
+Slackに参加し、初日に[列車の編成短縮に関する活発な議論](https://mobilitydata-io.slack.com/archives/C3FFFKX9C/p1704902620455499)を提起してくださいました。 
 
 **Marcy Jaffe**
 
-いつも通り、小規模な交通事業者に目を向けてくださり、[GTFS validator に関する重要なポイント](https://mobilitydata-io.slack.com/archives/C03E10N96QL/p1703074450467169)を共有していただきありがとうございます。 
+いつもながら、小規模な交通事業者に配慮し、[GTFS validatorに関する重要な点](https://mobilitydata-io.slack.com/archives/C03E10N96QL/p1703074450467169)を共有してくださり、ありがとうございます。 
 
 **doconnoronca**
 
-[短期的な運行変更についての明確化を求めてくださったこと](https://github.com/google/transit/issues/425)に感謝します。貴重なやり取りを生み出してくださいました。
+[短期的な運行変更について明確化を求めて](https://github.com/google/transit/issues/425)くださり、ありがとうございます。貴重なやり取りのきっかけとなりました。
 
 ## 📢 お知らせ {: #announcements}
 
 
-**[未解決のベストプラクティスに関する issue と PR の移行 #421](https://github.com/google/transit/issues/421) **
+**[未解決の Best Practices issue および PR の移行 #421](https://github.com/google/transit/issues/421) **
 
-GTFS ベストプラクティスを仕様に移行する一環として、MobilityData は未解決の issue と PR をすべて GTFS 仕様リポジトリに移行しました。[Issue #421](https://github.com/google/transit/issues/421) では、移行プロセスの詳細な説明と今後の提案されるステップについて説明しています。これにより、保留中のベストプラクティスに関する提案により多くの注目を集め、議論を再開し、コミュニティが価値があると考える改善を前進させることを期待しています。
+GTFS Best Practices の仕様への移行の一環として、MobilityData は未解決のすべての issue および PR を GTFS 仕様リポジトリへ移管しました。[Issue #421](https://github.com/google/transit/issues/421) では、移行プロセスおよび提案されている次のステップについて詳しく説明しています。これにより、保留中の Best Practices の提案により多くの注目を集め、それらに関する議論を再開し、コミュニティが価値を見出すあらゆる改善を推進できるようにしたいと考えています。
 
 ## 📂 アクティブな提案 {: #active-proposals}
 
 
 **[GTFS-Flex #388](https://github.com/google/transit/pull/388)** 
 
-GTFS-Flex の提案は、乗客が旅程プランナー上でデマンド型サービスを発見できるようにするものです。これまでに複数回の議論が行われ、現在はコントリビューターによるレビュー中です。 
+GTFS-Flex 提案により、乗客は経路検索ツール上でデマンド型サービスを見つけることができます。この提案は複数回の議論を経ており、現在はコントリビューターによるレビュー中です。 
 
 
 
-* 直近の GTFS-Flex ワーキンググループ会議は 2024年1月17日に開催されました:
-    * location_groups の正規化を別ファイルに追加することに合意
-    * ファイル名に関する合意:
-        * locations.geojson - この名前を維持
+* 直近の GTFS-Flex ワーキンググループ会議は 2024年1月17日に開催されました。
+    * location_groups の正規化を別ファイルに追加することについて合意しました。
+    * ファイル名について合意しました。
+        * locations.geojson - この名前を維持します。
         * 既存の location_groups.txt → location_group_stops.txt
         * 新しい正規化ファイル → location_groups.txt
 
-**[GTFS Trip-Modifications #403](https://github.com/google/transit/pull/403)**
+**[GTFS Trip-Modifications #403](https://github.com/google/transit/pull/403) **
 
-便の変更(Trip-Modifications)は、便(trip)のルート形状(shape)を変更したり、運行されない停留所等(stop)を削除したり、場合によっては一時的な停留所等(stop)を追加するために行われます。[便の変更は主に迂回路の可視化やリアルタイム予測の更新に使用されます。](https://blog.transitapp.com/how-transit-and-swiftly-put-bus-detours-on-the-map/)
+便の変更(trip modification)は、ルート形状(shape)を変更し、運行されない停留所等(stop)を削除し、必要に応じて一時的な停留所等(stop)を追加するために便(trip)に対して行われる変更です。[Trip-Modifications は主に迂回経路の可視化およびリアルタイム予測の更新に使用されます。](https://blog.transitapp.com/how-transit-and-swiftly-put-bus-detours-on-the-map/)
 
-初回の会議は 2024年1月10日に開催され、以下の項目が議論されました:
+初回会議は 2024年1月10日に開催されました。議論された項目は以下のとおりです。
 
 
 
-* GTFS-TripModifications と GTFS-NewTrips の比較
-    * TripModifications によるデータサイズの利点が十分に大きいため、この解決策を進めるべきだという合意がありました。
-* 停留所等(stop)の選択を停留所等の順序のみで行うか、stop_id を用いた選択を可能にする変更を行うか
-    * stop_id を使用することの有用性（および生成の容易さ）が十分に強いため、変更を行うべきだという合意がありました。Transit が具体的な提案を作成する予定です。
+* GTFS-TripModifications と GTFS-NewTrips
+    * TripModifications によるサイズ面の利点は十分に大きいため、このソリューションを進めるべきであるという合意がありました。
+* 停留所等(stop)について stop sequence のみを選択子として維持するか、stop ids を使用して停留所等(stop)を選択できるよう変更するか
+    * stop_id を使用することの有用性（および生成の容易さ）は十分に高いため、変更を行うべきであるという合意がありました。Transit は具体的な提案に取り組む予定です。
 
 **[[GTFS-Fares v2] fare_leg_rules.txt に rule_priority を追加 #418](https://github.com/google/transit/pull/418)**
 
-rule_priority フィールドは、乗車区間(leg)に適用される一致ルールの優先順位を定義し、特定のルールが他のルールより優先されることを可能にします。このフィールドの存在はトリガーとして機能し、空のセマンティクスを「何でも除外」から「一致に影響しない」に切り替えます。
+rule_priority フィールドは、一致するルールが乗車区間(leg)に適用される優先順位を定義し、特定のルールが他のルールより優先されるようにします。このフィールドの存在はトリガーとして機能し、空のセマンティクスを「anything except」から「一致に影響しない」へ変更します。
 
-**[[GTFS-Fares v2] 同一チケット商品/チケットメディアでの乗り継ぎ挙動](https://github.com/google/transit/pull/423)** \
-2つの乗車区間(leg)間の特定の乗り継ぎルールが、同一のチケット商品またはチケットメディアの使用を必要とするかどうかを区別する仕組みです。この仕組みにより、「チケットベースのシステム」（例: パスに類似した商品）と「ストアドバリューシステム」（例: 一般的な利用ごとの支払い商品）を区別することができます。 \
+**[[GTFS-Fares v2] 同一チケット商品／チケットメディアの乗換動作](https://github.com/google/transit/pull/423)** \
+2つの乗車区間(leg)間の特定の乗換ルールにおいて、同一のチケット商品／チケットメディアの使用が必要かどうかを区別するための仕組みです。この仕組みにより、「チケットベースのシステム」（すなわち、パスに類似した商品）と「ストアドバリューシステム」（すなわち、一般的な従量課金商品）を区別できます。
 
 ## 🔥 最も活発な議論 {: #most-active-conversations}
 
 
-**[GTFSガバナンスの修正: 段階的計画 #413](https://github.com/google/transit/issues/413)**
+**[GTFSガバナンスの変更：段階的計画 #413](https://github.com/google/transit/issues/413)**
 
-MobilityData は、GTFS ガバナンスの正式な改正プロセスと非公式な側面の両方を改善するための改良を提案しています。この課題には、コミュニティが共通して特定した問題と、提案された段階的な計画が含まれています。
+MobilityDataは、正式な改正プロセスとGTFSガバナンスの非公式な側面の両方を改善するための改良を提案しています。このissueには、コミュニティで特定された一般的な問題と、提案された段階的計画が含まれています。
 
 
-* フェーズ1は完了: 
-    * [GitHub における Issue テンプレートの追加](https://github.com/google/transit/pull/417)
-    * [GTFS Digest のリリース](https://github.com/google/transit/issues/419)
-    * [GitHub におけるラベルの修正](https://github.com/google/transit/labels) 
-* フェーズ2は進行中: 
-    * 投票提案の開発中
+* フェーズ1は完了しています： 
+    * [GitHubでのIssueテンプレートの追加](https://github.com/google/transit/pull/417)
+    * [GTFS Digestの公開](https://github.com/google/transit/issues/419)
+    * [GitHubでのラベルの変更](https://github.com/google/transit/labels) 
+* フェーズ2は進行中です： 
+    * 投票提案を策定中
 
-**[エンティティ・リレーションシップモデルを決定的な参照として使用する #415](https://github.com/google/transit/issues/415)**
+**[決定的な参照としてEntity-Relationship Modelを使用する #415](https://github.com/google/transit/issues/415) **
 
-多くの議論はデータのフォーマット方法に関するものであり、構造自体の説明ではありません。誰もが参照できる明確で正式なモデルを持つことが提案されており、これにより議論が容易になり、混乱を避けることができます。提案は、dbdiagram.io のようなツールを使用して GTFS データモデルを視覚的に表現し、形式化することです。
+ほとんどの議論は、構造そのものを説明することよりも、データの形式に関するものです。提案は、誰もが参照できる明確かつ正式なモデルを用意し、議論を容易にして混乱を避けることです。dbdiagram.ioのようなツールを使用して、GTFSデータモデルを視覚的に表現し、形式化するという考えです。
 
-**[なぜ短期的な運行変更は GTFS から除外することが推奨されているのか？ #425](https://github.com/google/transit/issues/425)**
+**[短期間の運行変更をGTFSから除外することが推奨されているのはなぜですか？ #425](https://github.com/google/transit/issues/425)**
 
-この議論は、なぜ GTFS が1週間以内の運行変更に GTFS-realtime を使用することを推奨しているのかについてです。貢献者たちは、このバッファが利用者にフィードを消化する時間を与え、データ品質を確保し、エラーを修正し、新しい時刻表を適時に表示するのに役立つと述べています。また、多数の GTFS-realtime 更新を管理する方法についても議論しています。
+この議論は、GTFSが1週間以内の運行変更にGTFS-realtimeを使用することを提案している理由についてです。寄稿者は、このバッファによりコンシューマーがフィードを処理する時間を確保でき、データ品質の確保、エラーの修正、新しい時刻表の適時表示に役立つと述べています。また、多数のGTFS-realtime更新を管理することについても議論しています。
 
-**[Slack の #gtfs における会話](https://mobilitydata-io.slack.com/archives/C3FFFKX9C/p1704902620455499)**
+**[#gtfsでのSlack会話](https://mobilitydata-io.slack.com/archives/C3FFFKX9C/p1704902620455499)**
 
-この議論では、Martijn が鉄道業界で一般的な運用方法をどのようにモデル化するかについてコミュニティに意見を求めています。それは「列車の分割、併合、連結」です。主に地域間または都市間の移動で使用されるこれらの運用は、列車の車両を分離または連結して異なる目的地に対応するものです。
+この議論で、Martijnは鉄道業界における一般的な慣行、すなわち列車の分割、減車、連結をどのようにモデル化するかについて、コミュニティにアイデアを求めています。主に地域間または都市間の移動で使用されるこれらの慣行は、異なる目的地に対応するために車両を分離および／または連結するものです。
 
-**[Slack の #gtfs-realtime における会話](https://mobilitydata-io.slack.com/archives/C3D321CKB/p1704895869851189)**
+**[#gtfs-realtimeでのSlack会話](https://mobilitydata-io.slack.com/archives/C3D321CKB/p1704895869851189) **
 
-Joel は次の質問に対する助けを求めています: 「前の停留所等(stop)で SKIPPED stop update があった場合、その更新はデータに更新がない次の停留所等(stop)にも伝播されるべきですか？」
+Joelは、次の質問への回答にあなたの助けを必要としています：「前の停留所等(stop)からのSKIPPED stop updateは、それらの停留所等(stop)にデータ内の更新がない場合、次の停留所等(stop)へ伝播されるべきですか？」
 
-**[Slack の #gtfs における会話](https://mobilitydata-io.slack.com/archives/C3FFFKX9C/p1705020453309289)**
+**[#gtfsでのSlack会話](https://mobilitydata-io.slack.com/archives/C3FFFKX9C/p1705020453309289) **
 
-Evan は次の質問をしています: 「frequencies.txt を使用し、特に Frequency-based service (exact_times=0) に従うフィードを作成・利用している人にとって、次の文言をどの程度厳密に解釈していますか？」
+Evanは次の質問をしています：「特にFrequency-based service（exact_times=0）に従うfrequencies.txtを含むフィードを生成／利用する人々について、皆さんは次の文言をどの程度厳密に解釈していますか？」
 
 ## 📅 今後のイベント {: #upcoming-events}
 
 
-**[GTFS-Fares v2 月例会議](https://www.eventbrite.ca/e/specifications-discussions-gtfs-fares-v2-monthly-meetings-tickets-522966225057)** | 2024年1月23日 午前11時（EST）
+**[GTFS-Fares v2 月例会議](https://www.eventbrite.ca/e/specifications-discussions-gtfs-fares-v2-monthly-meetings-tickets-522966225057)**| 2024年1月23日 午前11時 EST
 
-議題 : バックログの確認 & 1つのルートの挙動
+トピック：バックログのレビューおよび1つのルート・路線系統(route)の挙動
 
 ## GTFS コミュニティに参加する {: #join-the-gtfs-community}
 
 
-**[GitHub: google/transit](https://github.com/google/transit)**: コミュニティとアイデアを共有しましょう！公式の GTFS GitHub リポジトリに参加してください。
+**[GitHub: google/transit](https://github.com/google/transit)**: コミュニティとアイデアを共有しましょう！公式 GTFS GitHub リポジトリに参加してください。
 
-**[GTFS-changes](https://groups.google.com/g/gtfs-changes)**: 最新情報をすぐに入手できます。GTFS-changes Google グループに参加して、新しいプルリクエストや投票に関する情報を受け取りましょう。 
+**[GTFS-changes](https://groups.google.com/g/gtfs-changes)**: 更新が発生したらすぐに受け取りましょう。GTFS-changes Google グループに参加して、新しい pull request と投票に関する情報を入手してください。 
 
-**[GTFS-realtime](https://groups.google.com/g/gtfs-realtime)**: Realtime に関するすべてを話し合い、最新情報を入手しましょう。このグループでは GTFS Realtime について議論し、質問をしたり、変更を提案したりしています。
+**[GTFS-realtime](https://groups.google.com/g/gtfs-realtime)**: Realtime に関するあらゆる話題について議論し、最新情報を把握しましょう。このグループでは、GTFS Realtime について議論し、質問を行い、変更を提案しています。
 
-**[GTFS.org](https://gtfs.org/)**: 公式の GTFS ドキュメントサイトです。ここでは GTFS に関する最新のリソースを頻繁に更新しています。 
+**[GTFS.org](https://gtfs.org/)**: 公式 GTFS ドキュメント Web サイトです。ここでは、GTFS に必要な情報について頻繁に更新されるリソースを見つけることができます。 
 
-**[MobilityData Slack](https://share.mobilitydata.org/slack)**: GTFS について質問がありますか？それともコミュニティとつながりたいですか？GTFS Slack の会話に参加してください。1,300人以上のモビリティ愛好者がチャンネルで活動しており、質問に素早く答えてもらえる素晴らしい場所です。 
+**[MobilityData Slack](https://share.mobilitydata.org/slack)**: GTFS について質問がありますか、またはコミュニティとつながる必要がありますか？GTFS Slack の会話に参加してください。1,300 人を超えるモビリティ愛好家が参加するチャンネルで、質問への回答を迅速に得られる素晴らしい場所です。 
 
-**GTFS Digest 第2版をお読みいただきありがとうございます！2024年以降も最新の GTFS 情報をお届けできることを楽しみにしています。**
+**GTFS Digest 第2版をお読みいただき、ありがとうございます！2024年以降も、最新の GTFS 更新情報をお届けできることを楽しみにしています。**

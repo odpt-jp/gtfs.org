@@ -1,11 +1,11 @@
-# :material-plus-box-multiple-outline: 基本拡張機能 {: #material-plus-box-multiple-outline-base-add-ons}
+# :material-plus-box-multiple-outline: 基本追加機能 {: #material-plus-box-multiple-outline-base-add-ons}
 
-これらの機能は、Base で説明されている機能を拡張し、乗客により良い体験を提供するために GTFS データセットの包括性を高めたり、事業者、データベンダー、データ再利用者間の協力を促進したりするものです。これらの拡張には、Base で説明されているファイル内に新しいフィールドを追加したり、新しいファイルを作成したりすることが含まれる場合があります。
+これらの機能は、基本で説明されている機能を拡張するものであり、乗客により良い体験を提供するためにGTFSデータセットの包括性を高める、または事業者、データベンダー、データ再利用者間の協力を促進します。これらの拡張には、基本で説明されているファイル内への新しいフィールドの導入、または新しいファイルの作成が含まれることがあります。
 
 ## フィード情報 {: #feed-information}
 
 
-フィード情報は、フィードの有効期間（開始日および終了日）、公開している組織、GTFSデータセットおよびデータ公開方法に関する問い合わせ先など、フィードに関する重要な情報を伝達します。
+フィード情報は、有効期間（開始日および終了日）、公開組織、GTFSデータセットおよびデータ公開慣行に関する問い合わせ先情報など、フィードに関する重要な情報を伝達します。
 
 | 含まれるファイル                   | 含まれるフィールド   |
 |----------------------------------|-------------------|
@@ -29,10 +29,10 @@
         |--------------------------|----------------------|-----------|--------------|-----------------|---------------|--------------|--------------------|------------------------------|
         | Greater Region Transport | https://www.gra1.org | en        | en           |        20240101 |      20241231 |          3.1 | support@gra1.org   | https://www.gra1.org/support |
 
-## Shapes {: #shapes}
+## ルート形状(shape) {: #shapes}
 
-Shapes は便(trip)に定義および関連付けることができ、経路検索アプリケーションが便を地図上に表示し、乗客に交通機関で移動する距離を知らせることを可能にします。`shape_dist_traveled` フィールドは、乗客に地図を表示する際に、ルート形状(shape)のどの程度を描画するかをプログラム的に決定するために使用されます。  
-Shapes を定義する際には、詳細度（例：道路の正確な曲線に従う）と、必要な情報のみを効率的に伝達することとのバランスを取る必要があります。
+ルート形状(shape)は定義して便(trip)に関連付けることができ、これにより経路検索アプリケーションは便(trip)を地図上に表示し、乗客に交通機関の車両で移動する必要がある距離を知らせることができます。`shape_dist_traveled`フィールドは、乗客に地図を表示する際にルート形状(shape)のどの部分を描画するかをプログラムで決定するために使用されます。
+ルート形状(shape)を定義する際には、その詳細度（例: 道路の正確な曲線に従うこと）と、必要な情報のみを効率的に伝えることの間でバランスを取る必要があります。
 
 |含まれるファイル                             |含まれるフィールド            |
 |----------------------------------|-------------------|
@@ -48,7 +48,7 @@ Shapes を定義する際には、詳細度（例：道路の正確な曲線に�
 ??? note "サンプルデータ"
 
     <p style="font-size:16px">
-    以下のサンプルは、TriMet GTFS フィードの一部の shape を示しています（<a href="https://developer.trimet.org/GTFS.shtml">こちら</a>からダウンロードできます）。<br><br>
+    以下のサンプルは、TriMet GTFSフィードのルート形状(shape)の一部を示しています（<a     href="https://developer.trimet.org/GTFS.shtml">こちら</a>からダウンロードしてください）。 <br><br>
     </p>
     !!! note ""
         <p style="font-size:16px">
@@ -83,13 +83,15 @@ Shapes を定義する際には、詳細度（例：道路の正確な曲線に�
         |13302375|2            |461.7              |
         |13302375|3            |1245               |
 
-## ルートカラー {: #route-colors}
+## ルート・路線系統(route)の色 {: #route-colors}
 
-ルートカラーを使用することで、事業者のデザインガイドラインによって特定のルートに割り当てられた配色を正確に表現し、伝達することができます。これにより、利用者は公式の色によって交通サービスを容易に識別することができます。
+
+ルート・路線系統(route)の色を使用すると、事業者のデザインガイドラインによって特定のルート・路線系統(route)に割り当てられた配色を正確に表現し、伝達できます。これにより、ユーザーは公式の色によって交通サービスを容易に識別できます。
 
 | 含まれるファイル                   | 含まれるフィールド   |
 |----------------------------------|-------------------|
 |[routes.txt](../../../documentation/schedule/reference/#routestxt)|`route_color`, `route_text_color` |
+
 
 **前提条件**: 
 
@@ -98,7 +100,7 @@ Shapes を定義する際には、詳細度（例：道路の正確な曲線に�
 ??? note "サンプルデータ"
 
     <p style="font-size:16px">
-    次のサンプルは、ルート `RA` が HEX カラーコード `D95700` のオレンジ色であり、テキストは HEX カラーコード `0` の黒で表示されるべきであることを示しています。
+    次のサンプルは、ルート・路線系統(route) `RA` がHEXカラーコード `D95700` を使用したオレンジ色であり、テキストがHEXカラーコード `0` を使用した黒色で描画されるべきであることを示しています。
     </p>
     !!! note ""
         <p style="font-size:16px">
@@ -109,10 +111,10 @@ Shapes を定義する際には、詳細度（例：道路の正確な曲線に�
         |----------|-----------|------------------|--------------------|------------|-------------|------------------|
         | RA       | agency001 |               17 | Mission - Downtown |          3 | D95700      |                0 |
 
-## 自転車持ち込み可否 {: #bike-allowed}
+## 自転車の持ち込み可否 {: #bike-allowed}
 
 
-自転車持ち込み可否(Bike Allowed)は、特定の便(trip)で運行される車両が自転車を搭載できるかどうかを示し、利用者が自転車を含むマルチモーダルな旅程(journey)を計画・利用できるようにするための情報です。
+自転車の持ち込み可否は、特定の便(trip)を運行する車両が自転車を収容できるかどうかを示し、ユーザーが複数の交通手段を利用する旅程を実現できるサービスを計画・利用するのに役立ちます。
 
 | 含まれるファイル                   | 含まれるフィールド   |
 |----------------------------------|-------------------|
@@ -126,7 +128,7 @@ Shapes を定義する際には、詳細度（例：道路の正確な曲線に�
 ??? note "サンプルデータ"
 
     <p style="font-size:16px">
-    次のサンプルでは、便(trip) `AWE1` で使用される車両は少なくとも1台の自転車を搭載できること（`bikes_allowed=1`）、便(trip) `AWE2` で使用される車両は自転車を搭載できないこと（`bikes_allowed=2`）を示しています。
+    次のサンプルは、便 `AWE1` で使用される車両が車内に少なくとも1台の自転車を収容できること（`bikes_allowed=1`）、および便 `AWE2` で使用される車両は収容できないこと（`bikes_allowed=2`）を示しています。
     </p>
     !!! note ""
         <p style="font-size:16px">
@@ -138,12 +140,13 @@ Shapes を定義する際には、詳細度（例：道路の正確な曲線に�
         | RA       | WE         | AWE1    |             1 |
         | RA       | WE         | AWE2    |             2 |
 
-## 行先表示(Headsigns) {: #headsigns}
+## 行先表示(headsign) {: #headsigns}
 
-行先表示(headsigns)は、便(trip)の目的地を示す車両の表示内容を伝えるためのものであり、利用者が正しい交通サービスを識別しやすくすることができます。この機能は、特定のルート(route)に沿って行先表示が変更される場合をサポートします。
 
-| 含まれるファイル | 含まれるフィールド |
-|------------------|-------------------|
+行先表示(headsign)により、車両が便(trip)の目的地を示すために使用する表示を伝えることができ、利用者が正しい公共交通サービスを識別しやすくなります。この機能は、特定のルート・路線系統(route)に沿った行先表示(headsign)の変更をサポートします。
+
+| 含まれるファイル                   | 含まれるフィールド   |
+|----------------------------------|-------------------|
 |[trips.txt](../../../documentation/schedule/reference/#tripstxt)|`trip_headsign` |
 |[stop_times.txt](../../../documentation/schedule/reference/#stop_timestxt)|`stop_headsign`|
 
@@ -154,7 +157,7 @@ Shapes を定義する際には、詳細度（例：道路の正確な曲線に�
 ??? note "サンプルデータ"
 
     <p style="font-size:16px">
-    以下のサンプルでは、最初の表で便(trip) `AWE1` および `AWE2` に使用される行先表示を指定し、2つ目の表で `AWE1` の行先表示が停留所(stop) `TAS004` 以降で変更され、`trips.txt` で指定された内容を上書きすることを示しています。
+    以下のサンプルでは、最初の表は便(trip) `AWE1` および `AWE2` で使用する行先表示(headsign)を指定し、2番目の表は `AWE1` の行先表示(headsign)が停留所等(stop) `TAS004` の後に変更され、`trips.txt` で指定されたものを上書きすることを示しています。
     </p>
     !!! note ""
         <p style="font-size:16px">
@@ -180,13 +183,15 @@ Shapes を定義する際には、詳細度（例：道路の正確な曲線に�
         | AWE1    |      6:23:00 |        6:23:00 | TAS004  |             4 | Downtown - Main Square |
         | AWE1    |      6:25:00 |        6:25:00 | TAS005  |             5 | Downtown - Main Square |
 
-## ロケーションタイプ {: #location-types}
+## 位置タイプ {: #location-types}
 
-ロケーションタイプは、出入口、ノード、乗車エリアなど、交通駅内の主要なエリアおよびそれらの関係を分類するために使用されます。ロケーションタイプは、Pathway を使用して交通駅をモデル化するための基盤となります。
+
+位置タイプは、出入口、ノード、乗車エリアなどの交通駅構内の主要なエリア、およびそれらの関係を分類するために使用されます。位置タイプは、構内通路(pathway)を使用して交通駅をモデル化するための基盤となります。
 
 | 含まれるファイル                   | 含まれるフィールド   |
 |----------------------------------|-------------------|
 |[stops.txt](../../../documentation/schedule/reference/#stopstxt)|`location_type`, `parent_station` |
+
 
 **前提条件**: 
 
@@ -195,7 +200,7 @@ Shapes を定義する際には、詳細度（例：道路の正確な曲線に�
 ??? note "サンプルデータ"
 
     <p style="font-size:16px">
-    次のサンプルは、`stops.txt` 内で交通駅内の複数のロケーションを示しています。親駅は主要なロケーションを表し、その子ロケーションとして、プラットフォーム、出入口、汎用ノードなどが含まれます。
+    次のサンプルは、`stops.txt` 内の交通駅構内の複数の位置を示しています。主要な位置を表す親駅と、プラットフォーム、出入口、汎用ノードなどの子位置です。
     </p>
     !!! note ""
         <p style="font-size:16px">
@@ -204,27 +209,29 @@ Shapes を定義する際には、詳細度（例：道路の正確な曲線に�
 
         | stop_id      | stop_name                                             | location_type | parent_station |
         |--------------|-------------------------------------------------------|---------------|----------------|
-        | Station_A102 | Main Street station                                   |             1 |                |
-        | A102_B01     | Main Street station - North Platform                  |             0 | Station_A102   |
-        | A102_B02     | Main Street station - South Platform                  |             0 | Station_A102   |
-        | A102_E01     | Main Street station - Entrance/Exit                   |             2 | Station_A102   |
-        | A102_S01     | Main Street station - Top of entrance stairs          |             3 | Station_A102   |
-        | A102_S02     | Main Street station - Bottom of entrance stairs       |             3 | Station_A102   |
-        | A102_S03     | Main Street station - Top of north platform stairs    |             3 | Station_A102   |
-        | A102_S04     | Main Street station - Bottom of north platform stairs |             3 | Station_A102   |
-        | A102_S05     | Main Street station - Top of south platform stairs    |             3 | Station_A102   |
-        | A102_S06     | Main Street station - Bottom of south platform stairs |             3 | Station_A102   |
-        | A102_F01     | Main Street station - Paid side of fare gate          |             3 | Station_A102   |
-        | A102_F02     | Main Street station - Unpaid side of fare gate        |             3 | Station_A102   |
+        | Station_A102 | Main Street 駅                                   |             1 |                |
+        | A102_B01     | Main Street 駅 - 北側プラットフォーム                  |             0 | Station_A102   |
+        | A102_B02     | Main Street 駅 - 南側プラットフォーム                  |             0 | Station_A102   |
+        | A102_E01     | Main Street 駅 - 出入口                   |             2 | Station_A102   |
+        | A102_S01     | Main Street 駅 - 入口階段上部          |             3 | Station_A102   |
+        | A102_S02     | Main Street 駅 - 入口階段下部       |             3 | Station_A102   |
+        | A102_S03     | Main Street 駅 - 北側プラットフォーム階段上部    |             3 | Station_A102   |
+        | A102_S04     | Main Street 駅 - 北側プラットフォーム階段下部 |             3 | Station_A102   |
+        | A102_S05     | Main Street 駅 - 南側プラットフォーム階段上部    |             3 | Station_A102   |
+        | A102_S06     | Main Street 駅 - 南側プラットフォーム階段下部 |             3 | Station_A102   |
+        | A102_F01     | Main Street 駅 - 改札内側          |             3 | Station_A102   |
+        | A102_F02     | Main Street 駅 - 改札外側        |             3 | Station_A102   |
 
-## Frequencies {: #frequencies}
+## 運行間隔 {: #frequencies}
 
-Frequencies は、一定の運行間隔に基づいて運行するサービス（例：10分ごとに運行するバスや、指定された時間帯に2分間隔で運行する地下鉄など）をモデル化するために使用することができます。  
-一定の運行間隔で運行するサービスをモデル化する場合、`stop_times.txt` には停留所間の相対的な時間が含まれ、これにより乗客に表示する時刻を決定します。
 
-| 含まれるファイル | 含まれるフィールド |
-|------------------|-------------------|
+運行間隔は、10分ごとに運行するバスや、指定された時間帯に2分間隔で運行する地下鉄サービスなど、一定の運行間隔に基づいて運行するサービスをモデル化するために使用できます。
+一定の運行間隔で運行するサービスをモデル化する場合、`stop_times.txt` には、乗客に表示する時刻を決定するために、停留所等(stop)間の相対時刻が含まれます。 
+
+| 含まれるファイル                   | 含まれるフィールド   |
+|----------------------------------|-------------------|
 |[frequencies.txt](../../../documentation/schedule/reference/#frequenciestxt)|`trip_id`, `start_time`, `end_time`, `headway_secs`, `exact_times` |
+
 
 **前提条件**: 
 
@@ -233,11 +240,11 @@ Frequencies は、一定の運行間隔に基づいて運行するサービス�
 ??? note "サンプルデータ"
 
     <p style="font-size:16px">
-    以下のサンプルは、2つの異なる便を示しています。便 `AWE1` は30分ごとに運行（`headway_secs=1800`）、便 `AWE2` は15分ごとに運行（`headway_secs=900`）します。  
+    以下のサンプルは、2つの異なる便(trip)を示しています。便(trip) `AWE1` は30分ごとに運行し（`headway_secs=1800`）、便(trip) `AWE2` は15分ごとに運行します（`headway_secs=900`）。  
     <p style="font-size:16px">
-    `exact_times` フィールドは、スケジュールが `start_time` フィールドに入力された正確な開始時刻に従うかどうかを示します。
-    - 便 `AWE1` は午前6時10分から正午まで30分ごとに出発します。
-    - 便 `AWE2` は午前6時00分、6時15分、6時30分といった具合に出発します。
+    `exact_times` フィールドは、スケジュールが `start_time` フィールドに入力された正確な開始時刻に従うかどうかを示します。 
+    - 便(trip) `AWE1` は、午前6時10分から午後12時00分まで30分ごとに出発します。
+    - 便(trip) `AW2` は、午前6時00分、午前6時15分、午前6時30分などに出発します。
     </p>
     !!! note ""
         <p style="font-size:16px">
@@ -249,10 +256,10 @@ Frequencies は、一定の運行間隔に基づいて運行するサービス�
          AWE1    |    6:10:00 | 12:00:00 |         1800 |           0 |
          AWE2    |    6:00:00 | 19:50:00 |          900 |           1 |
 
-## 乗り換え(Transfers) {: #transfers}
+## 乗換 {: #transfers}
 
 
-乗り換え情報は、異なる移動区間（または乗車区間(leg)）間の接続に関する詳細を提供し、乗り換えを含む旅程(journey)の実現可能性を経路検索システムが判断できるようにします。乗り換えを指定することは、乗客が他の場所で乗り換えできないことを意味するものではなく、特定の乗り換えが不可能であるか、または乗り換えに最小限の時間が必要であるかを示すものです。
+乗換は、異なる移動区間（または乗車区間(leg)）間の移行に関する詳細を提供し、乗換を含む旅程(journey)の実現可能性を経路検索システムが判断できるようにします。乗換を指定しても、乗客が他の場所で乗換できないことを意味するわけではなく、特定の乗換が不可能であるか、または乗換に最低限必要な時間を示すだけです。
 
 | 含まれるファイル                   | 含まれるフィールド   |
 |----------------------------------|-------------------|
@@ -266,7 +273,7 @@ Frequencies は、一定の運行間隔に基づいて運行するサービス�
 ??? note "サンプルデータ"
 
     <p style="font-size:16px">
-    以下のサンプルは、3種類の異なる乗り換えを示しています。1つ目は停留所間の乗り換えで、最小乗り換え時間が5分必要なもの、2つ目は2つのルート間の時刻調整された乗り換えポイント、3つ目は同一車両によって運行される2つの便(trip)間の座席に座ったままの乗り換えです。
+    次のサンプルは、3種類の異なる乗換を示しています。5分の最低乗換時間を必要とする停留所等(stop)間の乗換、2つのルート・路線系統(route)間の時刻指定乗換地点、および同じ車両によって運行される2つの便(trip)間の座席に座ったままの乗換です。
     </p>
     !!! note ""
         <p style="font-size:16px">
@@ -281,11 +288,13 @@ Frequencies は、一定の運行間隔に基づいて運行するサービス�
 
 ## 翻訳 {: #translations}
 
-翻訳(translations)を使用すると、駅名などのサービス情報を複数の言語で提供することができ、旅行プランナーがユーザーの言語設定や位置情報設定に応じて特定の言語で情報を表示できるようになります。
+
+翻訳により、駅名などのサービス情報を複数の言語で提供でき、旅行計画ツールはユーザーの言語および位置情報の設定に応じて、特定の言語で情報を表示できます。
 
 | 含まれるファイル                   | 含まれるフィールド   |
 |----------------------------------|-------------------|
 |[translations.txt](../../../documentation/schedule/reference/#translationstxt)|`table_name`,`field_name`,`language`,`translation`,`record_id`,`record_sub_id`,`field_value` |
+
 
 **前提条件**: 
 
@@ -294,7 +303,7 @@ Frequencies は、一定の運行間隔に基づいて運行するサービス�
 ??? note "サンプルデータ"
 
     <p style="font-size:16px">
-    次のサンプルは、`routes.txt`で使用される2つのフィールド `route_long_name` および `route_desc` に対して、フランス語とスペイン語の翻訳が提供されている例を示しています。
+    以下のサンプルは、`routes.txt` で使用される2つのフィールド、`route_long_name` および `route_desc` に対して、フランス語とスペイン語の翻訳が提供されていることを示しています。
     </p>
     !!! note ""
         <p style="font-size:16px">
@@ -310,11 +319,13 @@ Frequencies は、一定の運行間隔に基づいて運行するサービス�
 
 ## 帰属情報 {: #attributions}
 
-帰属情報(attributions)は、データセットの作成に関与した組織（製作者、運行者、および／または当局など）に関する追加の詳細を共有することを可能にします。
+
+帰属情報により、データセットの作成に関与する組織（作成者、運行事業者、当局など）に関する追加の詳細を共有することができます。
 
 | 含まれるファイル                   | 含まれるフィールド   |
 |----------------------------------|-------------------|
 |[attributions.txt](../../../documentation/schedule/reference/#attributionstxt) |`attribution_id`, `agency_id`, `route_id`, `trip_id`, `organization_name`, `is_producer`, `is_operator`, `is_authority`, `attribution_url`, `attribution_email`, `attribution_phone` |
+
 
 **前提条件**: 
 
@@ -330,16 +341,16 @@ Frequencies は、一定の運行間隔に基づいて運行するサービス�
         </p>
 
         | attribution_id | agency_id | route_id | trip_id | organization_name        | is_producer | is_operator | is_authority | attribution_url                  | attribution_email       | attribution_phone |
-        |----------------|-----------|----------|---------|--------------------------|-------------|-------------|--------------|----------------------------------|-------------------------|-------------------|
-        | op01           | tb        |          |         | Transit Bus              |             |           1 |              | https://www.transitbus.org/fares | contact@transitbus.org  | (777) 555-7777    |
-        | au01           | gra       |          |         | Greater Region Transport |           1 |             |            1 | https://www.gra1.org             | contact@gra1.org        | (555) 555-5555    |
-        | op02           |           | rtd023   |         | Bus company A            |             |           1 |              | https://www.buscompanya.com      | contact@buscompanya.com | (333) 333-3333    |
-        | op03           |           | rtd025   |         | Bus company B            |             |           1 |              | https://www.buscompanyb.com      | contact@buscompanyb.com | (888) 888-8888    |
+        |----------------|-----------|----------|---------|--------------------------|-------------|-------------|--------------|----------------------------------|-------------------------|      -------------------|
+        | op01           | tb        |          |         | Transit Bus              |             |           1 |              | https://www.transitbus.org/fares | contact@transitbus.org  | (777)        555-7777    |
+        | au01           | gra       |          |         | Greater Region Transport |           1 |             |            1 | https://www.gra1.org             | contact@gra1.org        | (555)        555-5555    |
+        | op02           |           | rtd023   |         | Bus company A            |             |           1 |              | https://www.buscompanya.com      | contact@buscompanya.com | (333)        333-3333    |
+        | op03           |           | rtd025   |         | Bus company B            |             |           1 |              | https://www.buscompanyb.com      | contact@buscompanyb.com | (888)        888-8888    |
 
-## 車両搭載可否（Cars Allowed） {: #cars-allowed}
+## 車両の乗用車搭載可否 {: #cars-allowed}
 
 
-車両搭載可否（Cars Allowed）は、特定の便（例えば自動車を輸送できるカーフェリーや列車など）で使用される車両が、自動車を車内に搭載できるかどうかを示します。この機能により、利用者は自動車を含むマルチモーダルな旅程を計画・利用することができます。
+車両の乗用車搭載可否は、特定の便(trip)を運行する車両（カーフェリーや乗用車を輸送可能な列車など）が、車両内に乗用車を収容できるかどうかを示します。この機能は、複数の交通手段を利用する旅程(journey)を計画し、利用できるサービスに乗客がアクセスするのに役立ちます。
 
 
 | 含まれるファイル                   | 含まれるフィールド   |
@@ -354,7 +365,7 @@ Frequencies は、一定の運行間隔に基づいて運行するサービス�
 ??? note "サンプルデータ"
 
     <p style="font-size:16px">
-    次のサンプルでは、便 `AWE1` で使用される車両は少なくとも1台の自動車を搭載できること（`cars_allowed=1`）、便 `AWE2` で使用される車両は搭載できないこと（`cars_allowed=2`）を示しています。
+    以下のサンプルは、便(trip) `AWE1` で使用される車両が車内に少なくとも1台の乗用車を収容できること（`cars_allowed=1`）、および便(trip) `AWE2` で使用される車両は収容できないこと（`cars_allowed=2`）を指定しています。
     </p>
     !!! note ""
         <p style="font-size:16px">
@@ -366,10 +377,10 @@ Frequencies は、一定の運行間隔に基づいて運行するサービス�
         | RA       | WE         | AWE1    |             1 |
         | RA       | WE         | AWE2    |             2 |
 
-## 停留所等へのアクセス(Stop Access) {: #stop-access}
+## 停留所等(stop)へのアクセス {: #stop-access}
 
 
-停留所やプラットフォームが道路網から直接アクセス可能かどうかを示します。この機能により、経路検索システムは停留所やプラットフォームに到達するためのより正確な経路案内を生成することができます。
+停留所等(stop)へのアクセスは、停留所等(stop)またはプラットフォームに道路ネットワークから直接アクセスできるかどうかを示します。この機能により、経路検索ツールは停留所等(stop)またはプラットフォームに到達するための、より正確な案内を生成できます。
 
 | 含まれるファイル                   | 含まれるフィールド   |
 |----------------------------------|-------------------|
@@ -383,7 +394,7 @@ Frequencies は、一定の運行間隔に基づいて運行するサービス�
 ??? note "サンプルデータ"
 
     <p style="font-size:16px">
-    次のサンプルでは、`stop_id` = `STOP1` の停留所は駅の入口または構内通路(pathway)を経由してアクセスしなければならないことを示しています（`stop_access=0`）。一方、`stop_id` = `STOP2` の停留所は、親駅 `STATION0` の入口や構内通路を考慮せずに直接アクセスできることを示しています（`stop_access=1`）。
+    次のサンプルでは、`stop_id` = `STOP1` の停留所等(stop)には駅入口から、または構内通路(pathway)を使用してアクセスしなければならないこと（`stop_access=0`）、および `stop_id` = `STOP2` の停留所等(stop)には親駅 `STATION0` の入口または構内通路(pathway)を考慮せずに直接アクセスできること（`stop_access=1`）を指定しています。
     </p>
     !!! note ""
         <p style="font-size:16px">

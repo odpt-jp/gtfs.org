@@ -7,17 +7,18 @@
 
 [![PHP version](https://badge.fury.io/ph/google%2Fgtfs-realtime-bindings.svg)](https://badge.fury.io/ph/google%2Fgtfs-realtime-bindings)
 
-[GTFS-realtime](https://github.com/google/transit/tree/master/gtfs-realtime) Protocol Buffer 仕様から生成された PHP クラスを提供します。これらのクラスを使用することで、バイナリ形式の Protocol Buffer GTFS-realtime データフィードを PHP オブジェクトに変換して解析することができます。
+[GTFS-realtime](https://github.com/google/transit/tree/master/gtfs-realtime) Protocol Buffer 仕様から生成された PHP クラスを提供します。これらのクラスにより、バイナリ Protocol Buffer GTFS-realtime データフィードを PHP オブジェクトに解析できます。
 
-他の言語でのバインディングについては、[gtfs-realtime-bindings](https://github.com/google/gtfs-realtime-bindings) プロジェクトを参照してください。
+他の言語のバインディングについては、[gtfs-realtime-bindings](https://github.com/google/gtfs-realtime-bindings) プロジェクトを参照してください。
 
 !!! fail "非推奨"
 
-    *2019年2月時点で、公式の `google-protobuf` Google protoc ツールは [proto2 ファイルをサポートしていません](https://github.com/protocolbuffers/protobuf/issues/3623)。そのため、Google protocol buffer ツールで proto2 ファイルの公式サポートが実装されるまで、PHP バインディングは非推奨とします。*
+    *2019年2月時点で、公式の `google-protobuf` Google protoc ツールは [proto2 ファイルをサポートしていません](https://github.com/protocolbuffers/protobuf/issues/3623)。その結果、Google protocol buffer ツールにおいて proto2 ファイルの公式サポートが実装されるまで、PHP バインディングを非推奨とします。*
 
-## 依存関係の追加 {: #add-the-dependency}
+## 依存関係を追加する {: #add-the-dependency}
 
-`gtfs-realtime-bindings-php` クラスを自身のプロジェクトで使用するには、まず [Packagist Composer パッケージ](https://packagist.org/packages/google/gtfs-realtime-bindings) をインストールする必要があります。そのためには、`composer.json` ファイルに依存関係を追加してください:
+
+自身のプロジェクトで `gtfs-realtime-bindings-php` クラスを使用するには、まず [Packagist Composer package](https://packagist.org/packages/google/gtfs-realtime-bindings) をインストールする必要があります。これを行うには、`composer.json` ファイルに依存関係を追加します。
 
 ```
 "require": {
@@ -25,11 +26,11 @@
 }
 ```
 
-ここで、`x.y.z` は最新のリリースバージョンです:
+ここで、`x.y.z` は最新のリリースバージョンです。
 
 [![PHP version](https://badge.fury.io/ph/google%2Fgtfs-realtime-bindings.svg)](https://badge.fury.io/ph/google%2Fgtfs-realtime-bindings)
 
-次に、Composer の依存関係を更新してください:
+次に、Composer の依存関係を更新します。
 
 ```
 composer update
@@ -37,7 +38,8 @@ composer update
 
 ## コード例 {: #example-code}
 
-以下のコードスニペットは、特定のURLからGTFS-realtimeデータフィードをダウンロードし、それをFeedMessage（GTFS-realtimeスキーマのルート型）としてパースし、結果を反復処理する方法を示しています。
+
+以下のコードスニペットは、特定の URL から GTFS-realtime データフィードをダウンロードし、それを FeedMessage（GTFS-realtime スキーマのルート型）として解析して、結果を反復処理する方法を示しています。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -54,4 +56,4 @@ foreach ($feed->getEntityList() as $entity) {
 }
 ```
 
-PHPクラスの命名規則に関する詳細については、[gtfs-realtime.proto](https://github.com/google/transit/blob/master/gtfs-realtime/proto/gtfs-realtime.proto) から生成された [gtfs-realtime.php ソースファイル](https://github.com/google/gtfs-realtime-bindings-php/blob/master/src/gtfs-realtime.php) を参照してください。
+[gtfs-realtime.proto](https://github.com/google/transit/blob/master/gtfs-realtime/proto/gtfs-realtime.proto) から生成される PHP クラスの命名規則の詳細については、[gtfs-realtime.php ソースファイル](https://github.com/google/gtfs-realtime-bindings-php/blob/master/src/gtfs-realtime.php)を確認してください。

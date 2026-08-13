@@ -1,10 +1,11 @@
-# データセットの帰属表示 {: #dataset-attributions}
+# データセットの帰属情報 {: #dataset-attributions}
 
-## 集約されたGTFSデータセットにおけるデータ提供者への帰属 {: #attribute-data-to-a-data-producer-in-an-aggregated-gtfs-dataset}
+## 集約された GTFS データセットにおけるデータ作成者へのデータの帰属 {: #attribute-data-to-a-data-producer-in-an-aggregated-gtfs-dataset}
 
-一部のGTFSデータセットには、同一の管轄区域で運行する複数の事業者など、複数の情報源から集約されたデータが含まれています。場合によっては、[agency.txt](../../reference/#agencytxt) に記載された事業者を、プロデューサー(producer)、オペレーター(operator)、または当局(authority)として分類する必要があります。  
 
-例えば、Rejseplanenはデンマークの鉄道およびバスサービスの検索エンジンです。この会社は、以下の [agency.txt](../../reference/#agencytxt) に示すように、複数の事業者や提供者からのデータを含むGTFSデータセットを公開しています。  
+一部の GTFS データセットには、同じ管轄区域でサービスを提供する異なるサービス提供者など、複数のソースから集約されたデータが含まれています。場合によっては、[agency.txt](../../reference/#agencytxt) に記載されている事業者を、作成者、運行事業者、または当局として分類する必要があります。 
+
+例えば、Rejseplanen はデンマークの鉄道およびバスサービスの検索エンジンです。同社は、以下の [agency.txt](../../reference/#agencytxt) に示すように、複数の事業者および提供者からのデータを含む GTFS データセットを公開しています。 
 
 [**agency.txt**](../../reference/#agencytxt)
 
@@ -16,7 +17,7 @@ agency_id,agency_name,agency_url,agency_timezone,agency_lang
 276,Rejseplanen,https://www.rejseplanen.dk,Europe/Berlin,
 ```
 
-Rejseplanenをデータプロデューサーとして帰属させるために、[attributions.txt](../../reference/#attributionstxt) ファイルが使用されます。このファイルでは、組織の名前やURLとともに帰属IDが定義されます。`is_producer`、`is_operator`、`is_authority` フィールドを使用して、以下のようにRejseplanenを分類します。  
+Rejseplanen をデータ作成者として帰属させるために、[attributions.txt](../../reference/#attributionstxt) ファイルを使用します。このファイルでは、組織の名前および URL とともに帰属 ID を定義します。以下に示すように、`is_producer`、`is_operator`、および `is_authority` フィールドを使用して、Rejseplanen を分類します。 
 
 [**attributions.txt**](../../reference/#attributionstxt)
 
