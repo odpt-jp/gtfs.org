@@ -155,6 +155,8 @@ def _translate_text(text: str, prompt: str) -> str:
     """
     response = _client.responses.create(
         model=_GPT_MODEL,
+        reasoning={'effort': 'none'},
+        temperature=0,
         input=[
             {
                 'role': 'developer',
