@@ -4,6 +4,7 @@ repo_url: https://github.com/google/transit
 repo_name: GTFS Repository
 docs_dir: ../../docs/en       # Where to find the markdown files
 site_dir: ../../generated/    # Where to put the HTML files
+edit_uri: edit/main/docs/en/
 
 validation:
   nav:
@@ -21,12 +22,13 @@ theme:
   logo: assets/images/logo.png
   logo_light_mode: assets/images/logo.png
   favicon: assets/images/favicon.ico
+  topbar_style: glass
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: gtfs
       primary: custom
       accent: custom
-  name: material
+  name: materialx
   font:
     text: Mulish
     code: SF Mono
@@ -38,12 +40,15 @@ theme:
     - content.tabs.link
     - search.suggest
     - announce.dismiss
+    - content.action.agents
   icon:
     repo: fontawesome/brands/github
 extra_css:
+  - assets/stylesheets/gtfs-tracker.css
   - assets/stylesheets/extra.css
   - assets/stylesheets/footer.css
 extra_javascript:
+  - assets/javascript/gtfs-tracker.js
   - assets/javascript/anchor-redirects.js
   - assets/javascript/languageSwitchUrls.js
 extra:
@@ -225,6 +230,7 @@ nav:
         - Service alerts: documentation/realtime/examples/service-alerts.md
         - Trip updates: documentation/realtime/examples/trip-updates.md
         - Migration duplicated: documentation/realtime/examples/migration-duplicated.md
+        - Migration Active Period: documentation/realtime/examples/migration-active-period.md 
       - Change history:
         - Recent Additions: documentation/realtime/change-history/recent-additions.md
         - Full revision history: documentation/realtime/change-history/revision-history.md
@@ -252,12 +258,14 @@ nav:
         - Fare Products: resources/gtfs-schedule-feature-guides/fares/fare-products.md
         - Rider Categories: resources/gtfs-schedule-feature-guides/fares/rider-categories.md
         - Route-Based Fares: resources/gtfs-schedule-feature-guides/fares/route-based-fares.md
-        - Time-Based Fares: resources/gtfs-schedule-feature-guides/fares/time-based-fares.md
         - Zone-Based Fares: resources/gtfs-schedule-feature-guides/fares/zone-based-fares.md
+        - Time-Based Fares: resources/gtfs-schedule-feature-guides/fares/time-based-fares.md
         - Fare Transfers: resources/gtfs-schedule-feature-guides/fares/fare-transfers.md
         - Legacy Fares: resources/gtfs-schedule-feature-guides/fares/fares-v1.md
       - Shapes (shapes.txt): resources/gtfs-schedule-feature-guides/shapes.md
-    - MobilityData Recommendations: resources/mobilitydata-recommendations/overview.md    
+    - MobilityData Recommendations:
+      - Overview: resources/mobilitydata-recommendations/overview.md
+      - GTFS Schedule vs GTFS Realtime: resources/mobilitydata-recommendations/gtfs-schedule-vs-gtfs-realtime.md   
     - Producing Data: resources/producing-data.md
     - Sharing Data: resources/sharing-data.md
     - Using Data: resources/using-data.md
