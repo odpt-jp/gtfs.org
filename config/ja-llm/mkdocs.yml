@@ -101,8 +101,8 @@ plugins:
 nav:
   - ホーム: index.md
   - はじめに:
-    - GTFS とは何ですか？: getting-started/what-is-GTFS.md
-    - なぜ GTFS を使うのですか？: getting-started/why-use-GTFS.md
+    - GTFS とは何ですか？: getting-started/what-is-gtfs.md
+    - なぜ GTFS を使うのですか？: getting-started/why-use-gtfs.md
     - GTFS をどのように作成しますか？: 
       - 作成: getting-started/create.md
       - 検証: getting-started/validate.md
@@ -125,22 +125,10 @@ nav:
         - 帰属表示: documentation/schedule/examples/attributions.md
         - 連続する停留所等(stop): documentation/schedule/examples/continuous-stops.md
         - デマンド型サービス: documentation/schedule/examples/flex.md
-        - 運賃 (v2):
-          - 導入: documentation/schedule/examples/fares/intro.md
-          - チケットメディア: documentation/schedule/examples/fares/fare-media.md
-          - チケット商品: documentation/schedule/examples/fares/fare-products.md
-          - 乗客区分: documentation/schedule/examples/fares/rider-categories.md
-          - ルート・路線系統(route)に基づく運賃: documentation/schedule/examples/fares/route-based-fares.md
-          - ゾーンに基づく運賃: documentation/schedule/examples/fares/zone-based-fares.md
-          - 時間に基づく運賃: documentation/schedule/examples/fares/time-based-fares.md
-          - 乗り継ぎ運賃: documentation/schedule/examples/fares/fare-transfers.md
-          - アーカイブ済みの例: documentation/schedule/examples/fares/archived-fares-examples.md
-        - レガシー運賃 (v1): documentation/schedule/examples/fares-v1.md
         - フィード情報: documentation/schedule/examples/feed-info.md
         - 運行頻度: documentation/schedule/examples/frequencies.md
         - 構内通路(pathway): documentation/schedule/examples/pathways.md
         - ルート・路線系統(route)、停留所等(stop) & 便(trip): documentation/schedule/examples/routes-stops-trips.md
-        - ルート形状(shape): documentation/schedule/examples/shapes.md
         - テキスト読み上げ: documentation/schedule/examples/text-to-speech.md
         - 乗り換え: documentation/schedule/examples/transfers.md
         - 翻訳: documentation/schedule/examples/translations.md
@@ -170,6 +158,7 @@ nav:
         - サービスアラート: documentation/realtime/examples/service-alerts.md
         - 便(trip)の更新: documentation/realtime/examples/trip-updates.md
         - 移行の重複: documentation/realtime/examples/migration-duplicated.md
+        - Active Periodへの移行: documentation/realtime/examples/migration-active-period.md
       - 変更履歴:
         - 最近の追加: documentation/realtime/change-history/recent-additions.md
         - 完全な改訂履歴: documentation/realtime/change-history/revision-history.md
@@ -182,14 +171,29 @@ nav:
         - 役割: community/governance/gtfs-schedule-governance/roles.md
         - 変更の種類: community/governance/gtfs-schedule-governance/change-types.md
         - 変更プロセス: community/governance/gtfs-schedule-governance/change-process.md
-        - 以前のガバナンス: community/governance/gtfs-schedule-governance/CHANGES.md
-        - GTFS リアルタイムの修正プロセス: community/governance/gtfs-realtime-amendment-process.md
+        - 以前のガバナンス: community/governance/gtfs-schedule-governance/changes.md
+      - GTFS リアルタイムの修正プロセス: community/governance/gtfs-realtime-amendment-process.md
     - エクステンション:
       - 概要: community/extensions/overview.md
       - 運賃v2: community/extensions/fares-v2.md
       - Flex: community/extensions/flex.md
   - リソース:
     - 概要: resources/overview.md
+    - GTFS Schedule機能ガイド:
+      - 運賃 V2:
+        - 導入: resources/gtfs-schedule-feature-guides/fares/intro.md
+        - チケットメディア: resources/gtfs-schedule-feature-guides/fares/fare-media.md
+        - チケット商品: resources/gtfs-schedule-feature-guides/fares/fare-products.md
+        - 乗客区分: resources/gtfs-schedule-feature-guides/fares/rider-categories.md
+        - ルート・路線系統(route)に基づく運賃: resources/gtfs-schedule-feature-guides/fares/route-based-fares.md
+        - ゾーンに基づく運賃: resources/gtfs-schedule-feature-guides/fares/zone-based-fares.md
+        - 時間に基づく運賃: resources/gtfs-schedule-feature-guides/fares/time-based-fares.md
+        - 乗り継ぎ運賃: resources/gtfs-schedule-feature-guides/fares/fare-transfers.md
+        - レガシー運賃: resources/gtfs-schedule-feature-guides/fares/fares-v1.md
+      - ルート形状（shapes.txt）: resources/gtfs-schedule-feature-guides/shapes.md
+    - MobilityDataの推奨事項:
+      - 概要: resources/mobilitydata-recommendations/overview.md
+      - GTFS ScheduleとGTFS Realtimeの比較: resources/mobilitydata-recommendations/gtfs-schedule-vs-gtfs-realtime.md
     - データの作成: resources/producing-data.md
     - データの共有: resources/sharing-data.md
     - データの利用: resources/using-data.md
