@@ -10,100 +10,102 @@ authors:
 categories:
   - GTFS Digest
 ---
-# [GTFS Digest] 2025年9月号 - 新しい cEMV フィールドが採用されました {: #gtfs-digest-september-2025-new-cemv-field-adopted}
+# [GTFS Digest] 2025年9月 - 新しいcEMVフィールドが採用されました {: #gtfs-digest-september-2025-new-cemv-field-adopted}
 
-今月、GTFS コミュニティではいくつかの提案について投票が行われ、そのうち2件が仕様に採用されました。その中には、非接触型決済が利用可能であることを簡単に示すための新しい cEMV フィールドも含まれています。GTFS-Realtime における `SPECIAL_EVENT` フィールド、Fares V2 におけるネットワークセット、そして GTFS ファイルのホスティングに関するベストプラクティスについての議論も引き続き行われていますので、ぜひご参加ください。
+
+今月、GTFSコミュニティはいくつかの提案について投票を行い、そのうち2件が仕様に採用されました。これには、非接触型決済が受け付けられる場合を容易に示すための新しいcEMVフィールドが含まれます。GTFS-Realtimeの`SPECIAL_EVENT`フィールド、Fares V2のネットワークセット、およびGTFSファイルのホスティングに関するベストプラクティスについての議論も継続していますので、ぜひご参加ください！
 
 <!-- more -->
 
-GTFS Digest は、[MobilityData](https://mobilitydata.org/) によって毎月配信されるリソースで、GTFS に関する最新の動向をまとめたものです。
+GTFS Digestは、GTFSに関する動向の概要を提供するために[MobilityData](https://mobilitydata.org/)が毎月配信しているリソースです。
 
-私たちは皆さまからのフィードバックを大切にしており、新しいレイアウトについてのご意見をお聞かせいただきたいと考えています。[こちらのフォーム](https://forms.gle/GGefktvemnJD5Q9g8)にご記入いただき、このツールの可能性を最大限に引き出すためにご協力ください。
+皆様からのフィードバックを大切にしており、新しいレイアウトについてどう思われるかを知りたいと考えています。[このフォーム](https://forms.gle/GGefktvemnJD5Q9g8)にご記入いただき、このツールの可能性を最大限に引き出すためにご協力ください。
 
-## 🏅 貢献者への感謝 {: #contributor-shoutouts}
+## 🏅 コントリビューターへの称賛 {: #contributor-shoutouts}
 
 
-*毎月、GTFS コミュニティによる貢献を紹介しています。今月は以下の貢献を特に取り上げたいと思います。*
+*毎月、GTFSコミュニティによる貢献を紹介しています。今月は、以下の貢献を紹介します。*
 
-| 貢献者 | 貢献内容 |
+| コントリビューター | 貢献 |
 | :---- | :---- |
-| **Sierra W.** | GTFS-Fares チャンネルでの初めての貢献 |
-| **Masahiro Bessho, Matt Caywood, Masahiko Fukuda, Masaki Ito, M1LL3RD, BKK-Budapest** | PR に対する初めての投票 |
-| **ODPT** | 初めてのプロデューサーとして、また PR#545 に対する初めての投票 |
+| **Sierra W.** | GTFS-Faresチャンネルでの初めての貢献 |
+| **Masahiro Bessho, Matt Caywood, Masahiko Fukuda, Masaki Ito, M1LL3RD, BKK-Budapest** | PRへの初めての投票 |
+| **ODPT** | PR# 545における最初のproducerおよび最初の投票 |
 
 ## 🗳️ 現在投票中 {: #currently-voting}
 
 
-*以下は現在投票中の提案の一覧です。ぜひご覧いただき、投票プロセスにご参加ください。*
+*以下は、現在投票が行われている提案の一覧です。ぜひご確認のうえ、投票プロセスにご参加ください。*
 
-| 提案 | 提案者 | 説明 | 投票期限 |
+| 提案 | 提唱者 | 説明 | 投票締切 |
 | :---- | :---- | :---- | :---- |
-| [[GTFS Fares v2] セマンティクスの明確化 #561](https://github.com/google/transit/pull/561) | Tzujenchanmbd (MobilityData) | GTFS Fares v2 ファイルにおけるセマンティクスを明確化する提案 | 10月6日 |
+| [[GTFS Fares v2] Semantics clarification #561](https://github.com/google/transit/pull/561) | Tzujenchanmbd (MobilityData) | GTFS Fares v2 ファイルにおけるセマンティクスを明確化するための提案 | 10月6日 |
 
 ## 🚀 最近採択された提案 {: #recently-adopted}
 
 
-*今月は、最終段階を通過した提案を祝福します。以下をご覧ください。* 
+*今月は、最終段階を通過した提案をお祝いします。以下をご確認ください。* 
 
 | 提案 | 提唱者 | 説明 | 採択日 |
 | :---- | :---- | :---- | :---- |
-| [Add `cemv_support` field in `agency.txt` and `routes.txt` #545](https://github.com/google/transit/pull/545) | Sergiodero (MobilityData) | このPRでは、`agency.txt` および `routes.txt` に新しい `cemv_support` フィールドを導入し、特定の事業者またはルートにおいて、乗客がコンタクトレスの Europay、Mastercard、Visa を使用して交通サービスを利用できるかどうかを示します。 | 9月29日に投票終了 |
-| [Add `stops.stop_access` field #515](https://github.com/google/transit/pull/515) | tzujenchanmbd (MobilityData) | このPRでは、`stops.txt` に `stop_access` フィールドを追加し、特定の駅における停留所等(stop)へのアクセス方法を示します。詳細については [この提案](https://docs.google.com/document/d/1huTq9I6Bs38ZGtcG-7Cpns0kT1njV3PoUCjnjEE0Y1E/edit?tab=t.0#heading=h.4jjq7xol2izb) を参照してください。 | 9月22日に投票終了 |
+| [`agency.txt` および `routes.txt` に `cemv_support` フィールドを追加 #545](https://github.com/google/transit/pull/545) | Sergiodero (MobilityData) | この PR は、特定の事業者またはルート・路線系統(route)における交通サービスの利用時に、乗客が非接触型 Europay、Mastercard、Visa を使用できるかどうかを示すため、`agency.txt` および routes.txt に新しい cemv_support フィールドを導入します | 投票は9月29日に終了しました |
+| [`stops.stop_access` フィールドを追加 #515](https://github.com/google/transit/pull/515) | tzujenchanmbd (MobilityData) | この PR は、特定の駅において停留所等(stop)へどのようにアクセスするかを示すため、`stops.txt` に `stop_access` フィールドを追加します。詳細については、[この提案](https://docs.google.com/document/d/1huTq9I6Bs38ZGtcG-7Cpns0kT1njV3PoUCjnjEE0Y1E/edit?tab=t.0#heading=h.4jjq7xol2izb)を参照してください。  | 投票は9月22日に終了しました |
 
 ## 📂 アクティブな提案 {: #active-proposals}
 
 
-*これらの提案は活発に議論されており、皆様のご意見をお待ちしています！* 
+*これらの提案は活発に議論されており、皆様からのご意見を必要としています！* 
 
 | 提案 | 提唱者 | 説明 | ステータス |
 | :---- | :---- | :---- | :---- |
-| [[GTFS Fares v2] `networks.txt` が存在する場合に `routes.txt` 内の `network_id` を禁止する更新 #581](https://github.com/google/transit/pull/581) | Skalexch (MobilityData) | このPRは、`routes.txt` 内での `network_id` の存在を禁止するファイルの一覧に `networks.txt` を追加します。 | 議論中 |
-| [GTFS および GTFS-realtime の意思決定プロセス #579](https://github.com/google/transit/pull/579)  | Ckraatz (SimplifyTransit) | このPRは、GTFS Schedule および Realtime のガバナンスプロセスを変更することを目的としています。 | 議論中 |
-| [`fare_leg_join_rules.txt` 内のネットワークに関する制約を緩和し、ネットワークセットを追加 #578](https://github.com/google/transit/pull/578) | Skalexch (MobilityData) | この提案では、新しい2つのファイル `network_sets.txt` および `network_set_elements.txt` を追加し、同時に `fare_leg_join_rules.txt` に関するいくつかの要件を緩和します。これにより、複数のネットワークにまたがる有効運賃区間を照合できるようになります。 | 議論中 |
-| [`communication_period` および `impact_period` の追加 #546](https://github.com/google/transit/pull/546) | Skalexch (MobilityData) | このPRは、GTFS Realtime Alert 仕様の `active_period` フィールドを明確化し、曖昧さを解消するために、`communication_period` および `impact_period` という2つの新しいフィールドを導入します。議論はユースケースと除外条件に焦点を当てています。 |  |
-| [GTFS-realtime Service Alerts に新しい `SPECIAL_EVENT` の原因を追加 #577](https://github.com/google/transit/pull/577) | Ckraatz (SimplifyTransit) | この提案では、パレード、スポーツイベント、コンサートなどのイベントによる運行影響に対応するため、GTFS-realtime Service Alerts に「Special Event」という新しい原因(Cause)を追加します。 | 議論中 |
-| [`trips.txt` に `trip_route_type` を追加 (GTFS static) #572](https://github.com/google/transit/pull/572) | miklcct (Jnction) | この提案では、`trips.txt` に `trip_route_type` という新しい任意フィールドを追加します。 | 議論中  |
-| [GTFS ファイルのホスティングに関する新しいベストプラクティスの追加 #567](https://github.com/google/transit/pull/567) | doconnoronca (Transee) | この提案では、GTFS ファイルのホスティングに関するベストプラクティスを導入し、公共のWebサーバーが非ブラウザリクエストをブロックしたり、地域によってアクセスを制限したりすることを避け、代わりに不正利用防止に重点を置くことを推奨しています。 | 議論中 |
+| [[GTFS Fares v2] `networks.txt` も存在する場合、`routes.txt` の `network_id` の更新を禁止 #581](https://github.com/google/transit/pull/581) | Skalexch (MobilityData) | このPRは、`routes.txt` における `network_id` の存在を禁止するファイルに networks.txt を追加します | 議論期間 |
+| [GTFS および GTFS-realtime の意思決定プロセス #579](https://github.com/google/transit/pull/579)  | Ckraatz (SimplifyTransit) | このPRは、GTFS Schedule および Realtime のガバナンスプロセスを変更することを目的としています。 | 議論期間 |
+| [ネットワークセットを追加し、`fare_leg_join_rules.txt` のネットワークに関する制約を緩和 #578](https://github.com/google/transit/pull/578) | Skalexch (MobilityData) | この提案は、`network_sets.txt` と `network_set_elements.txt` という2つの新しいファイルを追加するとともに、`fare_leg_join_rules.txt` の要件の一部を緩和します。これにより、複数のネットワークにまたがる有効運賃区間(effective fare leg)を照合できるようになります。 | 議論期間 |
+| [`communication_period` および `impact_period` を追加 #546](https://github.com/google/transit/pull/546) | Skalexch (MobilityData) | このPRは、2つの新しいフィールド `communication_period` および `impact_period` を導入することで、GTFS Realtime Alert 仕様の `active_period` フィールドを明確化し、曖昧さを解消します。議論はユースケースおよび除外事項に焦点を当てています。 |  |
+| [GTFS-realtime Service Alerts に新しい `SPECIAL_EVENT` Cause を追加 #577](https://github.com/google/transit/pull/577) | Ckraatz (SimplifyTransit) | この提案は、パレード、スポーツイベント、コンサートなどの混乱に適用可能な、「Special Event」と呼ばれる新しい Cause を GTFS-realtime Service Alerts に追加します。 | 議論期間 |
+| [GTFS static の `trips.txt` に `trip_route_type` を追加 #572](https://github.com/google/transit/pull/572) | miklcct
+(Jnction) | この提案は、`trip_route_type` という新しい任意フィールドを `trips.txt` に追加します。 | 議論期間  |
+| [GTFS ファイルのホスティングに関するベストプラクティスを追加 #567](https://github.com/google/transit/pull/567) | doconnoronca (Transee) | この提案は、公開Webサーバーがブラウザ以外からのリクエストをブロックしたり、地域によってアクセスを制限したりしないことを推奨する、GTFSファイルのホスティングに関するベストプラクティスを導入します。代わりに、不正利用行為の防止に焦点を当てます。 | 議論期間 |
 
-### その他の公開中の提案 {: #other-open-proposals}
-
-
-* [[GTFS-Fares v2] 距離ベース運賃の追加 #556](https://github.com/google/transit/pull/556)  
-* [gtfs-realtime.proto の誤字修正 #541](https://github.com/google/transit/pull/541)  
-* [original_trip_id による GTFS Schedule および Realtime の拡張 #534](https://github.com/google/transit/pull/534)  
-* [停留所単位で車両の搭載可否を指定するための乗車許可の導入 #533](https://github.com/google/transit/pull/533)  
-* [仕様への event_based_trips.txt の追加 #527](https://github.com/google/transit/pull/527)  
-* [過去の Stop Time Events を保持するべき #502](https://github.com/google/transit/pull/502)  
-* [[GTFS Fares v2] `nonconsecutive_transfer_allowed` フィールドの追加および `fare_transfer_type` の明確化 #498](https://github.com/google/transit/pull/498)  
-* [[GTFS Fares v2] Area Set のマッチング述語 #483](https://github.com/google/transit/pull/483)  
-* [[GTFS-Fares v2] チケット商品／メディアの乗り継ぎ動作 #423](https://github.com/google/transit/pull/423)
-
-## 🐙 Githubで最も活発な議論 {: #most-active-conversations-on-github}
+### その他のオープンな提案: {: #other-open-proposals}
 
 
-*Github Issues は、新機能のアイデアや仕様に関する質問など、議論を始めるのに最適な場所です。以下は今月最も活発な議論です。*
+* [[GTFS-Fares v2] 距離ベース運賃を追加 #556](https://github.com/google/transit/pull/556)  
+* [gtfs-realtime.proto の誤字を修正 #541](https://github.com/google/transit/pull/541)  
+* [original_trip_id により GTFS Schedule と Realtime を拡張 #534](https://github.com/google/transit/pull/534)  
+* [停留所ごとの粒度で車両の輸送を指定するための乗車許可を導入 #533](https://github.com/google/transit/pull/533)  
+* [仕様に event_based_trips.txt を追加 #527](https://github.com/google/transit/pull/527)  
+* [過去の Stop time イベントは保持するべきです #502](https://github.com/google/transit/pull/502)  
+* [[GTFS Fares v2] `nonconsecutive_transfer_allowed` フィールドを追加し、`fare_transfer_type` を明確化 #498](https://github.com/google/transit/pull/498)  
+* [[GTFS Fares v2] Area Set の一致述語 #483](https://github.com/google/transit/pull/483)  
+* [[GTFS-Fares v2] チケット商品/チケットメディアの乗換動作 #423](https://github.com/google/transit/pull/423)
 
-| 議論 | 作成者 | 説明 |
+## 🐙 Github で最も活発な会話 {: #most-active-conversations-on-github}
+
+
+*Github Issues は、新機能のアイデアや仕様に関する質問など、会話を始めるのに最適な場所です。以下は今月最も活発な会話です。*
+
+| 会話 | 著者 | 説明 |
 | :---- | :---- | :---- |
-| [GTFS-TripModifications に Cause と DayTimePeriod を追加する #580](https://github.com/google/transit/issues/580) | **Ckraatz (Simplify Trannsit)** | この議論は、便の変更(Trip Modifications)に新しい情報要素を追加し、変更の原因および変更が行われる日や時間帯を伝達できるようにする可能性を中心にしています。 |
+| [Add Cause and DayTimePeriod to GTFS-TripModifications #580](https://github.com/google/transit/issues/580) | **Ckraatz (Simplify Trannsit)** | この議論は、変更の原因、および変更が実施される日と時間帯を伝達するために、Trip Modifications に新しい情報要素を追加する可能性を中心としています。 |
 
-## 🔥 Slack上で最も活発な会話 {: #most-active-conversations-on-slack}
+## 🔥 Slackで最も活発な会話 {: #most-active-conversations-on-slack}
 
 
-*今月の GTFS Slack チャンネルで最も活発だった議論のまとめです。*
+*今月のGTFS Slackチャンネルで最も活発だった議論のまとめです。*
 
-| 投稿者 | 説明 | Slack チャンネル |
+| 投稿者 | 説明 | Slackチャンネル |
 | :---- | :---- | :---- |
-| Stephen Miller | [GTFS について事業者にインタビューするボランティアを募集](https://mobilitydata-io.slack.com/archives/C3FFFKX9C/p1758013110596709) | #gtfs |
-| Leonard Ehrenfried | [network_id および from/to_area_id を含むケースの解釈](https://mobilitydata-io.slack.com/archives/C01KL7PR170/p1759135967840069) について質問 | #gtfs-fares |
-| Lars Persson | [Transit データを使用したアプリ作成に関するアドバイス](https://mobilitydata-io.slack.com/archives/C3D321CKB/p1759224364887579) を求めた | #gtfs-realtime |
+| Stephen Miller | [GTFSについて事業者にインタビューするボランティア](https://mobilitydata-io.slack.com/archives/C3FFFKX9C/p1758013110596709)を募集しました | #gtfs |
+| Leonard Ehrenfried | [network_idおよびfrom/to_area_idを含むケースの解釈](https://mobilitydata-io.slack.com/archives/C01KL7PR170/p1759135967840069)について質問しました | #gtfs-fares |
+| Lars Persson | [Transitデータを使用したアプリの作成に関する助言](https://mobilitydata-io.slack.com/archives/C3D321CKB/p1759224364887579)を求めました | #gtfs-realtime |
 
 ## 📅 今後のイベント {: #upcoming-events}
 
 
-| イベント | 日付 | 開催場所 |
+| イベント | 日付 | 場所 |
 | :---- | :---- | :---- |
-| GTFS Fares V2 ワーキンググループ会議 | 2025年10月28日 | [オンライン](https://mobilitydata.org/event/specifications-discussions-gtfs-fares-v2-monthly-meeting-8/2025-10-28/) |
+| GTFS Fares V2 Working Group Meeting | 2025年10月28日 | [オンライン](https://mobilitydata.org/event/specifications-discussions-gtfs-fares-v2-monthly-meeting-8/2025-10-28/) |
 
 ## 💬 GTFS コミュニティに参加する {: #join-the-gtfs-community}
 
@@ -112,12 +114,12 @@ GTFS Digest は、[MobilityData](https://mobilitydata.org/) によって毎月�
 
 - :simple-slack: [__Slack__](https://share.mobilitydata.org/slack) に参加し、コミュニティに自己紹介してください。
 
-- :material-newspaper-variant: [__GTFS Digest__](https://gtfs.org/blog/) を購読して、GTFS に関する毎月の最新情報を受け取りましょう。
+- :material-newspaper-variant: GTFS に関するあらゆる最新情報を毎月受け取るには、[__GTFS Digest__](https://gtfs.org/blog/) を購読してください。
 
-- :fontawesome-solid-user-group: [__GTFS Changes__](https://groups.google.com/g/gtfs-changes) Google グループに参加して、開発に関する最新情報を入手してください。
+- :fontawesome-solid-user-group: 開発に関する情報を得るために、[__GTFS Changes__](https://groups.google.com/g/gtfs-changes) Google Group に参加してください。 
 
-- :simple-github: [__GitHub__](https://github.com/google/transit) を訪問して、課題を投稿したり、変更に関する議論に参加したり、変更を提案したりしてください。
+- :simple-github: [__GitHub__](https://github.com/google/transit) にアクセスして、issue を投稿し、変更に関する議論に参加し、変更を提案してください。 
 
 </div>
 
-**GTFS Digest のこの号をお読みいただきありがとうございます！2025年以降も最新の GTFS 情報をお届けできることを楽しみにしています。**
+**今回の GTFS Digest をお読みいただき、ありがとうございます！2025年以降も、最新の GTFS 更新情報をお届けできることを楽しみにしています。**

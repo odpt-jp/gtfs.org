@@ -1,32 +1,60 @@
 # チケットメディア {: #fare-media}
 
 
-*主なファイル: fare_media.txt, fare_products.txt*  
-*例: [Translink (バンクーバー)](../intro/#translink-vancouver)*
+*主要ファイル: fare_media.txt、fare_products.txt*  
+*例: [Translink（バンクーバー）](../intro/#translink-vancouver)*
 
-!!! info "リマインダー" 
+!!! info "注意" 
 
-    チケット商品は、公共交通機関に乗車する際に認証するために使用される、さまざまなチケットメディア内に格納されます。詳細については、イントロダクションページの [機能セクション](../intro/#fares-features-and-their-files) を参照してください。
+    チケット商品は、公共交通機関への乗車時にそれらを検証するために使用される異なるチケットメディア内に保存されます。詳細については、Introduction ページの[機能のセクション](../intro/#fares-features-and-their-files)を再確認してください。
 
-## チケットメディアの作成 {: #create-fare-media}
+## チケットメディアを作成する {: #create-fare-media}
 
-チケットメディアのエントリは、`fare_media.txt` に以下のように作成します。
 
-1. **fare_media_id** 列に、チケットメディアを識別する一意のIDを入力します。  
-    * これは `fare_products.txt` と関連付けるために使用される主キー(Primary Key)です。  
-2. **fare_media_name** 列に、乗客向けのチケットメディアの名称を入力します。  
-3. **fare_media_type** 列に、適切な列挙値(enum)を入力します（0 = なし、1 = 紙のチケット、2 = 交通系ICカード、3 = cEMV、4 = モバイルアプリ）。
+チケットメディアのエントリは、以下のように `fare_media.txt` で作成します。
+
+1. **fare_media_id** 列に、チケットメディアを識別する一意の ID を入力します。  
+    * これは、`fare_products.txt` と関連付けるために使用される主キーです。  
+2. **fare_media_name** 列に、乗客向けのチケットメディア名を入力します。  
+3. **fare_media_type** 列に、適切な列挙値（0=なし、1=物理的な紙のチケット、2=物理的な交通カード、3=cEMV、4=モバイルアプリ）を入力します。
 
 チケット商品に関する詳細は、[ドキュメントを参照してください](https://gtfs.org/documentation/schedule/reference)。
 
-この例では、5種類の異なるチケットメディアが作成され、それぞれにID、名称、メディアの種類が割り当てられています。たとえば、Compass Card は物理的な交通系ICカードであるため、`fare_media_type=2` が割り当てられます。
+この例では、5種類の異なるチケットメディアを作成し、それぞれに ID、名称、およびメディアの種類を割り当てています。たとえば、Compass Card は物理的な交通カードであるため、`fare_media_type=2` を割り当てます。
 
 [**fare_media.txt**](../../../reference/#fare_mediatxt)
 
 | fare_media_id | fare_media_name | fare_media_type |
 | :---- | :---- | :---- |
-| cash | Cash | 0 |
-| contactless | Contactless | 3 |
+| cash | 現金 | 0 |
+| contactless | 非接触型 | 3 |
 | compass_card | Compass Card | 2 |
 | compass_ticket | Compass Ticket | 1 |
-| wallet | Mobile Wallet | 3 |
+| wallet | モバイルウォレット | 3 |
+
+## （代替案）cEMV サポートを指定する {: #alternative-specify-cemv-support}
+
+
+GTFS Fares (v2) を作成する能力がない GTFS プロデューサーは、Fares (v2) を持たずに cEMV サポートを指定することができます。これにより、コンシューマーは Fares (v2) を実装しなくても、事業者（または特定のルート・路線系統(route)）が非接触 EMV を使用した支払いをサポートしているかどうかを表示できます。
+
+!!! tip "ヒント" 
+
+    cEMV サポートだけでなく包括的な運賃情報を表示できるようにするため、Fares (v2) を実装することが推奨されます。
+
+1. cEMV 情報を指定するために、`agency.txt` または `routes.txt` のいずれかを選択します。  
+    * 事業者全体で、すべての便(trip)にわたり同じ cEMV サポートがある場合は、`agency.txt` を使用します。  
+    * cEMV サポートがルート・路線系統(route)ごとに異なる場合は、\routes.txt` を使用します。  
+2. `agency.txt` または `routes.txt` の **cemv_support** フィールドに、適切な列挙値を入力します。
+    * 0: cEMV 情報なし。
+    * 1: 乗客は、事業者（またはルート・路線系統(route)）に関連するすべての便(trip)で、cEMV をチケットメディアとして使用することができます。
+    * 2: 事業者（またはルート・路線系統(route)）に関連するすべての便(trip)で、cEMV はチケットメディアとしてサポートされていません。
+
+cEMV サポートの詳細については、[ドキュメントを参照してください](./../../reference/)。
+
+[Translink](../intro/#translink-vancouver) では、すべてのルート・路線系統(route)で cEMV がサポートされています。したがって、**cemv_support** は `agency.txt` で定義できます。
+
+[**agency.txt**](../../../reference/#agencytxt)
+
+| agency_id | agency_name | cemv_support | … |
+| :---- | :---- | :---- | :---- |
+| TL | TransLink | 1 | … |

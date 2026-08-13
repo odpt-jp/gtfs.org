@@ -1,54 +1,60 @@
 # フィードエンティティ {: #feed-entities}
 
-GTFS Realtime は、1つのリアルタイムフィード内で組み合わせることができる、4種類の異なるリアルタイムデータをサポートしています。以下に概要を示し、詳細なドキュメントは該当するセクションに記載されています。
 
-## 便の更新(trip updates) {: #trip-updates}
+GTFS Realtime は、単一の realtime feed 内で組み合わせることができる、4つの異なる種類のリアルタイムデータをサポートしています。以下に概要を示します。完全なドキュメントは該当するセクションに記載されています。
 
-#### "バスXは5分遅れています" {: #bus-x-is-delayed-by-5-minutes}
+## 便の更新(trip update) {: #trip-updates}
+
+#### 「バスXは5分遅延しています」 {: #bus-x-is-delayed-by-5-minutes}
 
 
-便の更新(trip updates)は、時刻表の変動を表します。リアルタイム対応可能なすべての便について、便の更新を受け取ることが期待されます。これらの更新は、ルート・路線系統(route)に沿った停留所等(stop)での到着または出発の予測を提供します。便の更新は、便の運休、時刻表への追加、さらには経路変更といった、より複雑なシナリオにも対応することができます。
+便の更新(trip update)は、時刻表の変動を表します。リアルタイム対応の、予定されているすべての便(trip)について、便の更新(trip update)を受信することが期待されます。これらの更新は、ルート・路線系統(route)上の停留所等(stop)における予測到着時刻または予測出発時刻を提供します。便の更新(trip update)は、便(trip)が運休となる、時刻表に追加される、あるいは経路変更されるといった、より複雑なシナリオにも対応できます。
 
-[便の更新についてさらに詳しく...](../trip-updates)
+[便の更新(trip update)の詳細...](../trip-updates)
 
-## 運行情報(alerts) {: #service-alerts}
+## 運行情報(alert) {: #service-alerts}
 
-#### "駅Yは工事のため閉鎖されています" {: #station-y-is-closed-due-to-construction}
+#### 「Station Y は工事のため閉鎖されています」 {: #station-y-is-closed-due-to-construction}
 
-運行情報(alert)は、特定のエンティティに関する高レベルの問題を表し、一般的には運行障害の内容を説明するテキスト形式で提供されます。
 
-運行情報(alert)は以下のような問題を表すことがあります:
+運行情報は、特定のエンティティに関するより上位レベルの問題を表し、一般に運行障害のテキストによる説明の形式を取ります。
+
+これらは、以下に関する問題を表すことができます。
 
 *   駅
 *   路線
 *   ネットワーク全体
-*   その他
+*   など
 
-運行情報(alert)は通常、問題を説明するテキストで構成されます。また、詳細情報へのURLや、この運行情報(alert)が誰に影響するのかを理解するための、より構造化された情報を含めることもできます。
+運行情報は通常、問題を説明するテキストで構成されます。また、詳細情報のための URL や、この運行情報が誰に影響するかを理解するのに役立つ、より構造化された情報も使用できます。
 
-[運行情報(alert)についての詳細...](../service-alerts)
+[運行情報の詳細...](../service-alerts)
 
 ## 車両位置情報(vehicle position) {: #vehicle-positions}
 
-#### "このバスは時刻Yに位置Xにいます" {: #this-bus-is-at-position-x-at-time-y}
+#### 「このバスは時刻Yに位置Xにいます」 {: #this-bus-is-at-position-x-at-time-y}
+
 
 車両位置情報(vehicle position)は、ネットワーク上の特定の車両に関するいくつかの基本的な情報を表します。
 
-最も重要なのは車両が存在する緯度と経度ですが、車両からの現在の速度や走行距離計の読み取りデータを使用することもできます。
+最も重要なのは車両がいる緯度と経度ですが、車両から取得した現在の速度や走行距離計の読み取り値に関するデータも使用できます。
 
-[車両位置情報の更新についてさらに詳しく...](../vehicle-positions)
+[Vehicle Position updatesの詳細...](../vehicle-positions)
 
-## 便の変更(trip modifications) {: #trip-modifications}
+## 便の変更(trip modification) {: #trip-modifications}
 
-#### "これらの便は特定の日に迂回の影響を受けます" {: #these-trips-are-affected-by-a-detour-on-certain-days}
+#### 「これらの便は特定の日に迂回の影響を受けます」 {: #these-trips-are-affected-by-a-detour-on-certain-days}
 
 
-便の変更(trip modification)は、複数の便に影響を与える迂回を記述するために使用されます。
+便の変更(trip modification)は、一連の便に影響する迂回を記述するために使用されます。 
 
-便の変更(trip modification)では、特定の停留所等(stop)をキャンセルしたり、便の時刻を調整したり、便が通る新しいルート形状(shape)を提供したり、途中に設置される臨時停留所等(stop)の位置を提供したりすることができます。
+便の変更(trip modification)では、特定の停留所等(stop)をキャンセルし、便の時刻を調整し、
+便が通行する新しいルート形状(shape)を提供し、途中にある臨時
+停留所等(stop)の位置を提供することができます。
 
-[便の変更(trip modification)についてさらに詳しく...](../trip-modifications)
+[便の変更(trip modification)の詳細...](../trip-modifications)
 
 ## フィードタイプに関する歴史的注記 {: #historical-remark-on-feed-types}
 
-GTFS Realtime 仕様の初期バージョンでは、各フィードには単一の種類のエンティティのみを含める必要がありました。マージされたフィードをタイプごとのフィードスキーマに変換するためのツールの例は、Bliksem Labs の [gtfsrt-examples](https://github.com/bliksemlabs/gtfsrt-examples/blob/master/split_by_entitytype.py) GitHub リポジトリにあります。
+
+GTFS Realtime Specification の初期バージョンでは、各フィードには単一タイプのエンティティのみを含めることが必須でした。統合されたスキーマからタイプごとのフィードスキーマへ変換するツールの例は、Bliksem Labs の [gtfsrt-examples](https://github.com/bliksemlabs/gtfsrt-examples/blob/master/split_by_entitytype.py) GitHub リポジトリにあります。

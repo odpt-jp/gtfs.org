@@ -1,14 +1,15 @@
-# 読み上げ用フィールド(text-to-speech) {: #text-to-speech}
+# 読み上げ用 {: #text-to-speech}
 
 ## 略語、特殊な発音、大きな数字および序数 {: #abbreviations-unusual-pronunciations-large-digits-and-ordinals}
 
-略語、特殊な発音、大きな数字は、GTFS のテキストフィールドでよく見られます。以下の TriMet の例では、読み上げ用フィールド(text-to-speech field)をどのように使用するべきかを示しています。
 
-- 略語はすべて綴りを展開します。例: “SW” は “southwest” に、“Ave” は “avenue” になります。
-- 発音はソフトウェアが正しく読み上げられるように綴ります。例: “Orenco” は “orrainkoe” に、“Merlo” は “murlo” になります。
-- 大きな数字は、実際に発音される通りに綴ります。例: “3300” は “thirty-three hundred” になります。  
-  そうしないと、ソフトウェアは “3300” を “three thousand three hundred” と読み上げてしまいます。
-- 序数（1st, 2nd, 3rd など）は綴りで表記するべきです。例: “1st” は “first” になります。
+略語、特殊な発音および大きな数字は、GTFSのテキストフィールドで一般的に使用されます。以下のTriMEtの例では、読み上げ用フィールド(text-to-speech field)をどのように使用するべきかを確認できます。
+
+- 略語は完全に綴り出します。例: 「SW」は「southwest」になり、「Ave」は「avenue」になります。
+- 発音は、ソフトウェアが正しく読み上げるように綴ります。例: 「Orenco」は「orrainkoe」になり、「Merlo」は「murlo」になります。
+- 大きな数字は、発話されるとおりに綴り出します。「3300」は「thirty-three hundred」になります。
+そうしない場合、ソフトウェアは「3300」を「three thousand three hundred」と読み上げます。
+- 1st、2nd、3rdなどの序数は、綴り出すべきです。例: 「1st」は「first」になります。
 
 [**stops.txt**](../../reference/#stopstxt)
 
@@ -19,12 +20,12 @@
 | 9828 | Merlo Rd/SW 158th Ave MAX Station | murlo road southwest one hundred fifty eighth avenue max station |
 | 10074 | 3300 Block NW 35th | thirty-three-hundred block northwest thirty fifth |
 
-## 頭字語(Acronyms) {: #acronyms}
+## 頭字語 {: #acronyms}
 
 
-頭字語をアルファベットで表記する場合、文字の後にピリオドを付けるか、スペースで区切るべきです。これにより、その頭字語が単語としてではなく、1文字ずつ読み上げられるべきであることが明確になります。
+文字ごとに参照される頭字語については、文字の後にピリオドを付けるか、文字をスペースで区切るべきです。これにより、その頭字語を単語としてではなく、文字ごとに読むべきであることが明確になります。
 
-タンパの場合、行先表示(headsign)「North to UATC」には、個々の文字で発音される頭字語が含まれています。読み上げ用フィールド(text-to-speech field)での曖昧性解消は以下のようになります。
+Tampa では、行先表示(headsign)「North to UATC」には、個々の文字で発音される頭字語が含まれています。読み上げ用の曖昧性解消は次のようになります。
 
 [**trips.txt**](../../reference/#tripstxt)
 
@@ -38,12 +39,13 @@
 | ---- | ---- |
 | North to UATC | north to u a t c |
 
-逆に、いくつかの頭字語は単語として読まれるべきです（例: NATO、NASA）。この場合、読み上げ用フィールド(text-to-speech field)はそれを反映するべきです。
+一方で、一部の頭字語は単語として読むべきです。例: NATO、NASA。読み上げ用フィールド(text-to-speech field)にはこれを反映するべきです。
 
-!!! Note
+!!! 注記
 
-    `trips.tts_trip_headsign` フィールドは、まだ仕様において公式ではありません。
+    フィールド `trips.tts_trip_headsign` は、まだ仕様上正式なものではありません。
 
 ## 複数の意味を持つ略語の明確化 {: #clarifying-abbreviations-with-multiple-meanings}
 
-「St」という略語には複数の意味があります。「street（通り）」、「saint（聖）」、 「station（駅）」、そして「1st（first、1番目）」です。読み上げ用フィールド(text-to-speech field)は、正しい単語を綴って明示することで、これらの二重の意味を解消することができ、その際にはTTSソフトウェアが正しく読み上げられるように記述する必要があります。
+
+「St」という略語には、「street」、「saint」、「station」、および「first」を意味する「1st」という複数の意味があります。読み上げ用フィールド(text-to-speech field)では、正しい単語を完全に綴り、かつTTS softwareが読み取れる形式で記述することで、これらの二重の意味に対応することができます。

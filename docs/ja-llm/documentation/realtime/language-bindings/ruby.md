@@ -7,13 +7,14 @@
 
 [![Gem Version](https://badge.fury.io/rb/gtfs-realtime-bindings.svg)](https://badge.fury.io/rb/gtfs-realtime-bindings)
 
-[GTFS-realtime](https://github.com/google/transit/tree/master/gtfs-realtime) Protocol Buffer 仕様から生成された Ruby クラスを提供します。これらのクラスを使用することで、バイナリ形式の Protocol Buffer GTFS-realtime データフィードを Ruby オブジェクトに変換して解析することができます。
+[GTFS-realtime](https://github.com/google/transit/tree/master/gtfs-realtime) Protocol Buffer 仕様から生成された Ruby クラスを提供します。これらのクラスにより、バイナリ Protocol Buffer GTFS-realtime データフィードを Ruby オブジェクトに解析できます。
 
 !!! fail "非推奨"
 
-    *2019年2月時点で、公式の `google-protobuf` Google protoc ツールは proto2 ファイルにおける [拡張機能をサポートしていません](https://github.com/protocolbuffers/protobuf/issues/1198)。サードパーティ製ツールである [ruby-protocol-buffers](https://github.com/codekitchen/ruby-protocol-buffers) を `gem install ruby-protocol-buffers` でインストールすることは可能ですが、ユニットテストが失敗するため、既存の Ruby GTFS-rt バインディングの構造とは一致しないようです。その結果、Google の protocol buffer ツールで proto2 ファイルの公式サポートが実装されるまで、Ruby バインディングは非推奨とします。*
+    *2019年2月時点で、公式の `google-protobuf` Google protoc ツールは、proto2 ファイル内の[拡張機能をサポートしていません](https://github.com/protocolbuffers/protobuf/issues/1198)。サードパーティ製ツールである [ruby-protocol-buffers](https://github.com/codekitchen/ruby-protocol-buffers) は `gem install ruby-protocol-buffers` を使用してインストールできますが、ユニットテストが失敗するため、既存の Ruby GTFS-rt バインディングの構造と一致していないようです。その結果、Google protocol buffer ツールで proto2 ファイルの公式サポートが実装されるまで、Ruby バインディングを非推奨とします。*
 
-## 依存関係の追加 {: #add-the-dependency}
+## 依存関係を追加する {: #add-the-dependency}
+
 
 自身のプロジェクトで `gtfs-realtime-bindings` クラスを使用するには、まず [Ruby gem](https://rubygems.org/gems/gtfs-realtime-bindings) をインストールする必要があります。
 
@@ -23,7 +24,8 @@ gem install gtfs-realtime-bindings
 
 ## コード例 {: #example-code}
 
-以下のコードスニペットは、特定のURLからGTFS-realtimeデータフィードをダウンロードし、それをGTFS-realtimeスキーマのルート型であるFeedMessageとしてパースし、結果を反復処理する方法を示しています。
+
+以下のコードスニペットは、特定の URL から GTFS-realtime データフィードをダウンロードし、それを FeedMessage（GTFS-realtime スキーマのルート型）として解析し、結果を反復処理する方法を示しています。
 
 ```ruby
 require 'protobuf'
@@ -40,4 +42,4 @@ for entity in feed.entity do
 end
 ```
 
-Rubyクラスの命名規則に関する詳細については、[gtfs-realtime.proto](https://github.com/google/transit/blob/master/gtfs-realtime/proto/gtfs-realtime.proto) から生成された [gtfs-realtime.pb.rb ソースファイル](https://github.com/MobilityData/gtfs-realtime-bindings/blob/master/ruby/lib/google/transit/gtfs-realtime.pb.rb) を参照してください。
+[gtfs-realtime.proto](https://github.com/google/transit/blob/master/gtfs-realtime/proto/gtfs-realtime.proto) から生成される Ruby クラスの命名規則の詳細については、[gtfs-realtime.pb.rb のソースファイル](https://github.com/MobilityData/gtfs-realtime-bindings/blob/master/ruby/lib/google/transit/gtfs-realtime.pb.rb)を確認してください。

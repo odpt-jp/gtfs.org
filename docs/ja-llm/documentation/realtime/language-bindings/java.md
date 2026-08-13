@@ -3,13 +3,14 @@
 
 ![Maven Central Version](https://img.shields.io/maven-central/v/org.mobilitydata/gtfs-realtime-bindings.svg)
 
-[GTFS-realtime](https://github.com/google/transit/tree/master/gtfs-realtime) Protocol Buffer 仕様から生成された Java クラスを提供します。これらのクラスを使用することで、バイナリ形式の Protocol Buffer GTFS-realtime データフィードを Java オブジェクトに変換して解析することができます。
+[GTFS-realtime](https://github.com/google/transit/tree/master/gtfs-realtime) Protocol Buffer 仕様から生成された Java クラスを提供します。これらのクラスにより、バイナリ Protocol Buffer GTFS-realtime データフィードを Java オブジェクトに解析できます。
 
-## 依存関係の追加 {: #add-the-dependency}
+## 依存関係を追加する {: #add-the-dependency}
 
-`gtfs-realtime-bindings` クラスを自身のプロジェクトで使用するには、適切な依存関係を追加する必要があります。私たちはモジュールを [Maven Central Repository](http://search.maven.org/) に公開しているため、Maven、Ivy、Gradle といった Java のビルドツールから簡単に参照することができます。
 
-[Maven](http://maven.apache.org/) を使用する場合は、`pom.xml` の dependencies セクションに以下を追加してください:
+自身のプロジェクトで `gtfs-realtime-bindings` クラスを使用するには、適切な依存関係を追加する必要があります。モジュールは [Maven Central Repository](http://search.maven.org/) に公開されているため、Maven、Ivy、Gradle などの Java ビルドツールから容易に参照できます。
+
+[Maven](http://maven.apache.org/) の場合、`pom.xml` の dependencies セクションに以下を追加してください。
 
 ```xml
 <dependency>
@@ -19,17 +20,18 @@
 </dependency>
 ```
 
-[Gradle](https://www.gradle.org/) を使用する場合は、`build.gradle` の dependencies セクションに以下を追加してください:
+[Gradle](https://www.gradle.org/) の場合、`build.gradle` の dependecies セクションに以下を追加してください。
 
 ```
 implementation group: 'org.mobilitydata', name: 'gtfs-realtime-bindings', version: '0.0.8'
 ```
 
-Maven Central Repository がプロジェクトで参照されていることを確認してください。
+Maven central repository がプロジェクトから参照されていることを確認してください。
 
 ## コード例 {: #example-code}
 
-以下のコードスニペットは、特定のURLからGTFS-realtimeデータフィードをダウンロードし、それをGTFS-realtimeスキーマのルート型であるFeedMessageとしてパースし、結果を反復処理する方法を示しています。
+
+以下のコードスニペットは、特定の URL から GTFS-realtime データフィードをダウンロードし、それを FeedMessage（GTFS-realtime schema のルート型）として解析して、結果を反復処理する方法を示しています。
 
 ```java
 import java.net.URL;
@@ -50,22 +52,22 @@ public class GtfsRealtimeExample {
 }
 ```
 
-Javaクラスの命名規則に関する詳細については、[gtfs-realtime.proto](https://github.com/google/transit/blob/master/gtfs-realtime/proto/gtfs-realtime.proto)から生成されたコードに関する[Java Generated Code](https://developers.google.com/protocol-buffers/docs/reference/java-generated)のセクションを、Protocol Buffersの開発者サイトでご確認ください。
+[gtfs-realtime.proto](https://github.com/google/transit/blob/master/gtfs-realtime/proto/gtfs-realtime.proto) から生成される Java クラスの命名規則の詳細については、Protocol Buffers 開発者サイトの [Java Generated Code](https://developers.google.com/protocol-buffers/docs/reference/java-generated) セクションを参照してください。
 
-## プロジェクトの歴史 {: #project-history}
+## プロジェクト履歴 {: #project-history}
 
-### `0.0.4` およびそれ以前 {: #004-and-lower}
+### `0.0.4` 以前 {: #004-and-lower}
 
-このプロジェクトはもともと Google によって作成されました。`0.0.4` およびそれ以前のバージョンは、Group ID `com.google.transit` の下で [Maven Central からこちら](https://search.maven.org/search?q=g:com.google.transit%20AND%20a:gtfs-realtime-bindings) からダウンロードすることができます。
+このプロジェクトは元々 Google によって作成されました。`0.0.4` およびそれ以前のバージョンは、Group ID `com.google.transit` のもとで、[Maven Central のこちら](https://search.maven.org/search?q=g:com.google.transit%20AND%20a:gtfs-realtime-bindings)からダウンロードできます。
 
 ### `0.0.5` {: #005}
 
-MobilityData は 2019 年初頭にこのプロジェクトの保守を開始し、当初は JCenter を通じてリリース成果物を公開していました。バージョン `0.0.5` は、Group ID `io.mobilitydata.transit` の下で [Maven Central からこちら](https://search.maven.org/artifact/io.mobilitydata.transit/gtfs-realtime-bindings) からダウンロードすることができます。
+MobilityData は2019年初頭にプロジェクトの保守を開始し、当初は JCenter を通じてリリース成果物を公開していました。バージョン `0.0.5` は、Group ID `io.mobilitydata.transit` のもとで、[Maven Central のこちら](https://search.maven.org/artifact/io.mobilitydata.transit/gtfs-realtime-bindings)からダウンロードできます。
 
 ### `0.0.6` および `0.0.7` {: #006-and-007}
 
-JCenter は 2021 年に[シャットダウン](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/)されました。シャットダウン前に同期の問題が発生し、バージョン `0.0.6` および `0.0.7` が JCenter から Maven Central に同期されなかったため、これらのバージョンについては直接アーティファクトをダウンロードすることは現在できません。ただし、[tags](https://github.com/MobilityData/gtfs-realtime-bindings/tags) から `mvn package` コマンドを使用して自分でコンパイルすることができます。
+JCenter は2021年に[終了しました](https://jfrog.com/blog/into-the-sunset-bintray-jcenter-gocenter-and-chartcenter/)。終了前に、同期の問題によりバージョン `0.0.6` および `0.0.7` は JCenter から Maven Central へ同期されなかったため、現在これらのバージョンではアーティファクトを直接ダウンロードできません。ただし、[tags](https://github.com/MobilityData/gtfs-realtime-bindings/tags) からコマンド `mvn package` を使用して、自身でコンパイルすることができます。
 
 ### `0.0.8` 以降 {: #008-and-higher}
 
-2022年、MobilityData はアーティファクトを Group ID `org.mobilitydata` の下で直接 Maven Central に公開する方式に切り替えました。バージョン 0.0.8 以降は、ここで公開されています。
+2022年に、MobilityData は Group ID `org.mobilitydata` の下で Maven Central に直接アーティファクトを公開する方式へ移行しました。ここでバージョン 0.0.8 以降が公開されています。

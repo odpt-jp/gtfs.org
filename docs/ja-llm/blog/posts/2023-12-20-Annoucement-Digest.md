@@ -14,22 +14,22 @@ categories:
 # GTFS Digest が公開されました {: #the-gtfs-digest-has-been-released}
 
 
-GTFS コントリビューターの皆さま、ついに公開されました！ 🎉
+GTFS コントリビューターの皆様、ついに公開です！🎉
 
-バレンシアとニューヨークで開催された MobilityData ワークショップや、広範なコミュニティへのヒアリングを経て、皆さまからのご意見を反映し、このたび誇りをもって **GTFS Digest** を発表いたします。Digest は「GTFS ガバナンスの変更: 段階的計画 #413」のフェーズ1の一部です。新規および再参加する GTFS コントリビューターの皆さまが最新情報を把握しやすくなることで、参入障壁を下げる一助となることを願っています。
+広範なコミュニティへの働きかけと、バレンシアおよびニューヨークで最近開催された MobilityData ワークショップを経て、皆様の助言を取り入れ、GTFS Digest を誇りをもってご紹介します。Digest は、Modifications to the GTFS Governance: Phasing Plan #413 のフェーズ 1 の一部です。新規および復帰する GTFS コントリビューターが最新情報を把握できるようにすることで、参入障壁の軽減に役立つことを願っています。
 
 
 <!-- more -->
 
-Digest は毎月発行され、以下の情報を含みます:
+Digest は毎月公開され、以下の情報を含みます。
 
-* **Contributor Shoutouts**: 素晴らしい貢献を紹介
-* **Recently Adopted**: 先月に採用されたフィールドに関する情報
-* **Currently Voting**: 現在投票中の Pull Request の簡単な説明と投票終了日
-* **Active Pull Requests on GitHub**: Pull Request の短い説明と主要なポイント・決定事項の要約
-* **Most Active Conversations**: GitHub や Slack 上での注目の議論を紹介
-* **Upcoming Events**: 日付や登録リンク付きの GTFS 関連イベント
-* **Tool Updates**: GTFS ツールの更新情報を紹介
-* GTFS はコミュニティの貢献に支えられています。次号の Digest に向けて、皆さまの最新情報をぜひ共有してください: specifications@mobiltydata.org
+* コントリビューターの称賛: 優れたコントリビューションを紹介します
+* 最近採択されたもの: 先月中に最近採択されたフィールドに関する情報
+* 現在投票中: 現在投票中の Pull Request、その簡単な説明、および投票終了日
+* GitHub 上のアクティブな Pull Request: Pull Request の主な論点・決定事項の要約を含む短い説明
+* 最も活発な議論: GitHub および/または Slack 上の主要な議論を紹介します
+* 今後のイベント: 日付および登録リンクを含む GTFS 関連イベント
+* ツールの更新: GTFS ツールの更新を紹介します
+* GTFS はコミュニティからのコントリビューションに依存しています。次回の Digest に向けて更新情報を共有し、GTFS の進展を記録することにご協力ください: specifications@mobiltydata.org
 
-**Digest の構成やフォーマットについてのご意見をお聞かせください。改善を重ねていく上で、皆さまからのフィードバックは非常に貴重です。**
+**Digest の構成と形式についてご意見をお聞かせください。今後改善していくうえで、皆様からのフィードバックは非常に貴重です。**
