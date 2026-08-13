@@ -24,7 +24,7 @@ theme:
   favicon: assets/images/favicon.ico
   palette:
     primary: black
-  name: material
+  name: materialx
   font:
     text: Mulish
     code: SF Mono
