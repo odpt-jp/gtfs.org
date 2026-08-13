@@ -1,5 +1,6 @@
 import argparse
 import csv
+import os
 import re
 from pathlib import Path
 from typing import List, Tuple
@@ -8,7 +9,7 @@ from markdown.extensions.toc import slugify
 from openai import OpenAI
 
 # Constants and regex patterns (non-public)
-_GPT_MODEL = 'gpt-5-chat-latest'
+_GPT_MODEL = os.getenv('OPENAI_MODEL') or 'gpt-5.4'
 _MAX_WORKERS = 10
 _HEADING = re.compile(r'^(?: {0,3})(#{1,6})[ \t]+(.+?)\s*$')
 _ID_AT_END = re.compile(r'\s\{#([^}]+)\}\s*$')
@@ -154,7 +155,6 @@ def _translate_text(text: str, prompt: str) -> str:
     """
     response = _client.responses.create(
         model=_GPT_MODEL,
-        temperature=0,
         input=[
             {
                 'role': 'developer',

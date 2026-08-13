@@ -76,6 +76,7 @@ jobs:
         if: steps.pick.outputs.has_files == 'true'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
         run: |
           mapfile -t FILES_ARR < files.txt
           python -m scripts.translate_with_gpt \
