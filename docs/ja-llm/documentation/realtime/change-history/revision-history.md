@@ -2,18 +2,25 @@
 
 ### 改訂履歴 {: #revision-history}
 
+#### 2026年11月 {: #november-2026}
+
+
+* `feed_entities.md` における期待される動作を明確化し、Service Alerts の Cause および Effect 値の詳細を追加しました。[議論](https://github.com/google/transit/pull/648)を参照してください。
+
 #### 2026年9月 {: #september-2026}
+
 
 * 軽微な書式上の問題を修正しました。[議論](https://github.com/google/transit/pull/641)を参照してください。
 
 #### 2026年8月 {: #august-2026}
+
 
 * Service Alerts の画像を仕様に採用し、「experimental」タグを削除しました。[議論](https://github.com/google/transit/pull/651)を参照してください。
 
 #### 2026年6月 {: #june-2026}
 
 
-* Service Alerts に、active_period をより適切に定義するための2つの新しいフィールド、communication_period および impact_period を追加しました。[議論](https://github.com/google/transit/pull/546)を参照してください。
+* Service Alerts に、active_period をより適切に定義するための新しい2つのフィールド、communication_period および impact_period を追加しました。[議論](https://github.com/google/transit/pull/546)を参照してください。
 * Service Alerts の Cause リストに、新しい SPECIAL_EVENT Cause を追加しました。[議論](https://github.com/google/transit/pull/577)を参照してください。
 
 #### 2026年4月 {: #april-2026}
@@ -30,23 +37,23 @@
 #### 2025年5月 {: #may-2025}
 
 
-* schedule_relationship `ADDED` を非推奨とし、`NEW` を優先して使用するようにし、`REPLACEMENT` を追加します。[議論](https://github.com/google/transit/pull/504)を参照してください。
+* schedule_relationship `ADDED` を非推奨とし、`NEW` を優先して使用し、`REPLACEMENT` を追加します。[議論](https://github.com/google/transit/pull/504)を参照してください。
 * 便の変更(trip modification)に関するさらなる明確化。[議論](https://github.com/google/transit/pull/542)を参照してください。
 
 #### 2024年12月 {: #december-2024}
 
 
-* リアルタイムデータの基となる GTFS Schedule フィードの feed_info.feed_version に一致する新しい文字列フィールドを追加しました。[議論](https://github.com/google/transit/pull/434)を参照してください。
+* realtime data の基となる GTFS Schedule feed の feed_info.feed_version に一致する新しい文字列フィールドを追加しました。[discussion](https://github.com/google/transit/pull/434) を参照してください。
 
 #### 2024年10月 {: #october-2024}
 
 
-* 便の変更に関する明確化および小規模な変更。[議論](https://github.com/google/transit/pull/497)を参照してください。
+* 便の変更(trip modification)に関する明確化および小規模な変更。[議論](https://github.com/google/transit/pull/497)を参照してください。
 
 #### 2024年3月 {: #march-2024}
 
 
-* 便の変更(trip modification)を採用しました。[議論](https://github.com/google/transit/pull/403)を参照してください。
+* 便の変更(Trip modification)を採用しました。[議論](https://github.com/google/transit/pull/403)を参照してください。
 
 #### 2022年11月 {: #november-2022}
 
@@ -93,7 +100,7 @@
 
 
 * DUPLICATED tripsをサポートします。[議論](https://github.com/google/transit/pull/221)を参照してください。
-* Alert tts_header_text、tts_description_textは、もはやexperimentalではありません。[議論](https://github.com/google/transit/pull/229)を参照してください。
+* Alert tts_header_text、tts_description_textはexperimentalではなくなりました。[議論](https://github.com/google/transit/pull/229)を参照してください。
 * GTFS-RT ADDED tripsを完全には指定されていないものとしてラベル付けします。[議論](https://github.com/google/transit/pull/230)を参照してください。
 
 #### 2020年4月 {: #april-2020}
@@ -105,12 +112,12 @@
 #### 2020年3月12日 {: #march-12-2020}
 
 
-* block 内の次の便について TripUpdate の予測を提供することを推奨します。[議論](https://github.com/google/transit/pull/206)を参照してください。
+* ブロック内の次の便についてTripUpdate予測を提供することを推奨します。[議論](https://github.com/google/transit/pull/206)を参照してください。
 
 #### 2019年8月 {: #august-2019}
 
 
-* trip_updates がフィード内でブロック順に発生することは必須ではないことを文書化します。[議論](https://github.com/google/transit/pull/176)を参照してください。
+* trip_updates がフィード内でブロック順に出現する必要はないことを文書化します。[議論](https://github.com/google/transit/pull/176)を参照してください。
 * StopTimeUpdate.ScheduleRelationship の UNSCHEDULED 値を追加します。[議論](https://github.com/google/transit/pull/173)を参照してください。
 
 #### 2019年5月 {: #may-2019}
@@ -121,9 +128,9 @@
 #### 2019年2月 {: #february-2019}
 
 
-* GTFS-realtime の運行情報(alert)に NO_EFFECT effect オプションを追加します。[議論](https://github.com/google/transit/pull/137)を参照してください。
+* GTFS-realtime service alert に NO_EFFECT effect オプションを追加します。[議論](https://github.com/google/transit/pull/137)を参照してください。
 * Service Alerts feed に新しい任意フィールド SeverityLevel を追加します。[議論](https://github.com/google/transit/pull/136)を参照してください。
-* Service Alerts feed に読み上げ用フィールド(text-to-speech field)機能のための新しい任意フィールドを追加します。[議論](https://github.com/google/transit/pull/135)を参照してください。
+* Service Alerts feed に Text-to-Speech 機能用の新しい任意フィールドを追加します。[議論](https://github.com/google/transit/pull/135)を参照してください。
 
 #### 2018年4月 {: #april-2018}
 
@@ -138,7 +145,7 @@
 #### 2015年1月30日 {: #january-30-2015}
 
 
-* Protocol Buffer extension namespace を、まだ設定されていなかった残りのすべての GTFS-realtime メッセージ（`FeedMessage` や `FeedEntity` など）に追加しました。
+* まだ Protocol Buffer extension namespace を持っていなかった残りのすべての GTFS-realtime メッセージ（`FeedMessage` や `FeedEntity` など）に追加しました。
 
 #### 2015年1月28日 {: #january-28-2015}
 
@@ -159,8 +166,8 @@
 #### 2014年5月22日 {: #may-22-2014}
 
 
-* `StopTimeUpdate` メッセージ内の `ScheduleRelationship` enum の説明を更新しました（[discussion](https://groups.google.com/forum/#!topic/gtfs-realtime/77c3WZrGBnI)）。
-* `TripDescriptor` メッセージ内の `ScheduleRelationship` enum 値から REPLACEMENT を削除しました（[discussion](https://groups.google.com/forum/#!topic/gtfs-realtime/77c3WZrGBnI)）。
+* `StopTimeUpdate` メッセージ内の `ScheduleRelationship` 列挙型の説明を更新しました（[議論](https://groups.google.com/forum/#!topic/gtfs-realtime/77c3WZrGBnI)）。
+* `TripDescriptor` メッセージ内の `ScheduleRelationship` 列挙型の値から REPLACEMENT を削除しました（[議論](https://groups.google.com/forum/#!topic/gtfs-realtime/77c3WZrGBnI)）。
 
 #### 2012年10月12日 {: #oct-12-2012}
 
@@ -170,12 +177,12 @@
 #### 2012年5月30日 {: #may-30-2012}
 
 
-* 仕様にExtensionsに関する具体的な詳細を追加しました。
+* 仕様におけるExtensionsに関する具体的な詳細を追加しました。
 
 #### 2011年11月30日 {: #november-30-2011}
 
 
-* 仕様への拡張機能の記述を容易にするため、主要なGTFS-realtimeメッセージにProtocol Buffer拡張namespaceを追加しました。
+* 仕様への拡張の記述を容易にするため、主要な GTFS-realtime メッセージに Protocol Buffer 拡張 namespace を追加しました。
 
 #### 2011年10月25日 {: #october-25-2011}
 
@@ -185,7 +192,7 @@
 #### 2011年8月20日 {: #august-20-2011}
 
 
-* `TimeRange` メッセージのセマンティクスを明確化するため、ドキュメントを更新しました。
+* `TimeRange` メッセージのセマンティクスを明確にするため、ドキュメントを更新しました。
 
 #### 2011年8月22日 {: #august-22-2011}
 
