@@ -2,6 +2,10 @@
 
 ### 改訂履歴 {: #revision-history}
 
+#### 2026年11月 {: #november-2026}
+
+* 標準ライセンスの SPDX Identifiers を参照するための新しいフィールドを1つ追加し、ライセンス情報を記述する新しい `licenses.txt` ファイルを追加しました。[議論](https://github.com/google/transit/pull/607)を参照してください。
+
 #### 2026年9月 {: #september-2026}
 
 * `shapes.txt`を「任意」から「条件付き必須」に更新しました。[議論](https://github.com/google/transit/pull/660)を参照してください。
@@ -9,15 +13,15 @@
 
 #### 2026年8月 {: #august-2026}
 
-* 時刻指定の乗換（transfer_type = 2）において `min_transfer_time` が必須になります。[議論](https://github.com/google/transit/pull/640)を参照してください。
+* 時刻指定の乗換（transfer_type = 2）には `min_transfer_time` が必須です。[議論](https://github.com/google/transit/pull/640)を参照してください。
 
 #### 2026年4月 {: #april-2026}
 
-* より適切な柔軟な便の所要時間推定を提供するため、`trips.txt` に安全な所要時間フィールドを追加しました。[議論](https://github.com/google/transit/pull/598)を参照してください。
+* より適切な柔軟な便の時間推定を提供するため、`trips.txt` に安全な所要時間フィールドを追加しました。[議論](https://github.com/google/transit/pull/598)を参照してください。
 
 #### 2026年2月 {: #february-2026}
 
-* transfer_type = 0 または空（推奨乗換地点）の場合、`from_stop_id` および `to_stop_id` を必須としました。[議論](https://github.com/google/transit/pull/591)を参照してください。
+* transfer_type = 0 または空の場合（推奨乗換地点）、`from_stop_id` および `to_stop_id` を必須としました。[議論](https://github.com/google/transit/pull/591)を参照してください。
 * 通貨金額の説明を改善しました。[議論](https://github.com/google/transit/pull/615)を参照してください。
 * 運賃乗換ルールが方向性を持つことを明確化しました。[議論](https://github.com/google/transit/pull/602)を参照してください。
 * `fare_leg_rules.txt` の参照先へのリンクを追加しました。[議論](https://github.com/google/transit/pull/601)を参照してください。
@@ -59,7 +63,7 @@
 
 #### 2024年8月 {: #august-2024}
 
-* デマンド型サービスにより stops.txt の存在要件を変更しました。[議論](https://github.com/google/transit/pull/472)を参照してください。
+* デマンド型サービスに伴い stops.txt の存在要件を変更しました。[議論](https://github.com/google/transit/pull/472)を参照してください。
 * stop_times.txt の timepoint の意図された使用方法を明確化しました。[議論](https://github.com/google/transit/pull/474)を参照してください。
 * 行先表示(headsign)が推奨であることを追加しました。[議論](https://github.com/google/transit/pull/485)を参照してください。
 
@@ -75,7 +79,7 @@
 
 #### 2024年4月 {: #april-2024}
 
-* チケット商品の定義を明確化しました。[議論](https://github.com/google/transit/pull/426)を参照してください。
+* チケット商品の定義を明確化します。[議論](https://github.com/google/transit/pull/426)を参照してください。
 
 #### 2024年3月 {: #march-2024}
 
@@ -121,12 +125,12 @@
 #### 2021年10月05日 {: #oct-05-2021}
 
 
-* 便から便への乗換およびルート・路線系統(route)からルート・路線系統(route)への乗換を追加しました。[議論](https://github.com/google/transit/pull/284)を参照してください。
+* 便から便への乗換えおよびルートからルートへの乗換えを追加しました。[議論](https://github.com/google/transit/pull/284)を参照してください。
 
 #### 2021年9月15日 {: #september-15-2021}
 
 
-* 運賃ゲート（pathway_mode=6）を双方向にすることを許可しました。[議論](https://github.com/google/transit/pull/276)を参照してください。
+* 運賃ゲート（pathway_mode=6）が双方向であることを許可しました。[議論](https://github.com/google/transit/pull/276)を参照してください。
 
 #### 2021年9月13日 {: #september-13-2021}
 
@@ -147,7 +151,7 @@
 #### 2020年10月2日 {: #october-2-2020}
 
 
-* `frequencies.headway_secs` のフィールド型を非負整数から正整数に変更しました。[議論](https://github.com/google/transit/pull/249)を参照してください。
+* `frequencies.headway_secs` のフィールド型を非負整数から正の整数に変更しました。[議論](https://github.com/google/transit/pull/249)を参照してください。
 
 #### 2020年5月25日 {: #may-25-2020}
 
@@ -167,7 +171,7 @@
 #### 2020年2月5日 {: #february-5-2020}
 
 
-* トロリーバスおよびモノレールの`route_types`を追加しました。[議論](https://github.com/google/transit/pull/174)を参照してください。
+* トロリーバスおよびモノレールの `route_types` を追加しました。[議論](https://github.com/google/transit/pull/174)を参照してください。
 
 #### 2020年1月9日 {: #january-9-2020}
 
@@ -187,7 +191,7 @@
 #### 2019年8月26日 {: #august-26-2019}
 
 
-* `stop_lat` および `stop_lon` は、乗客が車両への乗車を待つ位置に配置しなければならないことを規定しました。[議論](https://github.com/google/transit/pull/179)を参照してください。
+* `stop_lat` および `stop_lon` は、乗客が車両への乗車を待つ位置に配置しなければならないことを明記しました。[議論](https://github.com/google/transit/pull/179)を参照してください。
 
 #### 2019年7月9日 {: #july-9-2019}
 
@@ -214,7 +218,7 @@
 #### 2019年2月6日 {: #february-6-2019}
 
 
-* 明確性のための編集上および書式上の変更です。[議論](https://github.com/google/transit/pull/120)を参照してください。
+* 明確性のための編集および書式変更。 [議論](https://github.com/google/transit/pull/120)を参照してください。
 
 #### 2018年10月2日 {: #october-2-2018}
 
@@ -317,18 +321,18 @@ trips.txt の 'wheelchair_accessible' 提案を仕様に追加しました: [議
 #### 2011年9月26日 {: #september-26-2011}
 
 
-* 仕様に「feed_info」の提案を追加しました: [議論](https://groups.google.com/forum/#!topic/gtfs-changes/Sh0e4o9o2Gw)
+* 仕様に「feed_info」提案を追加しました: [議論](https://groups.google.com/forum/#!topic/gtfs-changes/Sh0e4o9o2Gw)
 
 #### 2011年9月6日 {: #september-6-2011}
 
 
-* 仕様に 'agency_fare_url' の提案を追加しました: [議論](https://groups.google.com/forum/#!topic/gtfs-changes/Zp9rPG07CgE)
-* 仕様に 'exact_times' の提案を追加しました: [議論](https://groups.google.com/forum/#!topic/gtfs-changes/nZF9lbQ7TQs)
+* 'agency_fare_url' の提案を仕様に追加しました: [議論](https://groups.google.com/forum/#!topic/gtfs-changes/Zp9rPG07CgE)
+* 'exact_times' の提案を仕様に追加しました: [議論](https://groups.google.com/forum/#!topic/gtfs-changes/nZF9lbQ7TQs)
 
 #### 2009年3月30日 {: #march-30-2009}
 
 
-* 交通フィードを一般公開することに関する新しいセクション。これは、データの解釈方法または記述方法の変更ではなかったため、以前はグループ内で議論されていませんでした。しかし、GTFS形式のデータを利用できるアプリケーションが増加しているため、Googleの一部の関係者は、GTFSのGoogle以外での利用についての議論を含めることが有益であると考えました。
+* 交通機関フィードを一般公開することに関する新しいセクション。これはデータの解釈方法または記述方法の変更ではなかったため、以前はグループ内で議論されていませんでした。しかし、GTFS形式のデータを利用できるアプリケーションが増加しているため、Googleの一部の関係者は、GTFSのGoogle以外での利用についての議論を含めることが有益であると考えました。
 * CSV形式の明確化: [議論](https://groups.google.com/forum/#!topic/gtfs-changes/03qz5aTA2mk)。
 * route_color および route_text_color フィールドの説明において、対照的な色を選択する方法に関する追加のガイダンス。
 * これらのスレッドで提案およびテストされた trip_short_name: a および b。
@@ -354,12 +358,12 @@ trips.txt の 'wheelchair_accessible' 提案を仕様に追加しました: [議
 
 
 * transfers.txt ファイルを追加し、フィード公開者が推奨される乗換動作に関するヒントを提供できるようにしました（[元の提案](https://groups.google.com/forum/#!topic/gtfs-changes/cL1E4oKKpKw)）
-* stops.txt に location_type および parent_station フィールドを追加し、停留所等(stop)の地点を駅にグループ化できるようにしました（[元の提案](https://groups.google.com/forum/#!topic/gtfs-changes/ScGAyZ9a_yw)）
+* stops.txt に location_type および parent_station フィールドを追加し、停留所等(stop)の地点を駅としてグループ化できるようにしました（[元の提案](https://groups.google.com/forum/#!topic/gtfs-changes/ScGAyZ9a_yw)）
 * 事業者の音声電話番号を提供するための agency_phone フィールドを追加しました（[元の提案](https://groups.google.com/forum/#!topic/gtfs-changes/8Itt58ueyqA)）
 * オープンソースのテストツールに言及する「フィードのテスト」セクションを追加しました
-* CSV形式、agency_timezone、agency_lang、route_color、route_text_color、arrival_time、departure_time、calendar.txt と calendar_dates.txt の比較、運賃表、および frequencies.txt に関する明確化を追加しました
+* CSV 形式、agency_timezone、agency_lang、route_color、route_text_color、arrival_time、departure_time、calendar.txt と calendar_dates.txt の比較、運賃表、および frequencies.txt に関する明確化を追加しました
 * フィード履歴ドキュメントへのリンクを追加し、一部の公開フィードリンクを修正しました
-* 現在の Google Maps UI を描写するようにサンプル画像を更新しました
+* 現在の Google Maps UI を描写するように例の画像を更新しました
 * ドキュメント内のサンプルデータを更新・修正しました
 
 #### 2008年2月29日 {: #february-29-2008}
@@ -368,15 +372,15 @@ trips.txt の 'wheelchair_accessible' 提案を仕様に追加しました: [議
 * 乗客向けの停留所等(stop)コードを指定できるように、stops.txt に stop_code フィールドを追加しました（[元の提案](https://groups.google.com/forum/#!topic/gtfs-changes/k9A95fYZexc)）
 * routes.txt の route_short_name および route_long_name の説明を明確化しました
 * stop_times.txt の arrival_time および departure_time の説明を明確化しました
-* サンプルデータのセクションの誤字を修正しました
+* サンプルデータのセクションにある誤字を修正しました
 
 #### 2007年11月20日 {: #november-20-2007}
 
 
 * block_id の説明を明確化しました
-* Google Transit を強調しない表現に変更し（Google 以外のアプリケーションが GTFS を使用しており、公共交通機関の経路検索が Google Maps の統合機能となったため）、各種の誤字を修正しました
+* Google Transit を強調しない表現に変更し（Google 以外のアプリケーションが GTFS を使用しており、公共交通機関の経路検索は現在 Google Maps の統合機能であるため）、各種の誤字を修正しました
 * 現在の Google Maps UI における GTFS フィールドの表示を反映するよう、スクリーンショットの例を更新しました
-* 公共交通データ提供者向けの Google 連絡先メールアドレスを更新しました
+* 公共交通データ提供者向けの Google の連絡先メールアドレスを更新しました
 * 書式を更新しました
 
 #### 2007年10月5日 {: #october-5-2007}
@@ -398,8 +402,8 @@ trips.txt の 'wheelchair_accessible' 提案を仕様に追加しました: [議
 * [フィードの提出](https://developers.google.com/transit/google-transit#SubmitFeedToGoogle)に関するセクションを追加しました。
 * [Example Demo Transit Agency feed](https://developers.google.com/transit/gtfs/examples/gtfs-feed)を追加しました。
 * すべての運行日がcalendar_dates.txtで定義されている場合、calendar.txtを省略できる旨の注記を追加しました。
-* 1つの事業者のみを含むフィードでは、agency_idフィールドを任意にしました。これにより、agency_idのない既存のフィードも有効なままとなります。
-* agency_url、stop_url、およびroute_urlのより詳細な仕様と、これらのフィールドの追加の値の例を追加しました。
+* 1つの事業者のみを含むフィードでは、agency_idフィールドを任意にしました。これにより、agency_idを含まない既存のフィードも有効なままとなります。
+* agency_url、stop_url、およびroute_urlのより完全な仕様と、それらのフィールドの追加の値の例を追加しました。
 * 有効なroute_type値として、6（Gondola）および7（Funicular）を追加しました。
 
 #### 2007年3月8日 {: #march-8-2007}
@@ -421,9 +425,9 @@ trips.txt の 'wheelchair_accessible' 提案を仕様に追加しました: [議
 * trips.txt に direction_id フィールドを追加しました。
 * stop_times.txt に stop_headsign フィールドを追加し、便(trip)の途中での行先表示(headsign)変更をサポートしました。
 * routes.txt に任意の route_color および route_text_color を追加し、ルート・路線系統(route)の色をサポートしました。
-* 住所を使用して停留所等(stop)を指定する機能を削除しました。仕様の以前のバージョンでは、stop_street、stop_city、stop_region、stop_postcode、および stop_country フィールドで住所を使用して交通機関の停留所等(stop)の位置を指定できました。現在は、ほとんどのアプリケーションにとってより有用な、緯度用の stop_lat と経度用の stop_lon を使用して停留所等(stop)の位置を指定しなければなりません。
+* 住所を使用して停留所等(stop)を指定する機能を削除しました。仕様の以前のバージョンでは、stop_street、stop_city、stop_region、stop_postcode、および stop_country フィールドで街路住所を使用して交通機関の停留所等(stop)の位置を指定できました。現在は、ほとんどのアプリケーションでより有用な、緯度用の stop_lat と経度用の stop_lon を使用して停留所等(stop)の位置を指定しなければなりません。
 * routes.txt の route_type フィールドにケーブルカーの車両タイプを追加しました。
-* 変更の概要については、元の[Headway ブログ投稿](http://headwayblog.com/2007/03/02/google-feed-spec-update-2007-02/)を参照してください。
+* 変更の概要については、元の [Headway blog post](http://headwayblog.com/2007/03/02/google-feed-spec-update-2007-02/) を参照してください。
 
 #### 2006年11月29日 {: #november-29-2006}
 
@@ -439,7 +443,7 @@ trips.txt の 'wheelchair_accessible' 提案を仕様に追加しました: [議
 * 個別ファイル名から日付を削除しました
 * route_type の値の定義を変更しました
 * 運行期間が重複しない限り、複数のフィードファイルを同時に投稿できるようにしました
-* trips.txt の block_id を修正し、任意として正しくマークされるようにしました
+* trips.txt の block_id を修正し、任意として正しく記載しました
 * 列ヘッダーを含めなければならないことを明記しました
 
 #### 2006年9月29日 {: #september-29-2006}
